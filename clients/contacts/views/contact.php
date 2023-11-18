@@ -1,3 +1,9 @@
+<?php
+$msg = getFlashData('msg');
+$msg_type = getFlashData("msg_type");
+$errors = getFlashData('errors');
+$old = getFlashData('old');
+?>
 <p class="py-1">Trang chủ > Liên hệ</p>
 
 <div class="row">
@@ -59,31 +65,35 @@
 
     <div class="col-9 my-4">
         <form action="" method="post">
+        <?php getMsg($msg, $msg_type) ?>
             <div class="row">
                 <div class="col-4">
-                    <input type="text" placeholder="Họ và tên*" class=" form-control">
-                    <p></p>
+                    <input type="text" placeholder="Họ và tên*" class=" form-control" name="fullname"
+                    value="<?php echo oldData('fullname', $old) ?>">
+                    <p class="error"><?php echo errorData('fullname', $errors) ?></p>
                 </div>
 
                 <div class="col-4">
-                    <input type="text" placeholder="Email của bạn..." class="form-control">
-                    <p></p>
+                    <input type="text" placeholder="Email của bạn..." class="form-control" name="email"
+                    value="<?php echo oldData('email', $old) ?>">
+                    <p class="error"><?php echo errorData('email', $errors) ?></p>
                 </div>
 
                 <div class="col-4">
-                    <input type="text" placeholder="Số điện thoại*" class="form-control">
-                    <p></p>
+                    <input type="text" placeholder="Số điện thoại*" class="form-control" name="phone"
+                    value="<?php echo oldData('phone', $old) ?>">
+                    <p class="error"><?php echo errorData('phone', $errors) ?></p>
                 </div>
 
                 <div class="col-12">
-                    <textarea name="" rows="5" class="form-control" placeholder="Nội dung thông điệp của bạn..."
-                        style="border: none;"></textarea>
+                    <textarea name="content" rows="5" class="form-control" placeholder="Nội dung thông điệp của bạn..."
+                        style="border: none;"><?php echo oldData('content', $old) ?></textarea>
                 </div>
 
                 <div class="contact__button my-3">
                     <p>* Thông tin bắt buộc</p>
                     <div>
-                        <a href="#" class="btn btn-danger">Gửi liên hệ</a>
+                    <button type="submit" class="btn btn-danger">Gửi liên hệ</button>
                         <a href="#" class="btn btn-secondary">Hủy bỏ</a>
                     </div>
                 </div>
