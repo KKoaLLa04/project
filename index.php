@@ -21,7 +21,7 @@ if (!empty($_GET['action'])) {
     $action = $_GET['action'];
 }
 
-$path = 'clients/' . $module . '/views/' . $action . '.php';
+$path = 'clients/' . $module . '/controller/' . $action . '.php';
 if (file_exists($path)) {
     require_once $path;
 } else {
