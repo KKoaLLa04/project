@@ -130,6 +130,149 @@
                  <!-- 
                     module -end 
                 -->
+
+                <!-- 
+                    book_category - begin 
+                -->
+                <li class="nav-item has-treeview <?php echo (activeMenuSidebar('book_category')) ? 'menu-open' : false ?>">
+                     <a href="#" class="nav-link <?php echo (activeMenuSidebar('book_category')) ? 'active' : false ?>">
+                         <i class="nav-icon fa fa-book"></i>
+                         <p>
+                             Danh mục sách
+                             <i class="fas fa-angle-left right"></i>
+                         </p>
+                     </a>
+                     <ul class="nav nav-treeview">
+                         <li class="nav-item">
+                             <a href="?module=book_category&action=lists" class="nav-link">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>Danh sách</p>
+                             </a>
+                         </li>
+                         <li class="nav-item">
+                             <a href="?module=book_category&action=add" class="nav-link">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>Thêm mới</p>
+                             </a>
+                         </li>
+                     </ul>
+                 </li>
+
+                 <!-- 
+                    book_category -end 
+                -->
+
+                <!-- 
+                    book - begin 
+                -->
+                <li class="nav-item has-treeview <?php echo (activeMenuSidebar('book')) ? 'menu-open' : false ?>">
+                     <a href="#" class="nav-link <?php echo (activeMenuSidebar('book')) ? 'active' : false ?>">
+                         <i class="nav-icon fab fa-servicestack"></i>
+                         <p>
+                             Quản lý sách
+                             <i class="fas fa-angle-left right"></i>
+                         </p>
+                     </a>
+                     <ul class="nav nav-treeview">
+                         <li class="nav-item">
+                             <a href="?module=book&action=lists" class="nav-link">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>Danh sách</p>
+                             </a>
+                         </li>
+                         <li class="nav-item">
+                             <a href="?module=book&action=add" class="nav-link">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>Thêm mới</p>
+                             </a>
+                         </li>
+                     </ul>
+                 </li>
+
+                 <!-- 
+                    book -end 
+                -->
+                 <!-- 
+                    contact - begin 
+                -->
+                <li class="nav-item has-treeview <?php echo (activeMenuSidebar('contact')) ? 'menu-open' : false ?>">
+                     <a href="#" class="nav-link <?php echo (activeMenuSidebar('contact')) ? 'active' : false ?>">
+                         <i class="nav-icon fab fa-servicestack"></i>
+                         <p>
+                             Liên hệ
+                             <i class="fas fa-angle-left right"></i>
+                         </p>
+                     </a>
+                     <ul class="nav nav-treeview">
+                         <li class="nav-item">
+                             <a href="?module=contact&action=lists" class="nav-link">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>Danh sách</p>
+                             </a>
+                         </li>
+                     </ul>
+                 </li>
+
+                 <!-- 
+                    contact -end 
+                -->
+                               <!-- 
+                    New_category - begin 
+                -->
+                <li class="nav-item has-treeview <?php echo (activeMenuSidebar('news_category')) ? 'menu-open' : false ?>">
+                     <a href="#" class="nav-link <?php echo (activeMenuSidebar('news_category')) ? 'active' : false ?>">
+                         <i class="nav-icon fab fa-servicestack"></i>
+                         <p>
+                             Danh mục tin tức
+                             <i class="fas fa-angle-left right"></i>
+                         </p>
+                     </a>
+                     <ul class="nav nav-treeview">
+                         <li class="nav-item">
+                             <a href="?module=news_category&action=lists" class="nav-link">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>Danh sách</p>
+                             </a>
+                         </li>
+                         <li class="nav-item">
+                             <a href="?module=news_category&action=add" class="nav-link">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>Thêm mới</p>
+                             </a>
+                         </li>
+                     </ul>
+                 </li>
+
+                 <!-- 
+                    News -end 
+                -->
+                <li class="nav-item has-treeview <?php echo (activeMenuSidebar('news')) ? 'menu-open' : false ?>">
+                     <a href="#" class="nav-link <?php echo (activeMenuSidebar('news')) ? 'active' : false ?>">
+                         <i class="nav-icon fab fa-servicestack"></i>
+                         <p>
+                             Quản lý tin tức
+                             <i class="fas fa-angle-left right"></i>
+                         </p>
+                     </a>
+                     <ul class="nav nav-treeview">
+                         <li class="nav-item">
+                             <a href="?module=news&action=lists" class="nav-link">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>Danh sách</p>
+                             </a>
+                         </li>
+                         <li class="nav-item">
+                             <a href="?module=news&action=add" class="nav-link">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>Thêm mới</p>
+                             </a>
+                         </li>
+                     </ul>
+                 </li>
+
+                 <!-- 
+                    News -end 
+                -->
              </ul>
          </nav>
          <!-- /.sidebar-menu -->
