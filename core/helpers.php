@@ -37,6 +37,21 @@ function view($data = [], $action = '')
 //     }
 // }
 
+function viewClient($data = [], $action = '')
+{
+    $module = 'home';
+    $action = 'home';
+    if (!empty($_GET['module'])) {
+        $module = $_GET['module'];
+    }
+
+    if (!empty($_GET['action'])) {
+        $action = $_GET['action'];
+    }
+
+    require_once './clients/' . $module . '/views/' . $action . '.php';
+}
+
 function sendMail($to, $subject, $content)
 {
     $mail = new PHPMailer(true);
