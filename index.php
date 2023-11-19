@@ -7,6 +7,8 @@ require_once './configs/web.php'; // load config web
 require_once './core/connection.php'; // load connection
 require_once './core/database.php'; // load database
 require_once './core/helpers.php'; // load all function (helpers)
+require_once './core/session.php'; // load session
+
 
 require_once './public/assets/clients/templates/header.php'; //import header layout
 
