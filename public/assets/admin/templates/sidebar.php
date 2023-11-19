@@ -273,6 +273,37 @@
                  <!-- 
                     News -end 
                 -->
+
+                 <!-- 
+                    Teacher -end 
+                -->
+                <li class="nav-item has-treeview <?php echo (activeMenuSidebar('teacher')) ? 'menu-open' : false ?>">
+                     <a href="#" class="nav-link <?php echo (activeMenuSidebar('teacher')) ? 'active' : false ?>">
+                         <i class="nav-icon fab fa-servicestack"></i>
+                         <p>
+                             Quản lý giảng viên
+                             <i class="fas fa-angle-left right"></i>
+                         </p>
+                     </a>
+                     <ul class="nav nav-treeview">
+                         <li class="nav-item">
+                             <a href="?module=teacher&action=lists" class="nav-link">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>Danh sách</p>
+                             </a>
+                         </li>
+                         <li class="nav-item">
+                             <a href="?module=teacher&action=add" class="nav-link">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>Thêm mới</p>
+                             </a>
+                         </li>
+                     </ul>
+                 </li>
+
+                 <!-- 
+                    Teacher -end 
+                -->
              </ul>
          </nav>
          <!-- /.sidebar-menu -->
