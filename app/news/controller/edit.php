@@ -28,6 +28,7 @@ if (isPost()) {
         $dataUpdate = [
             'title' => trim($body['title']),
             'content' => trim($body['content']),
+            'news_id' => trim($body['news_id']),
             'update_at' => date('Y-m-d H:i:s')
         ];
 
