@@ -88,6 +88,7 @@ $old = getFlashData('old');
                 <div class="col-12">
                     <textarea name="content" rows="5" class="form-control" placeholder="Nội dung thông điệp của bạn..."
                         style="border: none;"><?php echo oldData('content', $old) ?></textarea>
+                        <p class="error"><?php echo errorData('content', $errors) ?></p>
                 </div>
 
                 <div class="contact__button my-3">

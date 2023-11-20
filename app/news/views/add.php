@@ -38,7 +38,7 @@ $old = getFlashData('old');
                 
                 <div class="form-group">
                     <label for="">Danh mục tin tức</label>
-                    <select class="form-control" name="book_id">
+                    <select class="form-control" name="news_id">
                         <option value="0">Chọn danh mục tin tức </option>
                         <?php if(!empty($data['news_category'])):
                             foreach($data['news_category'] as $item): ?>

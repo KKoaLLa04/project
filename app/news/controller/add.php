@@ -14,16 +14,16 @@ if (isPost()) {
     if (empty($body['content'])) {
         $errors['content'] = 'Nội dung không được để trống';
     }
-    // if (empty($body['news_id'])) {
-    //     $errors['news_id'] = 'Danh mục sách bắt buộc phải chọn';
-    // }
+    if (empty($body['news_id'])) {
+        $errors['news_id'] = 'Danh mục sách bắt buộc phải chọn';
+    }
 
     if (empty($errors)) {
 
         $dataInsert = [
             'title' => trim($body['title']),
             'content' => trim($body['content']),
-            // 'news_id' => trim($body['news_id']),
+            'news_id' => trim($body['news_id']),
             'create_at' => date('Y-m-d H:i:s')
         ];
 

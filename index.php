@@ -10,6 +10,7 @@ require_once './core/helpers.php'; // load all function (helpers)
 require_once './core/session.php'; // load session
 
 
+
 require_once './public/assets/clients/templates/header.php'; //import header layout
 
 $module = _MODULE_DEFAULT;

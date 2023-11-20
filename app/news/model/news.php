@@ -1,6 +1,6 @@
 <?php
 function getAllnews(){
-    $sql = "SELECT * FROM news";
+    $sql = "SELECT * FROM news order by id DESC";
     $data = getRaw($sql);
     return $data;
 }
