@@ -7,6 +7,14 @@ function getAllTeacher()
     return $data;
 }
 
+function checkEmailExist($email)
+{
+    $sql = "SELECT * FROM teacher WHERE email='$email'";
+    $data = firstRaw($sql);
+    echo $sql;
+    return $data;
+}
+
 function teacherDetail($id)
 {
     $sql = "SELECT * FROM teacher WHERE id = $id";
@@ -17,14 +25,6 @@ function teacherDetail($id)
 function checkEmailUpdate($email, $id)
 {
     $sql = "SELECT * FROM teacher WHERE email='$email' ANd id <> $id";
-    $data = firstRaw($sql);
-    echo $sql;
-    return $data;
-}
-
-function checkEmailExist($email)
-{
-    $sql = "SELECT * FROM teacher WHERE email='$email'";
     $data = firstRaw($sql);
     echo $sql;
     return $data;
