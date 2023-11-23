@@ -1,3 +1,9 @@
+<?php
+$msg = getFlashData('msg');
+$msg_type = getFlashData('msg_type');
+$errors = getFlashData('errors');
+$old = getFlashData('old');
+?>
 <p class="py-1">Trang chủ > Thành viên</p>
 
 <div class="login">
@@ -9,32 +15,39 @@
     </div>
 
     <p class="my-4">Hoặc</p>
+    <?php getMsg($msg, $msg_type) ?>
     <form action="" method="post">
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Số điện thoại...">
-            <p></p>
+            <input type="text" class="form-control" placeholder="Số điện thoại..." name="phone"
+                value="<?php echo oldData('phone', $old) ?>">
+            <p class="error"><?php echo errorData('phone', $errors) ?></p>
         </div>
 
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Email...">
-            <p></p>
+            <input type="text" class="form-control" placeholder="Email..." name="email"
+                value="<?php echo oldData('email', $old) ?>">
+            <p class="error"><?php echo errorData('email', $errors) ?></p>
         </div>
 
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Tên của bạn...">
-            <p></p>
+            <input type="text" class="form-control" placeholder="Tên của bạn..." name="fullname"
+                value="<?php echo oldData('fullname', $old) ?>">
+            <p class="error"><?php echo errorData('fullname', $errors) ?></p>
         </div>
 
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Mật khẩu...">
+                    <input type="password" class="form-control" placeholder="Mật khẩu..." name="password">
                 </div>
+                <p class="error"><?php echo errorData('password', $errors) ?></p>
             </div>
 
             <div class="col-6">
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Xác nhận mật khẩu...">
+                    <input type="password" class="form-control" placeholder="Xác nhận mật khẩu..."
+                        name="confirm_password">
+                    <p class="error"><?php echo errorData('confirm_password', $errors) ?></p>
                 </div>
             </div>
         </div>

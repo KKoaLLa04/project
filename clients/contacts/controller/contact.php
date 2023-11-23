@@ -1,34 +1,33 @@
 <?php
 
-require_once './clients/contacts/model/contact.php';
-
 if (isPost()) {
     $body = getBody();
 
     $errors = [];
 
-    if (empty($body['fullname'])) {
-        $errors['fullname'] = 'Vui lòng điền tên';
+    // validate
+    if (empty(trim($body['fullname']))) {
+        $errors['fullname'] = 'Họ và tên không được để trống!';
     }
 
-    if (empty($body['email'])) {
-        $errors['email'] = 'Email không được để trống';
+    if (empty(trim($body['email']))) {
+        $errors['email'] = 'Email không được để trống!';
     } else {
-        if (!isEmail($body['email'])) {
-            $errors['email'] = 'sai cú pháp';
+        if (!isEmail(trim($body['email']))) {
+            $errors['email'] = 'Email không đúng định dạng';
         }
     }
 
-    if (empty($body['phone'])) {
-        $errors['phone'] = 'Vui lòng điền số điện thoại';
-    }else {
-        if (!isPhone($body['phone'])) {
-            $errors['phone'] = 'sai cú pháp';
+    if (empty(trim($body['phone']))) {
+        $errors['phone'] = 'Số điện thoại không được để trống!';
+    } else {
+        if (!isPhone(trim($body['phone']))) {
+            $errors['phone'] = 'Số điện thoại không đúng định dạng';
         }
     }
 
-    if (empty($body['content'])) {
-        $errors['content'] = 'Vui lòng điền nội dung';
+    if (empty(trim($body['content']))) {
+        $errors['content'] = 'Nội dung không được để trống!';
     }
 
     if (empty($errors)) {
@@ -37,28 +36,28 @@ if (isPost()) {
             'fullname' => trim($body['fullname']),
             'email' => trim($body['email']),
             'phone' => trim($body['phone']),
-            'content' => trim($body['content']),
             'status' => 0,
+            'content' => trim($body['content']),
             'create_at' => date('Y-m-d H:i:s')
         ];
 
         $insertStatus = insert('contact', $dataInsert);
 
         if (!empty($insertStatus)) {
-            setFlashData('msg', 'Cảm ơn góp ý của bạn!');
+            setFlashData('msg', 'Gửi liên hệ thành công!');
             setFlashData('msg_type', 'success');
         } else {
-            setFlashData('msg', 'Lỗi dữ liệu, vui lòng thử lại sau!');
-            setFlashData('msg_type', 'warning');
+            setFlashData('msg', 'Lỗi hệ thống, vui lòng thử lại sau!');
+            setFlashData('msg_type', 'danger');
         }
     } else {
-        setFlashData('msg', 'Dữ liệu không hợp lệ, vui lòng kiểm tra lại!');
-        setFlashData('msg_type', 'warning');
+        setFlashData('msg', 'Lỗi dữ liệu, vui lòng kiểm tra lại!');
+        setFlashData('msg_type', 'danger');
         setFlashData('errors', $errors);
         setFlashData('old', $body);
     }
 
-    redirect('?module=contacts&action=contact');
+    redirect('?module=contacts&action=contact#form-contact');
 }
 
 
