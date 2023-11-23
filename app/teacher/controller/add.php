@@ -1,7 +1,11 @@
 <?php
 
 require_once './teacher/model/teacher.php';
-
+if (!checkPermission($permissionData, 'teacher', 'Thêm')) {
+    setFlashData('msg', 'Bạn không có quyền truy cập vào trang này');
+    setFlashData('msg_type', 'danger');
+    redirect(_WEB_HOST_ROOT_ADMIN);
+}
 if (isPost()) {
     $body = getBody();
 
@@ -41,11 +45,14 @@ if (isPost()) {
         $errors['password'] = 'Mật khẩu không được để trống';
     }
 
-    if (empty($body['exp'])) {
-        $errors['exp'] = 'Kinh nghiệm không được bỏ trống';
+    if (empty($body['confirm_password'])) {
+        $errors['confirm_password'] = 'Xác nhận mật khẩu không được để trống';
+    } else {
+        if (trim($body['password']) !== trim($body['confirm_password'])) {
+            $errors['confirm_password'] = 'Xác nhận mật khẩu không trùng khớp';
+        }
     }
 
-   
     if (empty($errors)) {
 
         $dataInsert = [
@@ -54,6 +61,7 @@ if (isPost()) {
             'email' => trim($body['email']),
             'exp' => trim($body['exp']),
             'password' => password_hash(trim($body['password']), PASSWORD_DEFAULT),
+            'group_id' => 3,
             'create_at' => date('Y-m-d H:i:s')
         ];
 
