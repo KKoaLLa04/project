@@ -9,7 +9,7 @@ $old = getFlashData('old');
     <hr>
     <h4>Thêm khóa học mới</h4>
     <?php getMsg($msg, $msg_type) ?>
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
@@ -64,9 +64,9 @@ $old = getFlashData('old');
             <div class="col-6">
                 <div class="form-group">
                     <label for="">Ảnh Khóa học</label>
-                    <input type="text" class="form-control" placeholder="Ảnh đại diện khóa học...(update...)" disabled
+                    <input type="file" class="form-control" placeholder="Ảnh đại diện khóa học...(update...)"
                         name="thumbnail">
-                    <p></p>
+                        <p class="error"><?php echo errorData('thumbnail', $errors) ?></p>
                 </div>
             </div>
         </div>

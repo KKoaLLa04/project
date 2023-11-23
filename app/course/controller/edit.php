@@ -48,6 +48,20 @@ if (isPost()) {
             'update_at' => date('Y-m-d H:i:s')
         ];
 
+        
+        if (!empty($_FILES['thumbnail']['name'])) {
+         
+            $uploadDir = '../uploads/course/';
+            $thumbnail = $_FILES['thumbnail'];
+            $thumbnailName = basename($thumbnail['name']);
+            $thumbnailPath = $uploadDir . $thumbnailName;
+
+            if (move_uploaded_file($thumbnail['tmp_name'], $thumbnailPath)) {
+                
+                $dataUpdate['thumbnail'] = $thumbnailName;
+            }
+        }
+
         $condition = 'id = ' . $id;
 
         $updateStatus = update('course', $dataUpdate, $condition);
