@@ -51,6 +51,8 @@
 <script src="<?php echo _WEB_HOST_ADMIN_TEMPLATE ?>/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo _WEB_HOST_ADMIN_TEMPLATE ?>/js/demo.js"></script>
+
+<script src="<?php echo _WEB_HOST_ADMIN_TEMPLATE ?>/js/custome.js?ver=<?php echo rand() ?>"></script>
 </body>
 
 </html>
