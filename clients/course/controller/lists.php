@@ -2,7 +2,7 @@
 
 require_once './clients/course/model/course.php';
 
-
+// $course_detail = getAllCourse();
 $course_category = getAllCate();
 $course = [];
 if (!empty($course_category)) {
@@ -12,7 +12,7 @@ if (!empty($course_category)) {
 }
 
 $course = array_filter($course);
-
+// $course = array_values($course);
 
 $data = [
     'course_category' => getAllCate(),

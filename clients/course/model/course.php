@@ -21,3 +21,30 @@ function getAllCourseId($id)
     return $data;
 }
 
+function getAllLesson()
+{
+    $sql = "SELECT * FROM lesson";
+    $data = getRaw($sql);
+    return $data;
+}
+
+function getCourseDetail($id)
+{
+    $sql = "SELECT lesson.*,module.title as module_name FROM course INNER JOIN module ON module.course_id = course.id INNER JOIN lesson ON lesson.module_id = module.id WHERE course.id = $id";
+    $data = getRaw($sql);
+    return $data;
+}
+
+function getModuleDetail($course_id)
+{
+    $sql = "SELECT * FROM module WHERE course_id=$course_id";
+    $data = getRaw($sql);
+    return $data;
+}
+
+function getLessonModule($module_id)
+{
+    $sql = "SELECT * FROM lesson WHERE module_id=$module_id";
+    $data = getRaw($sql);
+    return $data;
+}

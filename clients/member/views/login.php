@@ -1,3 +1,7 @@
+<?php
+$msg = getFlashData('msg');
+$msg_type = getFlashData('msg_type');
+?>
 <p class="py-1">Trang chủ > Thành viên</p>
 
 <div class="login">
@@ -9,20 +13,23 @@
     </div>
 
     <p class="my-4">Hoặc</p>
+    <?php getMsg($msg, $msg_type) ?>
     <form action="" method="post">
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Email...">
+            <input type="text" class="form-control" placeholder="Email..." name="email">
             <p></p>
         </div>
 
         <div class="form-group mb-3">
-            <input type="text" class="form-control" placeholder="Mật khẩu...">
+            <input type="password" class="form-control" placeholder="Mật khẩu..." name="password">
         </div>
 
         <a href="?module=member&action=forgot" style="text-decoration: none;">Quên mật khẩu</a>
         <button type="submit" class="btn btn-danger form-control my-4 py-2">Đăng nhập ngay</button>
-        <p><i>Bạn chưa có tài khoản? </i> <b><a href="?module=member&action=register" style="text-decoration: none;">Đăng ký
+        <p>Bạn chưa có tài khoản?<b><a href="?module=member&action=register" style="text-decoration: none;">Đăng ký
                     ngay</a></b></p>
+        <p><b><a href="?module=member&action=teacher" style="text-decoration: none;">Đăng nhập với tư cách giảng
+                    viên</a></b></p>
     </form>
 </div>
 <div class="distance" style="height: 1px;"></div>
