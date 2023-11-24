@@ -12,7 +12,7 @@ if (empty($old) && !empty($data['book_detail'])) {
     <hr>
     <h4>Cập nhật đầu sách: <?php echo !empty($old['name']) ? $old['name'] : false ?></h4>
     <?php getMsg($msg, $msg_type) ?>
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
@@ -78,6 +78,19 @@ if (empty($old) && !empty($data['book_detail'])) {
                     <label for="">Ảnh Minh Họa</label>
                     <input type="file" class="form-control" name="thumbnail">
                     <p class="error"><?php echo errorData('thumbnail', $errors) ?></p>
+                    
+                    <?php
+        $oldThumbnail = $data['book_detail']['thumbnail']; 
+        if (!empty($oldThumbnail)) { // Kiểm tra xem có đường dẫn cũ không
+            $uploadDir = '../uploads/books/'; // Đường dẫn ảnh
+            $oldThumbnailPath = $uploadDir . $oldThumbnail; //Đường dẫn đến ảnh cũ
+            if (is_file($oldThumbnailPath)) { // Kiểm tra đường dẫn cũ
+                echo "<img src='" . $oldThumbnailPath . "' height='50%' width='50%' >";
+            } else {
+                echo "Không có ảnh";
+            }
+        }
+        ?>
                 </div>
             </div>
         </div>
