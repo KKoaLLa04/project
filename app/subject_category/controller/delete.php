@@ -1,13 +1,20 @@
 <?php
+$permissionData = permissionData();
+
+if (!checkPermission($permissionData, 'subject_category', 'Xóa')) {
+    setFlashData('msg', 'Bạn không có quyền truy cập vào trang này');
+    setFlashData('msg_type', 'danger');
+    redirect(_WEB_HOST_ROOT_ADMIN);
+}
 
 if (!empty($_GET['id']) && $_GET['id'] != '') {
     $id = $_GET['id'];
 
     $condition = 'id = ' . $id;
 
-    $deleteStatus = delete('course', $condition);
+    $deleteStatus = delete('course_category', $condition);
     if (!empty($deleteStatus)) {
-        setFlashData('msg', 'Xóa Khóa học thành công');
+        setFlashData('msg', 'Xóa danh mục khóa học thành công');
         setFlashData('msg_type', 'success');
     } else {
         setFlashData('msg', 'Lỗi hệ thống, vui lòng thử lại sau');
@@ -18,4 +25,4 @@ if (!empty($_GET['id']) && $_GET['id'] != '') {
     setFlashData('msg_type', 'danger');
 }
 
-redirect('?module=course&action=lists');
+redirect('?module=subject_category&action=lists');

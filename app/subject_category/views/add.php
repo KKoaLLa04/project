@@ -5,7 +5,7 @@ $errors = getFlashData('errors');
 $old = getFlashData('old');
 ?>
 <div class="container-fluid">
-    <a href="?module=course_category&action=lists"><button class="btn btn-warning">Quay lại</button></a>
+    <a href="?module=subject_category&action=lists"><button class="btn btn-warning">Quay lại</button></a>
     <hr>
     <h4>Thêm danh mục khóa học mới</h4>
     <?php getMsg($msg, $msg_type) ?>

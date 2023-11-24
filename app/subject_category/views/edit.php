@@ -14,7 +14,7 @@ if (empty($old) && !empty($course_cate)) {
 }
 ?>
 <div class="container-fluid">
-    <a href="?module=course_category&action=lists"><button class="btn btn-warning">Quay lại</button></a>
+    <a href="?module=subject_category&action=lists"><button class="btn btn-warning">Quay lại</button></a>
     <hr>
     <h4>Cập nhật danh mục khóa học</h4>
     <?php getMsg($msg, $msg_type) ?>

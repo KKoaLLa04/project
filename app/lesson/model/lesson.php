@@ -1,8 +1,13 @@
 <?php
 
-function getAllLesson()
+function getAllLesson($module_id = '')
 {
-    $sql = "SELECT lesson.*, module.title as module_name, course.title as course_name FROM lesson INNER JOIN module ON module.id=lesson.module_id INNER JOIN course ON course.id=module.course_id ORDER BY course.title DESC";
+    $sql = "SELECT lesson.*, module.title as module_name, course.title as course_name FROM lesson INNER JOIN module ON module.id=lesson.module_id INNER JOIN course ON course.id=module.course_id WHERE status = 1";
+    if (!empty($module_id)) {
+        $sql .= " WHERE module_id=$module_id";
+    }
+
+    $sql .= " ORDER BY course.title DESC";
     $data = getRaw($sql);
     return $data;
 }

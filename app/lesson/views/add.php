@@ -25,7 +25,7 @@ $old = getFlashData('old');
                         foreach ($data['module'] as $key => $item) :
                     ?>
                     <option value="<?php echo $item['id'] ?>"
-                        <?php echo (oldData('module_id',$old) == $item['id'])?'selected':false ?>>
+                        <?php echo (oldData('module_id', $old) == $item['id']) ? 'selected' : false ?>>
                         <?php echo $item['title'] ?></option>
                     <?php endforeach;
                     endif; ?>
@@ -34,9 +34,13 @@ $old = getFlashData('old');
             </div>
             <div class="col-12">
                 <label for="">Link video</label>
-                <input type="text" class="form-control" placeholder="Đường dẫn video (embed)...." name="video_url"
-                    value="<?php echo oldData('video_url', $old) ?>">
+                <input type="text" id="video_url" class="form-control" placeholder="Đường dẫn video (embed)...."
+                    name="video_url" value="<?php echo oldData('video_url', $old) ?>">
                 <p class="error"><?php echo errorData('video_url', $errors) ?></p>
+            </div>
+
+            <div class="col-12 iframe">
+                <div id="watch_video" class="text-center"></div>
             </div>
         </div>
 

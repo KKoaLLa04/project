@@ -1,10 +1,17 @@
 <?php
+$permissionData = permissionData();
+
+if (!checkPermission($permissionData, 'subject_category', 'Thêm')) {
+    setFlashData('msg', 'Bạn không có quyền truy cập vào trang này');
+    setFlashData('msg_type', 'danger');
+    redirect(_WEB_HOST_ROOT_ADMIN);
+}
 
 if (isPost()) {
     $body = getBody();
 
     $errors = [];
-    
+    // validate
     if (empty($body['title'])) {
         $errors['title'] = 'Tiêu đề không được để trống';
     } else {
@@ -35,7 +42,7 @@ if (isPost()) {
         setFlashData('old', $body);
     }
 
-    redirect('?module=course_category&action=add');
+    redirect('?module=subject_category&action=add');
 }
 
 view();

@@ -101,3 +101,19 @@ function getRows($sql)
     }
     return false;
 }
+
+// get count check lesson
+function getCheckCount()
+{
+    $sql = "SELECT * FROM lesson WHERE status = 0";
+    $data = getRows($sql);
+    return $data;
+}
+
+// get count check contact
+function checkContact()
+{
+    $sql = "SELECT * FROM contact WHERE status = 0";
+    $data = getRows($sql);
+    return $data;
+}

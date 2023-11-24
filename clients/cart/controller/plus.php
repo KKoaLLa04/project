@@ -1,22 +1,30 @@
 <?php
 
 require_once './clients/cart/model/cart.php';
-if (!empty($_GET['id'])) {
+if (!empty($_GET['id']) && !empty($_GET['book_id'])) {
     $id = $_GET['id'];
+    $book_id = $_GET['book_id'];
 
     $cartDetail = getCartDetail($id);
 
-    if (!empty($cartDetail)) {
-        $quantity = $cartDetail['quantity'];
-        $quantity++;
-        $dataUpdate = [
-            'quantity' => $quantity,
-        ];
+    $bookDetail = getBookCart($book_id);
 
-        $condition = "id=$id";
+    if ($cartDetail['quantity'] < $bookDetail['quantity']) {
+        if (!empty($cartDetail)) {
+            $quantity = $cartDetail['quantity'];
+            $quantity++;
+            $dataUpdate = [
+                'quantity' => $quantity,
+            ];
 
-        update('cart', $dataUpdate, $condition);
+            $condition = "id=$id";
 
-        redirect('?module=cart&action=lists');
+            update('cart', $dataUpdate, $condition);
+        }
+    } else {
+        setFlashData('msg', 'Không thể thêm, hiện số lượng hàng bạn đặt là số lượng shop còn!');
+        setFlashData('msg_type', 'danger');
     }
+
+    redirect('?module=cart&action=lists');
 }

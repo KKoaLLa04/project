@@ -1,8 +1,13 @@
 <?php
 
-function getAllCourse()
+function getAllCourse($cate_id = '')
 {
-    $sql = "SELECT course.*, fullname, course_category.title as cate_name FROM course INNER JOIN teacher ON teacher.id=course.teacher_id INNER JOIN course_category ON course_category.id=course.cate_id ORDER BY course.cate_id DESC";
+    $sql = "SELECT course.*, fullname, course_category.title as cate_name FROM course INNER JOIN teacher ON teacher.id=course.teacher_id INNER JOIN course_category ON course_category.id=course.cate_id";
+    if (!empty($cate_id)) {
+        $sql .= " WHERE cate_id=$cate_id";
+    }
+
+    $sql .= " ORDER BY course.cate_id DESC";
     $data = getRaw($sql);
     return $data;
 }

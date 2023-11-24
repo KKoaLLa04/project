@@ -18,20 +18,17 @@ $old = getFlashData('old');
     <?php getMsg($msg, $msg_type) ?>
     <form action="" method="post">
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Số điện thoại..." name="phone"
-                value="<?php echo oldData('phone', $old) ?>">
+            <input type="text" class="form-control" placeholder="Số điện thoại..." name="phone" value="<?php echo oldData('phone', $old) ?>">
             <p class="error"><?php echo errorData('phone', $errors) ?></p>
         </div>
 
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Email..." name="email"
-                value="<?php echo oldData('email', $old) ?>">
+            <input type="text" class="form-control" placeholder="Email..." name="email" value="<?php echo oldData('email', $old) ?>">
             <p class="error"><?php echo errorData('email', $errors) ?></p>
         </div>
 
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Tên của bạn..." name="fullname"
-                value="<?php echo oldData('fullname', $old) ?>">
+            <input type="text" class="form-control" placeholder="Tên của bạn..." name="fullname" value="<?php echo oldData('fullname', $old) ?>">
             <p class="error"><?php echo errorData('fullname', $errors) ?></p>
         </div>
 
@@ -45,8 +42,7 @@ $old = getFlashData('old');
 
             <div class="col-6">
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Xác nhận mật khẩu..."
-                        name="confirm_password">
+                    <input type="password" class="form-control" placeholder="Xác nhận mật khẩu..." name="confirm_password">
                     <p class="error"><?php echo errorData('confirm_password', $errors) ?></p>
                 </div>
             </div>

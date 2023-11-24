@@ -27,3 +27,24 @@ function getCartBill($code)
     $data = getRaw($sql);
     return $data;
 }
+
+function getBookCart($book_id)
+{
+    $sql = "SELECT * FROM book WHERE id=$book_id";
+    $data = firstRaw($sql);
+    return $data;
+}
+
+function selectCart($code)
+{
+    $sql = "SELECT * FROM cart WHERE status = 1 AND code_id='$code'";
+    $data = getRaw($sql);
+    return $data;
+}
+
+function getBook($book_id)
+{
+    $sql = "SELECT * FROM book WHERE id=$book_id";
+    $data = firstRaw($sql);
+    return $data;
+}

@@ -1,8 +1,11 @@
 <?php
 
-function getAllModule()
+function getAllModule($subject_id = '')
 {
-    $sql = "SELECT module.*, course.title as course_title FROM module INNER JOIN course WHERE module.course_id = course.id";
+    $sql = "SELECT module.*, course.title as course_title FROM module INNER JOIN course ON module.course_id = course.id";
+    if (!empty($subject_id)) {
+        $sql .= " WHERE course_id = $subject_id";
+    }
     $data = getRaw($sql);
     return $data;
 }

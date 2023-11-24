@@ -1,23 +1,23 @@
 <?php
-
-require_once './module/model/module.php';
+require_once  "./subject/model/course.php";
 
 $permissionData = permissionData();
 
-if (!checkPermission($permissionData, 'module', 'Xem')) {
+if (!checkPermission($permissionData, 'subject', 'Xem')) {
     setFlashData('msg', 'Bạn không có quyền truy cập vào trang này');
     setFlashData('msg_type', 'danger');
     redirect(_WEB_HOST_ROOT_ADMIN);
 }
 
-if (!empty($_GET['subject_id'])) {
-    $subject_id = $_GET['subject_id'];
+if (!empty($_GET['cate_id'])) {
+    $cate_id = $_GET['cate_id'];
 } else {
-    $subject_id = '';
+    $cate_id = '';
 }
 
 $data = [
-    'module' => getAllModule($subject_id)
+    "data" => getAllCourse($cate_id)
 ];
+
 
 view($data);

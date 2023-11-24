@@ -149,3 +149,17 @@ if(permissionObj !== null){
         })
     }
 }
+
+const video = document.getElementById('video_url');
+const watch = document.getElementById('watch_video');
+if(video !== null){
+    const videoUrl = video.value;
+
+    watch.innerHTML = videoUrl
+
+    video.addEventListener('change', function(e){
+        const linkCurrent = e.target;
+        
+        watch.innerHTML = linkCurrent.value;
+    })
+}

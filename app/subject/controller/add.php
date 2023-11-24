@@ -1,20 +1,18 @@
 <?php
 
-require_once './course/model/course.php';
+require_once './subject/model/course.php';
 
-if (!empty($_GET['id'])) {
-    $id = $_GET['id'];
+$permissionData = permissionData();
 
-    $courseDetail = getCourseDetail($id);
-} else {
-    setFlashData('msg', 'Liên kết không tồn tại hoặc đã hết hạn!');
-    setFlashData("msg_type", 'danger');
-    redirect("?module=course&action=lists");
+if (!checkPermission($permissionData, 'subject', 'Thêm')) {
+    setFlashData('msg', 'Bạn không có quyền truy cập vào trang này');
+    setFlashData('msg_type', 'danger');
+    redirect(_WEB_HOST_ROOT_ADMIN);
 }
 
 if (isPost()) {
     $body = getBody();
-    $id = $body['id'];
+
     $errors = [];
 
     // validate
@@ -39,35 +37,19 @@ if (isPost()) {
     }
 
     if (empty($errors)) {
-        $dataUpdate = [
+        $dataInsert = [
             'title' => trim($body['title']),
             'cate_id' => trim($body['cate_id']),
             'thumbnail' => trim($body['thumbnail']),
             'price' => trim($body['price']),
             'teacher_id' => trim($body['teacher_id']),
-            'update_at' => date('Y-m-d H:i:s')
+            'create_at' => date('Y-m-d H:i:s')
         ];
 
-        
-        if (!empty($_FILES['thumbnail']['name'])) {
-         
-            $uploadDir = '../uploads/course/';
-            $thumbnail = $_FILES['thumbnail'];
-            $thumbnailName = basename($thumbnail['name']);
-            $thumbnailPath = $uploadDir . $thumbnailName;
+        $insertStatus = insert('course', $dataInsert);
 
-            if (move_uploaded_file($thumbnail['tmp_name'], $thumbnailPath)) {
-                
-                $dataUpdate['thumbnail'] = $thumbnailName;
-            }
-        }
-
-        $condition = 'id = ' . $id;
-
-        $updateStatus = update('course', $dataUpdate, $condition);
-
-        if (!empty($updateStatus)) {
-            setFlashData('msg', 'Cập nhật khóa học thành công!');
+        if (!empty($insertStatus)) {
+            setFlashData('msg', 'Thêm khóa học mới thành công!');
             setFlashData('msg_type', 'success');
         } else {
             setFlashData('msg', 'Lỗi hệ thống, vui lòng thử lại sau!');
@@ -80,14 +62,11 @@ if (isPost()) {
         setFlashData('old', $body);
     }
 
-    redirect('?module=course&action=edit&id=' . $id);
+    redirect('?module=subject&action=add');
 }
 
 $data = [
     'teacher' => getAllTeacher(),
     'course_category' => getAllCate(),
-    'course_detail' => $courseDetail,
-    'id' => $id,
 ];
-
 view($data);

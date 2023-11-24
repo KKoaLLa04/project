@@ -1,8 +1,16 @@
 <?php
 
-require_once './course_category/model/cate_course.php';
+require_once './subject_category/model/read.php';
 
+$permissionData = permissionData();
 
+if (!checkPermission($permissionData, 'subject_category', 'Sửa')) {
+    setFlashData('msg', 'Bạn không có quyền truy cập vào trang này');
+    setFlashData('msg_type', 'danger');
+    redirect(_WEB_HOST_ROOT_ADMIN);
+}
+
+// Lay du lieu cu
 $id = null;
 if (isGet()) {
     if (!empty($_GET['id'])) {
@@ -15,7 +23,7 @@ if (isGet()) {
 if (isPost()) {
     $body = getBody();
     $errors = [];
-
+    // validate
     if (empty($body['title'])) {
         $errors['title'] = 'Tiêu đề không được để trống';
     } else {
@@ -50,7 +58,7 @@ if (isPost()) {
         setFlashData('old', $body);
     }
 
-    redirect('?module=course_category&action=edit&id=' . $id);
+    redirect('?module=subject_category&action=edit&id=' . $id);
 }
 
 $data = [

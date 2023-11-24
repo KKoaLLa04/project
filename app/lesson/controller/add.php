@@ -29,17 +29,20 @@ if (isPost()) {
     }
 
     if (empty($errors)) {
+        $teacherId = isLoginTeacher()['id'];
         $dataInsert = [
             'title' => trim($body['title']),
             'module_id' => trim($body['module_id']),
             'video_url' => trim($body['video_url']),
+            'status' => 0,
+            'teacher_id' => $teacherId,
             'create_at' => date('Y-m-d H:i:s')
         ];
 
         $insertStatus = insert('lesson', $dataInsert);
 
         if (!empty($insertStatus)) {
-            setFlashData('msg', 'Thêm bài giảng mới thành công!');
+            setFlashData('msg', 'Thêm bài giảng mới thành công, vui lòng chờ duyệt!');
             setFlashData('msg_type', 'success');
         } else {
             setFlashData('msg', 'Lỗi hệ thống, vui lòng thử lại sau!');

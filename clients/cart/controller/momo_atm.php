@@ -1,5 +1,6 @@
 <?php
 
+require_once './clients/cart/model/cart.php';
 if (!empty($_GET['payType'])) {
     $studentDetail = isLoginStudent();
     $studentId = $studentDetail['id'];
@@ -28,6 +29,24 @@ if (!empty($_GET['payType'])) {
         $condition = "student_id=$studentId AND status=0";
 
         $updateStatus = update('cart', $dataUpdate, $condition);
+
+        // update book...
+        $cartCode = selectCart($code);
+        foreach ($cartCode as $key => $item) {
+            $quantity = $item['quantity'];
+            $bookDetail = getBook($item['book_id']);
+            $quantityUpdate = $bookDetail['quantity'] - $quantity;
+            $dataUpdate = [
+                'quantity' => $quantityUpdate,
+                'update_at' => date('Y-m-d H:i:s')
+            ];
+
+            $condition = "id=" . $item['book_id'];
+
+            update('book', $dataUpdate, $condition);
+        }
+
+        // end update
     }
     $partner_code = $_GET['partnerCode'];
     $order_id = $_GET['orderId'];

@@ -9,11 +9,11 @@ if (empty($old) && !empty($data['course_detail'])) {
 
 ?>
 <div class="container-fluid">
-    <a href="?module=course&action=lists"><button class="btn btn-warning">Quay lại</button></a>
+    <a href="?module=subject&action=lists"><button class="btn btn-warning">Quay lại</button></a>
     <hr>
     <h4>Thêm khóa học mới</h4>
     <?php getMsg($msg, $msg_type) ?>
-    <form action="" method="post" enctype="multipart/form-data">
+    <form action="" method="post">
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
@@ -66,26 +66,13 @@ if (empty($old) && !empty($data['course_detail'])) {
             </div>
 
             <div class="col-6">
-    <div class="form-group">
-        <label for="">Ảnh Khóa học</label>
-        <input type="file" class="form-control" placeholder="Ảnh đại diện khóa học...(update...)"
-            name="thumbnail">
-        <p class="error"><?php echo errorData('thumbnail', $errors) ?></p>
-
-        <?php
-        $oldThumbnail = $data['course_detail']['thumbnail']; 
-        if (!empty($oldThumbnail)) { // Kiểm tra xem có đường dẫn cũ không
-            $uploadDir = '../uploads/course/'; // Đường dẫn ảnh
-            $oldThumbnailPath = $uploadDir . $oldThumbnail; //Đường dẫn đến ảnh cũ
-            if (is_file($oldThumbnailPath)) { // Kiểm tra đường dẫn cũ
-                echo "<img src='" . $oldThumbnailPath . "' height='50%' width='50%' >";
-            } else {
-                echo "Không có ảnh";
-            }
-        }
-        ?>
-    </div>
-</div>
+                <div class="form-group">
+                    <label for="">Ảnh Khóa học</label>
+                    <input type="text" class="form-control" placeholder="Ảnh đại diện khóa học...(update...)" disabled
+                        name="thumbnail">
+                    <p></p>
+                </div>
+            </div>
         </div>
         <input type="hidden" name="id" value="<?php echo $data['id'] ?>">
         <button type="submit" class="btn btn-success">Đồng ý</button>

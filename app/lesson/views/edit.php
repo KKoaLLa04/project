@@ -37,12 +37,15 @@ if (empty($old) && !empty($data['lesson_detail'])) {
             </div>
             <div class="col-12">
                 <label for="">Link video</label>
-                <input type="text" class="form-control" placeholder="Đường dẫn video (embed)...." name="video_url"
-                    value="<?php echo oldData('video_url', $old) ?>">
+                <input type="text" id="video_url" class="form-control" placeholder="Đường dẫn video (embed)...."
+                    name="video_url" value="<?php echo oldData('video_url', $old) ?>">
                 <p class="error"><?php echo errorData('video_url', $errors) ?></p>
             </div>
+            <div class="col-12 iframe">
+                <div id="watch_video" class="text-center"></div>
+            </div>
         </div>
-        <input type="hidden" name="id" value="<?php echo !empty($data['id'])?$data['id']:false ?>">
+        <input type="hidden" name="id" value="<?php echo !empty($data['id']) ? $data['id'] : false ?>">
         <button type="submit" class="btn btn-primary">Cập nhật</button>
     </form>
 </div>

@@ -5,11 +5,11 @@ $errors = getFlashData('errors');
 $old = getFlashData('old');
 ?>
 <div class="container-fluid">
-    <a href="?module=course&action=lists"><button class="btn btn-warning">Quay lại</button></a>
+    <a href="?module=subject&action=lists"><button class="btn btn-warning">Quay lại</button></a>
     <hr>
     <h4>Thêm khóa học mới</h4>
     <?php getMsg($msg, $msg_type) ?>
-    <form action="" method="post" enctype="multipart/form-data">
+    <form action="" method="post">
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
@@ -64,9 +64,9 @@ $old = getFlashData('old');
             <div class="col-6">
                 <div class="form-group">
                     <label for="">Ảnh Khóa học</label>
-                    <input type="file" class="form-control" placeholder="Ảnh đại diện khóa học...(update...)"
+                    <input type="text" class="form-control" placeholder="Ảnh đại diện khóa học...(update...)" disabled
                         name="thumbnail">
-                        <p class="error"><?php echo errorData('thumbnail', $errors) ?></p>
+                    <p></p>
                 </div>
             </div>
         </div>

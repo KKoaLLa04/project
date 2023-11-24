@@ -10,7 +10,13 @@ if (!checkPermission($permissionData, 'lesson', 'Xem')) {
     redirect(_WEB_HOST_ROOT_ADMIN);
 }
 
+if (!empty($_GET['module_id'])) {
+    $module_id = $_GET['module_id'];
+} else {
+    $module_id = '';
+}
+
 $data = [
-    'lesson' => getAllLesson(),
+    'lesson' => getAllLesson($module_id),
 ];
 view($data);
