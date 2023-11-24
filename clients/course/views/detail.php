@@ -11,29 +11,23 @@
 
         <?php if (!empty($data['module'])) :
             foreach ($data['module'] as $key => $value) : ?>
-                <div class="dropdown">
-                    <div class="alert alert-secondary">
-                        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul class="navbar-nav me-auto mb-2 mb-lg-0 profile">
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <?php echo $value['title'] ?>
-                                        </a>
-                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <?php if (!empty($data['course_detail'][$key])) :
-                                                foreach ($data['course_detail'][$key] as $key => $item) : ?>
-                                                    <li><a class="dropdown-item" href="?module=course&action=detail&course_id=<?php echo !empty($data['course_id']) ? $data['course_id'] : false ?>&video_url=<?php echo $item['video_url'] ?>"><?php echo $item['title'] ?></a>
-                                                    </li>
-                                            <?php endforeach;
-                                            endif; ?>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </nav>
+
+                <div class="module">
+                    <div class="alert alert-danger menu-module">
+                        <h6>Chương <?php echo $key + 1 ?>: <?php echo $value['title'] ?></h6>
+                    </div>
+
+                    <div class="menu-close">
+                        <?php if (!empty($data['course_detail'][$key])) :
+                            foreach ($data['course_detail'][$key] as $key => $item) : ?>
+                                <p><a class="dropdown-item" href="?module=course&action=detail&course_id=<?php echo !empty($data['course_id']) ? $data['course_id'] : false ?>&video_url=<?php echo $item['video_url'] ?>"><?php echo $item['title'] ?></a>
+                                </p>
+
+                        <?php endforeach;
+                        endif; ?>
                     </div>
                 </div>
+
         <?php endforeach;
         endif; ?>
     </div>
@@ -48,14 +42,16 @@
         <hr>
         <button class="btn btn-primary form-control py-3">Miễn phí</button>
         <div class="course__description py-3">
-            <p><img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/svg/chap.svg" alt="">Chương: 1 chương</p>
-            <p><img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/svg/clock.svg" alt="">Giáo trình: 59+ video bài giảng
+            <p><img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/svg/chap.svg" alt="">Chương:
+                <?php echo (!empty($data['information'])) ? $data['information']['count_module'] : 1 ?> Chương</p>
+            <p><img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/svg/clock.svg" alt="">Giáo trình: video bài giảng + tài
+                liệu đi kèm
             </p>
-            <p><img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/svg/play.svg" alt="">Thời lượng: 9+ giờ học</p>
-            <p><img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/svg/khaigiang.svg" alt="">Ngày khai giảng: 01/01/2020
+            <p><img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/svg/play.svg" alt="">Thời lượng: nhiều giờ học</p>
+            <!-- <p><img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/svg/khaigiang.svg" alt="">Ngày khai giảng: 01/01/2020 -->
             </p>
-            <p><img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/svg/hsd.svg" alt="">Hạn sử dụng: 10/07/2030</p>
-            <p><img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/svg/chap.svg" alt="">Thời lượng: 9+ giờ học</p>
+            <!-- <p><img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/svg/hsd.svg" alt="">Hạn sử dụng: 10/07/2030</p> -->
+            <p><img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/svg/chap.svg" alt="">Thời lượng: nhiều giờ học</p>
             <p><img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/svg/clock.svg" alt="">Hệ thống bài giảng độc quyền của
                 SONLINE</p>
         </div>

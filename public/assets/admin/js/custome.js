@@ -150,6 +150,8 @@ if(permissionObj !== null){
     }
 }
 
+// Xu ly hien thi video
+
 const video = document.getElementById('video_url');
 const watch = document.getElementById('watch_video');
 if(video !== null){

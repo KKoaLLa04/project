@@ -471,3 +471,11 @@ footer{
     display: flex;
     justify-content: space-between;
 }
+
+.menu-open{
+    display: block;
+}
+
+.menu-close{
+    display: none;
+}
