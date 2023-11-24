@@ -7,6 +7,20 @@ if (isPost()) {
 
     $errors = [];
 
+    $thumbnail = $_FILES['thumbnail'];
+
+    if ($thumbnail['error'] === UPLOAD_ERR_OK) { // check điều kiện nè
+        $uploadDir = '../uploads/books/'; // đường dẫn ảnh nè
+        $uploadPath = $uploadDir . basename($thumbnail['name']);
+        if (move_uploaded_file($thumbnail['tmp_name'], $uploadPath)) {
+            $thumbnailFileName = basename($thumbnail['name']); // cái này để lấy tên ảnh nè
+        } else {
+            $errors['thumbnail'] = 'Không thể tải lên ảnh khóa học';
+        }
+    }else{
+        $errors['thumbnail'] = 'Vui lòng không để trống ảnh khóa học';
+    }  
+
     if (empty($body['name'])) {
         $errors['name'] = 'Tên đầu sách không được để trống';
     }
@@ -42,7 +56,7 @@ if (isPost()) {
             'author' => trim($body['author']),
             'description' => trim($body['description']),
             'content' => trim($body['content']),
-            'thumbnail' => trim($body['thumbnail']),
+            'thumbnail' => $thumbnailFileName,
             'price' => trim($body['price']),
             'status' => trim($body['status']),
             'book_id' => trim($body['book_id']),

@@ -17,11 +17,22 @@
             </tr>
         </thead>
         <tbody>
-            <?php if(!empty($data['book'])):
+            
+            <?php 
+            $uploadDir = '../uploads/books/'; 
+            if(!empty($data['book'])):
                 foreach($data['book'] as $key => $item): ?>
             <tr>
                 <td><?php echo $key+1 ?></td>
-                <td><?php echo $item['thumbnail'] ?></td>
+                <td>
+                            <?php
+                            if (is_file($uploadDir . $item['thumbnail'])) {
+                                echo "<img src='" . $uploadDir . $item['thumbnail'] . "' height='80' width='80' >";
+                            } else {
+                                echo "Không có ảnh";
+                            }
+                            ?>
+                        </td>
                 <td><?php echo $item['name'] ?></td>
                 <td><?php echo $item['price'] ?></td>
                 <td><?php echo $item['author'] ?></td>
