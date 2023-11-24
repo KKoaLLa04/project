@@ -48,3 +48,10 @@ function getLessonModule($module_id)
     $data = getRaw($sql);
     return $data;
 }
+
+function getAllInfo($course_id)
+{
+    $sql = "SELECT *, count(course_id) as count_module FROM module WHERE course_id = $course_id GROUP BY course_id";
+    $data = firstRaw($sql);
+    return $data;
+}

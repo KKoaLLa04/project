@@ -10,25 +10,21 @@ if (!empty($data['book_detail'])) {
 <div class="row py-3">
     <?php getMsg($msg, $msg_type) ?>
     <div class="col-3">
-        <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/book5.png" alt="" width="100%">
+        <img src="<?php echo _WEB_HOST_ROOT . '/uploads/books/' . $item['thumbnail'] ?>" alt="" width="100%">
     </div>
 
     <div class="col-6">
-        <h3>Trọn Bộ Kinh Nghiệm Luyện Thi Vật Lí 12</h3>
+        <h3><?= $item['name'] ?></h3>
         <hr>
         <div>
             <p><i class="fa fa-check-circle"></i> Còn hàng</p>
             <p>Chia sẻ: <button class="btn btn-info btn-sm"><i class="fab fa-facebook"></i> Share</button> <button class="btn btn-dark btn-sm"><i class="fab fa-twitter"></i> Twitter</button></p>
+            <p>Tình trạng: <b><?= $item['quantity'] == 0 ? 'Hết hàng' : 'Còn hàng' ?></b></p>
             <p>Số lượng: <b><?= $item['quantity'] ?></b></p>
         </div>
         <hr>
-        <p>Bộ BÍ QUYẾT LUYỆN THI VẬT LÍ 12 đã từng được bình chọn là hay nhất trong tất cả các sách tham khảo tại thời
-            điểm phát hành và được các giáo viên sử dụng làm bộ sách tham khảo chính, đồng thời áp dụng đại trà ở nhiều
-            trung tâm luyện thi và các trường THPT nhiều năm nay Bộ BÍ QUYẾT LUYỆN THI VẬT LÍ 12 đã từng được bình chọn
-            là hay nhất trong tất cả các sách tham khảo tại thời
-            điểm phát hành và được các giáo viên sử dụng làm bộ sách tham khảo chính, đồng thời áp dụng đại trà ở nhiều
-            trung tâm luyện thi và các trường THPT nhiều năm nay...</p>
-        <p>Tác giả: <b>Duy Kiên</b></p>
+        <p><?= $item['description'] ?></p>
+        <p>Tác giả: <b><?= $item['author'] ?></b></p>
         <p>
             <a href="#"><button class="btn btn-danger">Mua ngay <i class="fa-solid fa-sack-dollar"></i></button></a>
             <a href="?module=book&action=add&book_id=<?= $item['id'] ?>"><button class="btn btn-success">Thêm vào giỏ
@@ -43,8 +39,8 @@ if (!empty($data['book_detail'])) {
         <div class="background_white">
             <h4>Thông tin thanh toán</h4>
             <hr>
-            <p>Giá bìa: 600.000đ</p>
-            <p>Giá bán: <b>600.000đ</b></p>
+            <p>Giá bìa: <?= $item['price'] ?>đ</p>
+            <p>Giá bán: <b><?= $item['price'] ?>đ</b></p>
             <hr>
             <div class="d-flex justify-content-around">
                 <p>Số lượng mua</p>
