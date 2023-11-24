@@ -53,6 +53,23 @@ if (!empty($_POST['redirect'])) {
             $condition = "student_id=$studentId AND status=0";
 
             $updateStatus = update('cart', $dataUpdate, $condition);
+
+            // update book
+            $cartCode = selectCart($code);
+            foreach ($cartCode as $key => $item) {
+                $quantity = $item['quantity'];
+                $bookDetail = getBook($item['book_id']);
+                $quantityUpdate = $bookDetail['quantity'] - $quantity;
+                $dataUpdate = [
+                    'quantity' => $quantityUpdate,
+                    'update_at' => date('Y-m-d H:i:s')
+                ];
+
+                $condition = "id=" . $item['book_id'];
+
+                update('book', $dataUpdate, $condition);
+            }
+            // end update
             if (!empty($updateStatus)) {
                 redirect('?module=cart&action=thanks&code=' . $code);
             }

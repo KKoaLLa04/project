@@ -36,7 +36,7 @@ function checkCartBook($book_id)
 
 function cartDetail($book_id)
 {
-    $sql = "SELECT * FROM cart WHERE book_id=$book_id";
+    $sql = "SELECT * FROM cart WHERE book_id=$book_id AND status = 0";
     $data = firstRaw($sql);
     return $data;
 }

@@ -19,6 +19,7 @@ if (!empty($data['book_detail'])) {
         <div>
             <p><i class="fa fa-check-circle"></i> Còn hàng</p>
             <p>Chia sẻ: <button class="btn btn-info btn-sm"><i class="fab fa-facebook"></i> Share</button> <button class="btn btn-dark btn-sm"><i class="fab fa-twitter"></i> Twitter</button></p>
+            <p>Số lượng: <b><?= $item['quantity'] ?></b></p>
         </div>
         <hr>
         <p>Bộ BÍ QUYẾT LUYỆN THI VẬT LÍ 12 đã từng được bình chọn là hay nhất trong tất cả các sách tham khảo tại thời
