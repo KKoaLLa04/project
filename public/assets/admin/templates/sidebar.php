@@ -74,8 +74,8 @@
     $checkTestDelete = checkPermission($permissionData, 'test', 'Xóa');
 
     // count check
-    $countLesson = getCheckCount();
-    $countContact = checkContact();
+    // $countLesson = getCheckCount();
+    // $countContact = checkContact();
     ?>
  <!-- Main Sidebar Container -->
  <aside class="main-sidebar sidebar-dark-primary elevation-4">
