@@ -55,3 +55,17 @@ function getAllInfo($course_id)
     $data = firstRaw($sql);
     return $data;
 }
+
+function selectCourse($course_id)
+{
+    $sql = "SELECT * FROM course WHERE id = $course_id";
+    $data = firstRaw($sql);
+    return $data;
+}
+
+function permissionCourse($course_id, $student_id)
+{
+    $sql = "SELECT * FROM code_course WHERE course_id=$course_id AND student_id=$student_id";
+    $data = firstRaw($sql);
+    return $data;
+}

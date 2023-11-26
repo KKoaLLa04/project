@@ -64,8 +64,16 @@ $old = getFlashData('old');
             <div class="col-6">
                 <div class="form-group">
                     <label for="">Ảnh Khóa học</label>
-                    <input type="text" class="form-control" placeholder="Ảnh đại diện khóa học...(update...)" disabled
+                    <input type="text" class="form-control" placeholder="Ảnh đại diện khóa học...(update...)"
                         name="thumbnail">
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="">Mô tả khóa học</label>
+                    <input type="text" class="form-control editor" name="description">
                     <p></p>
                 </div>
             </div>
