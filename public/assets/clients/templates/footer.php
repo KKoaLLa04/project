@@ -45,6 +45,8 @@
     </div>
 </footer>
 <script src="<?php echo _WEB_HOST_TEMPLATE ?>/js/boostrap.bundle.min.js"></script>
+<script src="http://localhost/project_one_sonline/public/assets/clients/js/style.js?ver=<?= rand() ?>"></script>
+
 
 </body>
 

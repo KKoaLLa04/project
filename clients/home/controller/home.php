@@ -19,6 +19,10 @@ $data = [
     'course_detail' => $course,
     'book_category' => getAllBookCate(),
     'book' => getAllBook(),
+    'exam_category' => getAllCateexam(),
+    'exam' => getAllExam(),
+    'news_category' => getAllNewsCate(),
+    'news' => getAllnews(),
 ];
 
 viewClient($data);
