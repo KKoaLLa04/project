@@ -5,6 +5,7 @@ getMsg($msg, $msg_type);
 ?>
 <div class="banner">
     <div class="banner__main">
+
     <div class="mySlides">
         <img src="./uploads/home/banner/banner1.jpg" alt="">
     </div>
@@ -27,9 +28,17 @@ getMsg($msg, $msg_type);
         <img src="./uploads/home/minibanner/banner2.jpg" alt="">
         <img src="./uploads/home/minibanner/banner3.jpg" alt="">
         <img src="./uploads/home/minibanner/banner4.jpg" alt="">
+
     </div>
 
-    <div class="banner__ad">
+    <div class="banner__item">
+        <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/banner_2_1639545385.png" alt="">
+        <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/group-617_1608886311_1639545742.png" alt="">
+        <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/group-618_1608886278_1639545726.png" alt="">
+        <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/group-619_1608886340_1639545734.png" alt="">
+    </div>
+
+   <div class="banner__ad">
         <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/banner_1639125360.png" alt="">
     </div>
 </div>
@@ -86,7 +95,6 @@ getMsg($msg, $msg_type);
         </div>
     </div>
 </div>
-
 <div class="exam__banner">
     <div class="exam__item grid__item">
         <img src="./uploads/home/banner/bigbanner.jpg" alt="">
@@ -136,7 +144,6 @@ getMsg($msg, $msg_type);
     <?php endif; ?>
 </div>
 
-
 <h4 style="text-align: left;">ĐỀ THI NỔI BẬT</h4>
    
 <div class="ranking">
@@ -182,4 +189,4 @@ endif ?>
             endif; ?>
             <?php endforeach;
 endif ?>        
-</div>
+</div>    

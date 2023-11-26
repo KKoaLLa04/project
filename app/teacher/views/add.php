@@ -5,7 +5,7 @@ $errors = getFlashData('errors');
 $old = getFlashData('old');
 ?>
 <div class="container-fluid">
-    <a href="?module=teacher&action=lists"><button class="btn btn-warning">Quay lai</button></a>
+    <a href="?module=teacher&action=lists"><button class="btn btn-warning btn-sm">Quay lai</button></a>
     <hr>
     <h4>Thêm giảng viên mới</h4>
     <?php getMsg($msg, $msg_type) ?>
@@ -45,7 +45,14 @@ $old = getFlashData('old');
                     <label for="">Kinh nghiệm(năm)</label>
                     <input type="text" class="form-control" placeholder="Kinh nghiệm (năm)...." name="exp"
                         value="<?php echo oldData('exp', $old) ?>">
-                    <p class="error"><?php echo errorData('exp',$errors) ?></p>
+                    <p></p>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Xác nhận mật khẩu</label>
+                    <input type="password" class="form-control" placeholder="Xác nhận mật khẩu...."
+                        name="confirm_password">
+                    <p class="error"><?php echo errorData('confirm_password', $errors) ?></p>
                 </div>
             </div>
         </div>

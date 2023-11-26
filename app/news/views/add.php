@@ -31,7 +31,7 @@ $old = getFlashData('old');
 
         <div class="form-group">
                     <label for="">Nội dung</label>
-                    <textarea class="form-control" rows="5" placeholder="Nội dung"
+                    <textarea class="form-control editor" rows="5" placeholder="Nội dung"
                         name="content"><?php echo oldData('content', $old) ?></textarea>
                     <p class="error"><?php echo errorData('content', $errors) ?></p>
                 </div>

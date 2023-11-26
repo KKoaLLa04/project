@@ -1,5 +1,6 @@
 <?php
 
+
 require_once './clients/home/model/home.php';
 
 // $course_detail = getAllCourse();
@@ -26,3 +27,4 @@ $data = [
 ];
 
 viewClient($data);
+

@@ -2,24 +2,18 @@
 
 require_once './subject/model/course.php';
 
+$permissionData = permissionData();
+
+if (!checkPermission($permissionData, 'subject', 'Thêm')) {
+    setFlashData('msg', 'Bạn không có quyền truy cập vào trang này');
+    setFlashData('msg_type', 'danger');
+    redirect(_WEB_HOST_ROOT_ADMIN);
+}
+
 if (isPost()) {
     $body = getBody();
 
     $errors = [];
-
-    $thumbnail = $_FILES['thumbnail'];
-
-    if ($thumbnail['error'] === UPLOAD_ERR_OK) { // check điều kiện nè
-        $uploadDir = '../uploads/course/'; // đường dẫn ảnh nè
-        $uploadPath = $uploadDir . basename($thumbnail['name']);
-        if (move_uploaded_file($thumbnail['tmp_name'], $uploadPath)) {
-            $thumbnailFileName = basename($thumbnail['name']); // cái này để lấy tên ảnh nè
-        } else {
-            $errors['thumbnail'] = 'Không thể tải lên ảnh khóa học';
-        }
-    }else{
-        $errors['thumbnail'] = 'Vui lòng không để trống ảnh khóa học';
-    }
 
     // validate
     if (empty(trim($body['title']))) {
@@ -41,14 +35,18 @@ if (isPost()) {
             $errors['price'] = 'Giá bắt buộc phải là 1 số';
         }
     }
-    
+
     if (empty($errors)) {
+        if (isLoginTeacher()) {
+            $teacher_id = isLoginTeacher()['id'];
+        }
         $dataInsert = [
             'title' => trim($body['title']),
             'cate_id' => trim($body['cate_id']),
-            'thumbnail' => $thumbnailFileName,
+            'thumbnail' => trim($body['thumbnail']),
             'price' => trim($body['price']),
-            'teacher_id' => trim($body['teacher_id']),
+            'teacher_id' => $teacher_id,
+            'description' => trim($body['description']),
             'create_at' => date('Y-m-d H:i:s')
         ];
 
@@ -69,7 +67,6 @@ if (isPost()) {
     }
 
     redirect('?module=subject&action=add');
-
 }
 
 $data = [

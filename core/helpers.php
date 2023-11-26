@@ -11,7 +11,7 @@ function loadLayout($path, $data = [])
     }
 }
 
-function view($data = [], $action = '')
+function view($data = [], $act = '')
 {
     $module = 'dashboard';
     $action = 'home';
@@ -23,19 +23,12 @@ function view($data = [], $action = '')
         $action = $_GET['action'];
     }
 
+    if (!empty($act)) {
+        $action = $act;
+    }
+
     require_once './' . $module . '/views/' . $action . '.php';
 }
-// function layout($layoutName = 'header', $dir = '', $data = [])
-// {
-
-//     if (!empty($dir)) {
-//         $dir = '/' . $dir;
-//     }
-
-//     if (file_exists(_WEB_PATH_TEMPLATE . $dir . '/layouts/' . $layoutName . '.php')) {
-//         require_once _WEB_PATH_TEMPLATE . $dir . '/layouts/' . $layoutName . '.php';
-//     }
-// }
 
 function viewClient($data = [], $action = '')
 {
@@ -51,6 +44,18 @@ function viewClient($data = [], $action = '')
 
     require_once './clients/' . $module . '/views/' . $action . '.php';
 }
+
+// function layout($layoutName = 'header', $dir = '', $data = [])
+// {
+
+//     if (!empty($dir)) {
+//         $dir = '/' . $dir;
+//     }
+
+//     if (file_exists(_WEB_PATH_TEMPLATE . $dir . '/layouts/' . $layoutName . '.php')) {
+//         require_once _WEB_PATH_TEMPLATE . $dir . '/layouts/' . $layoutName . '.php';
+//     }
+// }
 
 function sendMail($to, $subject, $content)
 {
@@ -241,59 +246,96 @@ function errorData($fieldName, $errorArr)
     return !empty($errorArr[$fieldName]) ? $errorArr[$fieldName] : false;
 }
 
-function isLogin()
+function isLoginStudent()
 {
     $checkLogin = false;
-    if (!empty(getSession('loginToken'))) {
-        $loginToken = getSession('loginToken');
-        $tokenQuery = firstRaw("SELECT user_id FROM login_token WHERE token='$loginToken'");
+    if (!empty(getSession('loginStudent'))) {
+        $loginStudent = getSession('loginStudent');
+        $studentId = $loginStudent['id'];
+        $tokenQuery = firstRaw("SELECT * FROM student WHERE id=$studentId");
         if (!empty($tokenQuery)) {
             $checkLogin = $tokenQuery;
         } else {
-            removeSession('loginToken');
+            removeSession('loginStudent');
         }
     } else {
-        removeSession('loginToken');
+        removeSession('loginStudent');
+    }
+
+    return $checkLogin;
+}
+
+function isLoginTeacher()
+{
+    $checkLogin = false;
+    if (!empty(getSession('loginTeacher'))) {
+        $loginTeacher = getSession('loginTeacher');
+        $teacherId = $loginTeacher['id'];
+        $tokenQuery = firstRaw("SELECT teacher.*, name FROM teacher INNER JOIN groups ON groups.id=teacher.group_id WHERE teacher.id=$teacherId");
+        if (!empty($tokenQuery)) {
+            $checkLogin = $tokenQuery;
+        } else {
+            removeSession('loginTeacher');
+        }
+    } else {
+        removeSession('loginTeacher');
     }
 
     return $checkLogin;
 }
 
 
-function autoRemoveTokenLogin()
-{
-    $allUserNum = getRaw("SELECT * FROM users WHERE status = 1");
+// function autoRemoveTokenLogin()
+// {
+//     $allUserNum = getRaw("SELECT * FROM users WHERE status = 1");
 
-    if (!empty($allUserNum)) {
-        foreach ($allUserNum as $user) {
-            $now = date('Y-m-d H:i:s');
-            $beforeTime = $user['last_activity'];
-            $diff = strtotime($now) - strtotime($beforeTime) . '<br/>';
-            $diff = intval($diff);
-            $diff = ($diff / 60);
-            if ($diff > 1) {
-                delete('login_token', 'user_id=' . $user['id']);
-            }
-        }
-    }
-}
+//     if (!empty($allUserNum)) {
+//         foreach ($allUserNum as $user) {
+//             $now = date('Y-m-d H:i:s');
+//             $beforeTime = $user['last_activity'];
+//             $diff = strtotime($now) - strtotime($beforeTime) . '<br/>';
+//             $diff = intval($diff);
+//             $diff = ($diff / 60);
+//             if ($diff > 1) {
+//                 delete('login_token', 'user_id=' . $user['id']);
+//             }
+//         }
+//     }
+// }
 
-function saveActivity()
-{
-    $user_id = isLogin()['user_id'];
-    update('users', ['last_activity' => date('Y-m-d H:i:s')], 'id=' . $user_id);
-}
+// function saveActivity()
+// {
+//     $user_id = isLogin()['user_id'];
+//     update('users', ['last_activity' => date('Y-m-d H:i:s')], 'id=' . $user_id);
+// }
 
-function getUserInfor($user_id)
-{
-    $userInfor = firstRaw("SELECT * FROM users WHERE id=$user_id");
-    return $userInfor;
-}
+// function getUserInfor($user_id)
+// {
+//     $userInfor = firstRaw("SELECT * FROM users WHERE id=$user_id");
+//     return $userInfor;
+// }
+
+// function getStudentInfo($student_id)
+// {
+//     $studentInfo = firstRaw("SELECT * FROM student WHERE id=$student_id");
+//     return $studentInfo;
+// }
 
 function activeMenuSidebar($module)
 {
     if (!empty(getBody()['module'])) {
         if (getBody()['module'] == $module) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+function activeAction($action)
+{
+    if (!empty(getBody()['action'])) {
+        if (getBody()['action'] == $action) {
             return true;
         }
     }
@@ -317,4 +359,50 @@ function loadError($name = '404')
     $path = _WEB_PATH_ROOT . '/modules/error/' . $name . '.php';
     require_once $path;
     die();
+}
+
+// download tai lieu
+function download()
+{
+    if (!empty($_GET['file'])) {
+        $fileName = basename($_GET['file']);
+        $filePath = 'uploads/' . $fileName;
+
+        if (!empty($fileName) && file_exists($filePath)) {
+            // header("Cache-Control: public");
+            // header("Content-Description: File Transfer");
+            // header("Content-Disposition: attachment; filename=$fileName");
+            // header("Content-Type: application/zip");
+            // header("Content-Transfer-Emcoding: binary");
+
+            // Thiết lập các header cho việc truyền tải dữ liệu
+            header('Content-Description: File Transfer');
+            header('Content-Type: application/octet-stream');
+            header('Content-Disposition: attachment; filename="' . basename($fileName) . '"');
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            // header('Content-Length: ' . filesize($fileName));
+            readfile($filePath);
+
+            exit;
+        } else {
+            echo 'File này không tồn tại!';
+        }
+    }
+}
+
+function getOption($key, $type = '')
+{
+    $sql = "SELECT * FROM options WHERE opt_key='$key'";
+    $options = firstRaw($sql);
+    if (!empty($options)) {
+        if ($type == 'label') {
+            return $options['name'];
+        }
+
+        return $options['opt_value'];
+    }
+
+    return false;
 }

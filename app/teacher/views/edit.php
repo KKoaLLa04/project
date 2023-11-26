@@ -42,7 +42,7 @@ if (!empty($_GET['id'])) {
                 <div class="form-group">
                     <label for="">Kinh nghiệm(năm)</label>
                     <input type="text" class="form-control" placeholder="Kinh nghiệm (năm)...." name="exp" value="<?php echo oldData('exp', $old) ?>">
-                    <p class="error"><?php echo errorData('exp',$errors) ?></p>
+                    <p></p>
                 </div>
             </div>
         </div>

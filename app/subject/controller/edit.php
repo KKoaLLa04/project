@@ -2,6 +2,14 @@
 
 require_once './subject/model/course.php';
 
+$permissionData = permissionData();
+
+if (!checkPermission($permissionData, 'subject', 'Sửa')) {
+    setFlashData('msg', 'Bạn không có quyền truy cập vào trang này');
+    setFlashData('msg_type', 'danger');
+    redirect(_WEB_HOST_ROOT_ADMIN);
+}
+
 if (!empty($_GET['id'])) {
     $id = $_GET['id'];
 
@@ -45,22 +53,9 @@ if (isPost()) {
             'thumbnail' => trim($body['thumbnail']),
             'price' => trim($body['price']),
             'teacher_id' => trim($body['teacher_id']),
+            'description' => trim($body['description']),
             'update_at' => date('Y-m-d H:i:s')
         ];
-
-        
-        if (!empty($_FILES['thumbnail']['name'])) {
-         
-            $uploadDir = '../uploads/course/';
-            $thumbnail = $_FILES['thumbnail'];
-            $thumbnailName = basename($thumbnail['name']);
-            $thumbnailPath = $uploadDir . $thumbnailName;
-
-            if (move_uploaded_file($thumbnail['tmp_name'], $thumbnailPath)) {
-                
-                $dataUpdate['thumbnail'] = $thumbnailName;
-            }
-        }
 
         $condition = 'id = ' . $id;
 

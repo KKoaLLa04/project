@@ -1,53 +1,60 @@
 <?php
 $msg = getFlashData('msg');
 $msg_type = getFlashData('msg_type');
-?>
 
+$permissionData = permissionData();
+
+$checkAdd = checkPermission($permissionData, 'subject', 'Thêm');
+$checkEdit = checkPermission($permissionData, 'subject', 'Sửa');
+$checkDelete = checkPermission($permissionData, 'subject', 'Xóa');
+?>
 <div class="container-fluid">
-    <a href="?module=subject&action=add"><button class="btn btn-success">Thêm khóa học mới</button></a>
+    <?php if ($checkAdd) : ?>
+        <a href="?module=subject&action=add"><button class="btn btn-success">Thêm khóa học mới <i class="fa fa-plus"></i></button></a>
+    <?php endif ?>
     <hr>
     <h4>Danh sách khóa học</h4>
     <?php getMsg($msg, $msg_type) ?>
-    <table class="table table-bordered" enctype="multipart/form-data">
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <th>STT</th>
                 <th>Ảnh</th>
-                <th>Tiêu đề</th>
-                <th>Khóa học</th>
-                <th>Giá</th>
-                <th>Giảng Viên</th>
-                <th width="5%">Sửa</th>
-                <th width= "5%">Xóa</th>
+                <th>tiêu đề</th>
+                <th>Danh mục</th>
+                <th>giá</th>
+                <th>giảng viên</th>
+                <th width="11%">Xem Chi Tiết</th>
+                <?php if ($checkEdit) : ?>
+                    <th width="5%">Sửa</th>
+                <?php endif;
+                if ($checkDelete) : ?>
+                    <th width="5%">Xóa</th>
+                <?php endif ?>
             </tr>
         </thead>
         <tbody>
-        <?php
-            $uploadDir = '../uploads/course/'; 
-            if (!empty($data['course'])) :
-                foreach ($data['course'] as $key => $item) : ?>
+            <?php if (!empty($data['data'])) :
+                foreach ($data['data'] as $key => $item) : ?>
                     <tr>
-                        <td><?php echo $key + 1 ?></td>
-                        <td>
-                            <?php
-                            if (is_file($uploadDir . $item['thumbnail'])) {
-                                echo "<img src='" . $uploadDir . $item['thumbnail'] . "' height='80' width='80' >";
-                            } else {
-                                echo "Không có ảnh";
-                            }
-                            ?>
+                        <td><?php echo $key + 1; ?></td>
+                        <td><?php echo $item['thumbnail']; ?></td>
+                        <td><a href="?module=module&action=lists&subject_id=<?= $item['id'] ?>"><?php echo $item['title']; ?></a>
                         </td>
-                        <td><?php echo $item['title'] ?></td>
-                        <td><?php echo $item['cate_name'] ?></td>
-                        <td><?php echo $item['price'] ?></td>
-                        <td><?php echo $item['teacher_id'] ?></td>
-                        <td><a href="?module=subject&action=edit&id=<?php echo $item['id'] ?>"><button class="btn btn-warning"><i class="fa fa-edit"></i></button></a></td>
-                        <td><a href="?module=subject&action=delete&id=<?php echo $item['id'] ?>"><button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"><i class="fa fa-trash"></i></button></a></td>
+                        <td><a href="#"><?php echo $item['cate_name'] ?></a></td>
+                        <td><?php echo $item['price']; ?> VND</td>
+                        <td><?php echo $item['fullname'] ?></td>
+                        <td><a href="?module=module&action=lists&subject_id=<?= $item['id'] ?>"><button class="btn btn-primary">Xem Chi Tiết</button></a></td>
+                        <?php if ($checkEdit) : ?>
+                            <td><a href="?module=subject&action=edit&id=<?php echo $item['id'] ?>" class="btn btn-warning"><i class="fa fa-edit"></i></a></td>
+                        <?php endif;
+                        if ($checkDelete) : ?>
+                            <td><a href="?module=subject&action=delete&id=<?php echo $item['id'] ?>" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"><i class="fa fa-trash"></i></a></td>
+                        <?php endif ?>
                     </tr>
             <?php endforeach;
-            endif; ?>
-            
-        
+            endif;
+            ?>
         </tbody>
     </table>
 </div>
