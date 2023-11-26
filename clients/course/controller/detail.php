@@ -7,6 +7,12 @@ if (!empty($_GET['course_id'])) {
     $course_detail = getCourseDetail($id);
     $module_id['module_id'] = [];
     $informationCourse = getAllInfo($id);
+
+    if (isLoginStudent()) {
+        $studentDetail = isLoginStudent();
+        $student_id = $studentDetail['id'];
+        $permissionCourse = permissionCourse($id, $student_id);
+    }
     foreach ($course_detail as $key => $item) {
         if (!empty($item['module_id']) && !in_array($item['module_id'], $module_id['module_id'])) {
             $module_id['module_id'][] = $item['module_id'];
@@ -30,7 +36,12 @@ if (!empty($_GET['course_id'])) {
         'course_id' => $id,
         'video_url' => $videoUrl,
         'information' => $informationCourse,
+        'price' => selectCourse($id),
     ];
+
+    if (isLoginStudent()) {
+        $data['permission'] = $permissionCourse;
+    }
 }
 
 viewClient($data);

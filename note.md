@@ -209,3 +209,13 @@ x = 0
 1 => 5 => 9
 2 => 6 => 10
 3 => 7 => 11
+
+19. table code_course{
+    id int primary key
+    price int
+    course_id int
+    student_id int
+    code varchar(100)
+    create_at timestamp
+    update_at timestamp
+    }

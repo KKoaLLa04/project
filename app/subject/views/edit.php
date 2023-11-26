@@ -73,6 +73,15 @@ if (empty($old) && !empty($data['course_detail'])) {
                     <p></p>
                 </div>
             </div>
+
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="">Mô tả khóa học</label>
+                    <textarea name="description"
+                        class="form-control editor"><?php echo !empty(oldData('description', $old))?oldData('description', $old):false ?></textarea>
+                    <p></p>
+                </div>
+            </div>
         </div>
         <input type="hidden" name="id" value="<?php echo $data['id'] ?>">
         <button type="submit" class="btn btn-success">Đồng ý</button>
