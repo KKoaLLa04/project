@@ -44,10 +44,12 @@
         </div>
     </div>
 </footer>
+
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
 <script src="http://localhost/project_one_sonline/public/assets/clients/js/bootstrap.bundle.min.js"></script>
 <script src="http://localhost/project_one_sonline/public/assets/clients/js/custom.js?ver=<?= rand() ?>"></script>
+<script src="http://localhost/project_one_sonline/public/assets/clients/js/style.js?ver=<?= rand() ?>"></script>
 
 </body>
 
