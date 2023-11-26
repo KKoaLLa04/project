@@ -1,4 +1,9 @@
 -account superadmin: kienndph39656@fpt.edu.vn pass: deothick
+-account admin: congtacvien@gmail.com pass: deothick
+-account teacher: teacher@gmail.com pass: deothick
+-account sales: sales@gmail.com pass: deothick
+-acconnt staff: staff@gmail.com pass: deothick
+-account client: kienndph39656@fpt.edu.vn pass:deothick
 
 - test vnpay: Ngân hàng: NCB
   Số thẻ: 9704198526191432198
