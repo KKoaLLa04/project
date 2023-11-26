@@ -217,6 +217,10 @@ main{
     font-size: 14px;
 }
 
+.exam__item p {
+    padding-top: 12px;
+}
+
 .exam__item a{
     text-decoration: none;
     color: black;
