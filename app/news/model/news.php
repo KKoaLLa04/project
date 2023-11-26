@@ -5,12 +5,12 @@ function getAllnews(){
     return $data;
 }
 function getAllNewsCate(){
-    $sql = "SELECT * FROM news_category ORDER BY id DESC";
+    $sql = "SELECT * FROM news_category";
     $data = getRaw($sql);
     return $data;
 }
 function getNewsDetail($id){
-    $sql = "SELECT news.*,news_category.title FROM news INNER JOIN news_category ON news_category.id=news.news_id WHERE news.id=$id";
+    $sql = "SELECT * FROM news WHERE id=$id";
     $data =  firstRaw($sql);
     return $data;
 }
