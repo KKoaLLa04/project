@@ -31,13 +31,6 @@ getMsg($msg, $msg_type);
 
     </div>
 
-    <div class="banner__item">
-        <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/banner_2_1639545385.png" alt="">
-        <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/group-617_1608886311_1639545742.png" alt="">
-        <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/group-618_1608886278_1639545726.png" alt="">
-        <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/group-619_1608886340_1639545734.png" alt="">
-    </div>
-
    <div class="banner__ad">
         <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/banner_1639125360.png" alt="">
     </div>
