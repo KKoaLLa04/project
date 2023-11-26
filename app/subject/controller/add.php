@@ -37,12 +37,15 @@ if (isPost()) {
     }
 
     if (empty($errors)) {
+        if (isLoginTeacher()) {
+            $teacher_id = isLoginTeacher()['id'];
+        }
         $dataInsert = [
             'title' => trim($body['title']),
             'cate_id' => trim($body['cate_id']),
             'thumbnail' => trim($body['thumbnail']),
             'price' => trim($body['price']),
-            'teacher_id' => trim($body['teacher_id']),
+            'teacher_id' => $teacher_id,
             'description' => trim($body['description']),
             'create_at' => date('Y-m-d H:i:s')
         ];

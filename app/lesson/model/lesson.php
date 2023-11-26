@@ -4,7 +4,15 @@ function getAllLesson($module_id = '')
 {
     $sql = "SELECT lesson.*, module.title as module_name, course.title as course_name FROM lesson INNER JOIN module ON module.id=lesson.module_id INNER JOIN course ON course.id=module.course_id WHERE status = 1";
     if (!empty($module_id)) {
-        $sql .= " WHERE module_id=$module_id";
+        $sql .= " AND module_id=$module_id";
+    }
+
+    if (isLoginTeacher()) {
+        $id = isLoginTeacher()['id'];
+        $group_id = isLoginTeacher()['group_id'];
+        if ($group_id !== 1 && $group_id !== 2) {
+            $sql .= " AND lesson.teacher_id=$id";
+        }
     }
 
     $sql .= " ORDER BY course.title DESC";
@@ -14,7 +22,15 @@ function getAllLesson($module_id = '')
 
 function getAllModule()
 {
-    $sql = "SELECT * FROM module ORDER BY id DESC";
+    $sql = "SELECT * FROM module";
+    if (isLoginTeacher()) {
+        $id = isLoginTeacher()['id'];
+        $group_id = isLoginTeacher()['group_id'];
+        if ($group_id !== 1 && $group_id !== 2) {
+            $sql .= " WHERE teacher_id=$id";
+        }
+    }
+    $sql .= " ORDER BY id DESC";
     $data = getRaw($sql);
     return $data;
 }
