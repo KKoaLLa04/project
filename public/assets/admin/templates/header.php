@@ -65,7 +65,7 @@ if (empty(isLoginTeacher())) {
 
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
-                        hi, xin chào duy kiên <i class="fa fa-user"></i>
+                        hi, xin chào <?= $loginInfo['fullname'] ?> <i class="fa fa-user"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <span class="dropdown-item dropdown-header">Hệ thống quản trị</span>

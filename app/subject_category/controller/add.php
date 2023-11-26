@@ -21,9 +21,12 @@ if (isPost()) {
     }
 
     if (empty($errors)) {
-
+        if (isLoginTeacher()) {
+            $teacher_id = isLoginTeacher()['id'];
+        }
         $dataInsert = [
             'title' => $body['title'],
+            'teacher_id' => $teacher_id,
             'create_at' => date('Y-m-d H:i:s')
         ];
 

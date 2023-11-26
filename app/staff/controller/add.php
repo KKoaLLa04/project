@@ -82,7 +82,7 @@ if (isPost()) {
         setFlashData('old', $body);
     }
 
-    redirect('?module=staff&action=lists');
+    redirect('?module=staff&action=add');
 }
 
 

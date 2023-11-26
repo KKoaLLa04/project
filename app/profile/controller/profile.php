@@ -19,19 +19,19 @@ if (isPost()) {
         }
     }
 
-    if (empty($body['email'])) {
-        $errors['email'] = 'Email của giảng viên không được để trống';
-    } else {
-        if (!isEmail($body['email'])) {
-            $errors['email'] = 'Email không đúng định dạng';
-        } else {
-            $email = trim($body['email']);
-            $checkEmail = checkEmailUpdate($email, $id);
-            if ($checkEmail > 1) {
-                $errors['email'] = 'Email đã tồn tại!';
-            }
-        }
-    }
+    // if (empty($body['email'])) {
+    //     $errors['email'] = 'Email của giảng viên không được để trống';
+    // } else {
+    //     if (!isEmail($body['email'])) {
+    //         $errors['email'] = 'Email không đúng định dạng';
+    //     } else {
+    //         $email = trim($body['email']);
+    //         $checkEmail = checkEmailUpdate($email, $id);
+    //         if ($checkEmail > 1) {
+    //             $errors['email'] = 'Email đã tồn tại!';
+    //         }
+    //     }
+    // }
 
     if (empty($body['phone'])) {
         $errors['phone'] = 'Số điện thoại không được để trống';
@@ -46,7 +46,7 @@ if (isPost()) {
         $dataUpdate = [
             'fullname' => trim($body['fullname']),
             'phone' => trim($body['phone']),
-            'email' => trim($body['email']),
+            // 'email' => trim($body['email']),
             'update_at' => date('Y-m-d H:i:s')
         ];
 

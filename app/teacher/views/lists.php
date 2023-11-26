@@ -9,13 +9,13 @@ $checkEdit = checkPermission($permissionData, 'teacher', 'Sửa');
 $checkDelete = checkPermission($permissionData, 'teacher', 'Xóa');
 ?>
 <div class="container-fluid">
-    <?php if($checkAdd): ?>
+    <?php if ($checkAdd) : ?>
     <a href="?module=teacher&action=add"><button class="btn btn-success">Thêm giảng viên mới <i
                 class="fa fa-plus"></i></button></a>
     <?php endif ?>
     <hr>
     <h4>Danh sách giảng viên đào tạo</h4>
-    <?php getMsg($msg,$msg_type) ?>
+    <?php getMsg($msg, $msg_type) ?>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -24,9 +24,11 @@ $checkDelete = checkPermission($permissionData, 'teacher', 'Xóa');
                 <th>Email</th>
                 <th>Số điện thoại</th>
                 <th>Kinh Nghiệm</th>
-                <?php if($checkEdit): ?>
+                <th width="10%">Tình trạng</th>
+                <?php if ($checkEdit) : ?>
                 <th width="5%">Sửa</th>
-                <?php endif; if($checkDelete): ?>
+                <?php endif;
+                if ($checkDelete) : ?>
                 <th width="5%">Xóa</th>
                 <?php endif ?>
             </tr>
@@ -41,10 +43,16 @@ $checkDelete = checkPermission($permissionData, 'teacher', 'Xóa');
                 <td><?php echo $item['email'] ?></td>
                 <td><?php echo $item['phone'] ?></td>
                 <td><?php echo $item['exp'] ?> năm</td>
-                <?php if($checkEdit): ?>
+                <td class="text-center">
+                    <?php echo ($item['status'] == 1) ? '<button class="btn btn-success">Kích hoạt</button>' : '<button class="btn btn-danger">Khóa</button>' ?>
+                    <br>
+                    <?php echo ($item['status'] == 1) ? '<a href="?module=teacher&action=status&status=0&id=' . $item['id'] . '">Khóa</a>' : '<a href="?module=teacher&action=status&status=1&id=' . $item['id'] . '")>Kích hoạt</a>'  ?>
+                </td>
+                <?php if ($checkEdit) : ?>
                 <td><a href="?module=teacher&action=edit&id=<?php echo $item['id'] ?>"><button
                             class="btn btn-warning"><i class="fa fa-edit"></i></button></a></td>
-                <?php endif; if($checkDelete): ?>
+                <?php endif;
+                        if ($checkDelete) : ?>
                 <td><a href="?module=teacher&action=delete&id=<?php echo $item['id'] ?>"
                         onclick="return confirm('Bạn có chắc chắn muốn xóa?')"><button class="btn btn-danger"><i
                                 class="fa fa-trash"></i></button></a></td>
