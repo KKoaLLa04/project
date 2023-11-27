@@ -12,3 +12,12 @@ iframe{
     width: 100% !important;
     height: 600px !important;
 }
+
+.border_header{
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(98,68,4,1) 100%);
+    color: white !important;
+}
+
+.border_color thead>tr>th, .border_color tbody>tr>td{
+    border: 1px solid #2fa500;
+}
