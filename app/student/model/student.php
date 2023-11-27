@@ -1,8 +1,11 @@
 <?php
 
-function getAllStudent()
+function getAllStudent($filter = '')
 {
-    $sql = "SELECT * FROM student";
+    $sql = "SELECT * FROM student WHERE 1 ";
+    if (!empty($filter)) {
+        $sql .= " $filter";
+    }
     $data = getRaw($sql);
     return $data;
 }
