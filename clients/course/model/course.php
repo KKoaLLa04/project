@@ -69,3 +69,10 @@ function permissionCourse($course_id, $student_id)
     $data = firstRaw($sql);
     return $data;
 }
+
+function courseInfo($id)
+{
+    $sql = "SELECT course.*, fullname FROM course INNER JOIN teacher ON teacher.id=course.teacher_id WHERE course.id=$id";
+    $data = firstRaw($sql);
+    return $data;
+}

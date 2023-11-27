@@ -14,7 +14,7 @@ $courseInfo = $data['courseInfo'];
                 <div class="col-5">
                     <ul>
                         <li>Tên khóa học: <?= $courseInfo['title'] ?></li>
-                        <li>Giá: <b style="color: red;"><?= $courseInfo['price'] ?> VNĐ</b></li>
+                        <li>Giá: <b style="color: red;"><?= number_format($courseInfo['price']) ?> VNĐ</b></li>
                         <li>Giảng viên: Duy Kiên</li>
                         <li>Thời hạn: vĩnh viễn</li>
                     </ul>
