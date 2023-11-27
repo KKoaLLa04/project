@@ -10,8 +10,17 @@ if (!checkPermission($permissionData, 'exam_category', 'Xem')) {
     redirect(_WEB_HOST_ROOT_ADMIN);
 }
 
+if (isGet()) {
+    $body = getBody();
+    $filter = '';
+    if (!empty($body['keyword'])) {
+        $keyword = trim($body['keyword']);
+        $filter = " WHERE name LIKE '%$keyword%' ";
+    }
+}
+
 $data = [
-    'exam_cate' => getAllExamCate(),
+    'exam_cate' => getAllExamCate($filter),
 ];
 
 view($data);
