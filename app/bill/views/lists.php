@@ -1,8 +1,30 @@
+<?php
+if (!empty($_GET['keyword'])) {
+    $keyword = $_GET['keyword'];
+}
+?>
 <div class="container-fluid">
-    <h4>Quản lý hóa đơn của khách hàng</h4>
+    <h4 class="text-center">Quản lý hóa đơn của khách hàng</h4>
+    <p class="text-center"><button class="btn btn-danger">Đơn hàng mới</button> -> <button class="btn btn-warning">Đang
+            xử
+            lý</button> -> <button class="btn btn-info">Đang giao</button> -> <button class="btn btn-success">Đã
+            giao</button> </p>
     <hr>
-    <table class="table table-bordered">
-        <thead>
+    <form method="get">
+        <input type="hidden" name="module" value="bill">
+        <input type="hidden" name="action" value="lists">
+        <div class="row">
+            <div class="col-10">
+                <input type="text" placeholder="Nhập từ khóa tìm kiếm..." name="keyword" class="form-control" value="<?= !empty($keyword) ? $keyword : false ?>">
+            </div>
+            <div class="col-2">
+                <button type="submit" class="btn btn-primary w-100">Tìm kiếm</button>
+            </div>
+        </div>
+    </form>
+    <hr>
+    <table class="table table-bordered border_color">
+        <thead class="border_header">
             <tr>
                 <th width="3%">#</th>
                 <th>Thông tin</th>
@@ -44,7 +66,13 @@
                         </td>
                         <td><a href="?module=bill&action=edit&id=<?= $item['id'] ?>"><button class="btn btn-warning"><i class="fa fa-edit"></i></button></a></td>
                     </tr>
-            <?php endforeach;
+                <?php endforeach;
+            else :
+                ?>
+                <td colspan="8">
+                    <div class="alert alert-warning text-center">Thông tin bạn tìm kiếm không có dữ liệu</div>
+                </td>
+            <?php
             endif ?>
         </tbody>
     </table>

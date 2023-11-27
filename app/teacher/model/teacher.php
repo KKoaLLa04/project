@@ -2,7 +2,7 @@
 
 function getAllTeacher($filter = '')
 {
-    $sql = "SELECT * FROM teacher WHERE 1";
+    $sql = "SELECT * FROM teacher WHERE group_id=3";
     if (!empty($filter)) {
         $sql .= " $filter";
     }

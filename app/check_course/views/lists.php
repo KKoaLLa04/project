@@ -1,13 +1,13 @@
 <div class="container-fluid">
-    <h4>Kiểm duyệt video đăng tải</h4>
+    <h4 class="text-center">Kiểm duyệt video đăng tải</h4>
     <hr>
-    <table class="table table-bordered">
-        <thead>
+    <table class="table table-bordered border_color">
+        <thead class="border_header">
             <tr>
                 <th>#</th>
                 <th>Tiêu đề</th>
                 <th width="30%">Video</th>
-                <th>Chương học</th>
+                <th width="10%">Chương học</th>
                 <th>Khóa học</th>
                 <th>Người đăng</th>
                 <th>Ngày đăng</th>
@@ -38,6 +38,12 @@
                                 class="fa fa-trash"></i></button></a></td>
             </tr>
             <?php endforeach;
+            else :
+                ?>
+            <td colspan="9">
+                <div class="alert alert-warning text-center">Hiện không có video nào cần kiểm duyệt</div>
+            </td>
+            <?php
             endif ?>
         </tbody>
     </table>

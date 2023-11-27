@@ -1,8 +1,12 @@
 <?php
 
-function getAllBill()
+function getAllBill($filter = '')
 {
-    $sql = "SELECT * FROM bill ORDER BY id DESC";
+    $sql = "SELECT * FROM bill ";
+    if (!empty($filter)) {
+        $sql .= " $filter";
+    }
+    $sql .= " ORDER BY id DESC";
     $data = getRaw($sql);
     return $data;
 }
