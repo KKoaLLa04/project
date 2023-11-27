@@ -1,7 +1,11 @@
 <?php
 
-function getAllbook(){
+function getAllbook($filter = '')
+{
     $sql = "SELECT * FROM book";
+    if (!empty($filter)) {
+        $sql .= " $filter";
+    }
     $data = getRaw($sql);
     return $data;
 }
