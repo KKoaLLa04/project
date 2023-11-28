@@ -18,7 +18,8 @@ if (!empty($data['book_detail'])) {
         <hr>
         <div>
             <p><i class="fa fa-check-circle"></i> Còn hàng</p>
-            <p>Chia sẻ: <button class="btn btn-info btn-sm"><i class="fab fa-facebook"></i> Share</button> <button class="btn btn-dark btn-sm"><i class="fab fa-twitter"></i> Twitter</button></p>
+            <p>Chia sẻ: <button class="btn btn-info btn-sm"><i class="fab fa-facebook"></i> Share</button> <button
+                    class="btn btn-dark btn-sm"><i class="fab fa-twitter"></i> Twitter</button></p>
             <p>Tình trạng: <b><?= $item['quantity'] == 0 ? 'Hết hàng' : 'Còn hàng' ?></b></p>
             <p>Số lượng: <b><?= $item['quantity'] ?></b></p>
         </div>
@@ -26,7 +27,8 @@ if (!empty($data['book_detail'])) {
         <p><?= $item['description'] ?></p>
         <p>Tác giả: <b><?= $item['author'] ?></b></p>
         <p>
-            <a href="#"><button class="btn btn-danger">Mua ngay <i class="fa-solid fa-sack-dollar"></i></button></a>
+            <a href="?module=book&action=buy&id=<?= $item['id'] ?>"><button class="btn btn-danger">Mua ngay <i
+                        class="fa-solid fa-sack-dollar"></i></button></a>
             <a href="?module=book&action=add&book_id=<?= $item['id'] ?>"><button class="btn btn-success">Thêm vào giỏ
                     hàng <i class="fa fa-cart-plus"></i></button></a>
         </p>
@@ -39,15 +41,17 @@ if (!empty($data['book_detail'])) {
         <div class="background_white">
             <h4>Thông tin thanh toán</h4>
             <hr>
-            <p>Giá bìa: <?= $item['price'] ?>đ</p>
-            <p>Giá bán: <b><?= $item['price'] ?>đ</b></p>
-            <hr>
-            <div class="d-flex justify-content-around">
+            <p>Giá bìa: <?= number_format($item['price']) ?>đ</p>
+            <p>Giá bán: <b><?= number_format($item['price']) ?>đ</b></p>
+            <!-- <hr> -->
+            <!-- <div class="d-flex justify-content-around">
                 <p>Số lượng mua</p>
                 <p><button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button><button class="btn btn-light btn-sm">1</button><button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button></p>
-            </div>
+            </div> -->
             <hr>
-            <button class="btn btn-danger w-100 py-3"><i class="fa fa-cart-arrow-down"></i> Mua ngay</button>
+            <a href="?module=book&action=buy&id=<?= $item['id'] ?>"><button class="btn btn-danger w-100 py-3"><i
+                        class="fa fa-cart-arrow-down"></i> Mua
+                    ngay</button></a>
         </div>
 
         <div class="d-flex py-3">

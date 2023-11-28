@@ -36,14 +36,24 @@ if (isPost()) {
         }
     }
 
+    if (empty(trim($_FILES['thumbnail']['name']))) {
+        $errors['thumbnail'] = 'Tiêu đề khóa học không được để trống';
+    }
+
     if (empty($errors)) {
         if (isLoginTeacher()) {
             $teacher_id = isLoginTeacher()['id'];
         }
+
+        $fileName = $_FILES['thumbnail']['name'];
+        $from = $_FILES['thumbnail']['tmp_name'];
+        $to = _WEB_PATH_ROOT . '/uploads/course/' . $fileName;
+
+        move_uploaded_file($from, $to);
         $dataInsert = [
             'title' => trim($body['title']),
             'cate_id' => trim($body['cate_id']),
-            'thumbnail' => trim($body['thumbnail']),
+            'thumbnail' => $fileName,
             'price' => trim($body['price']),
             'teacher_id' => $teacher_id,
             'description' => trim($body['description']),
@@ -66,7 +76,7 @@ if (isPost()) {
         setFlashData('old', $body);
     }
 
-    redirect('?module=subject&action=add');
+    // redirect('?module=subject&action=add');
 }
 
 $data = [

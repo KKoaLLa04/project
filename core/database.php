@@ -117,3 +117,12 @@ function checkContact()
     $data = getRows($sql);
     return $data;
 }
+
+
+// get count check bill
+function checkBill()
+{
+    $sql = "SELECT * FROM bill WHERE status = 0";
+    $data = getRows($sql);
+    return $data;
+}

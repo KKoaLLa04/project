@@ -47,15 +47,32 @@ if (isPost()) {
     }
 
     if (empty($errors)) {
-        $dataUpdate = [
-            'title' => trim($body['title']),
-            'cate_id' => trim($body['cate_id']),
-            'thumbnail' => trim($body['thumbnail']),
-            'price' => trim($body['price']),
-            'teacher_id' => trim($body['teacher_id']),
-            'description' => trim($body['description']),
-            'update_at' => date('Y-m-d H:i:s')
-        ];
+        $fileName = $_FILES['thumbnail']['name'];
+        $from = $_FILES['thumbnail']['tmp_name'];
+        $to = _WEB_PATH_ROOT . '/uploads/course/' . $fileName;
+
+        move_uploaded_file($from, $to);
+
+        if (!empty($fileName)) {
+            $dataUpdate = [
+                'title' => trim($body['title']),
+                'cate_id' => trim($body['cate_id']),
+                'thumbnail' => $fileName,
+                'price' => trim($body['price']),
+                'teacher_id' => trim($body['teacher_id']),
+                'description' => trim($body['description']),
+                'update_at' => date('Y-m-d H:i:s')
+            ];
+        } else {
+            $dataUpdate = [
+                'title' => trim($body['title']),
+                'cate_id' => trim($body['cate_id']),
+                'price' => trim($body['price']),
+                'teacher_id' => trim($body['teacher_id']),
+                'description' => trim($body['description']),
+                'update_at' => date('Y-m-d H:i:s')
+            ];
+        }
 
         $condition = 'id = ' . $id;
 

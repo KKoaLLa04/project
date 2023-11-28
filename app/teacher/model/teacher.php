@@ -1,8 +1,12 @@
 <?php
 
-function getAllTeacher()
+function getAllTeacher($filter = '')
 {
-    $sql = "SELECT * FROM teacher ORDER BY id desc";
+    $sql = "SELECT * FROM teacher WHERE group_id=3";
+    if (!empty($filter)) {
+        $sql .= " $filter";
+    }
+    $sql .= " ORDER BY id DESC";
     $data = getRaw($sql);
     return $data;
 }

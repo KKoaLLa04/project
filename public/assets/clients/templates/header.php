@@ -71,6 +71,8 @@ if (isLoginStudent()) {
                             </li>
                             <li class="px-3 pt-3"><i class="fa fa-angle-double-right"></i> <a href="?module=account&action=change_password" style="text-decoration: none;">Đổi mật
                                     khẩu</a></li>
+                            <li class="px-3 pt-3"><i class="fa fa-angle-double-right"></i> <a href="?module=cart_history&action=lists" style="text-decoration: none;">Lịch sử mua
+                                    hàng</a></li>
                             <hr>
                             <li class="px-3"><i class="fa fa-angle-double-right"></i> <a href="?module=member&action=logout" style="text-decoration: none;">Đăng xuất</a></li>
                         </ul>

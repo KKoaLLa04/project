@@ -7,14 +7,14 @@ $msg_type = getFlashData('msg_type');
     <hr>
     <h4>Danh sách nhân viên của hệ thống</h4>
     <?php getMsg($msg, $msg_type) ?>
-    <table class="table table-bordered">
-        <thead>
+    <table class="table table-bordered border_color">
+        <thead class="border_header">
             <tr>
                 <th width="3%">#</th>
                 <th>Tên QTV</th>
                 <th width="10%">Email</th>
                 <th width="10%">Số điện thoại</th>
-                <th width="15%">Quyền hạn</th>
+                <th width="20%">Quyền hạn</th>
                 <th width="10%">Tình trạng</th>
                 <th width="5%">Sửa</th>
             </tr>

@@ -31,7 +31,7 @@ if(moduleObj !== null){
                if(menuObj!==null){
                     if(menuOpen !== null){
                          menuObj.addEventListener('click', function(event){
-                              event.preventDefault();
+                              // event.preventDefault();
                               const menuClose = e.querySelector('.menu-close');
                               
                               if(menuClose !== null){

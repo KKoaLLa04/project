@@ -16,8 +16,17 @@ if (!empty($_GET['subject_id'])) {
     $subject_id = '';
 }
 
+if (isGet()) {
+    $body = getBody();
+    $filter = '';
+    if (!empty($body['keyword'])) {
+        $keyword = trim($body['keyword']);
+        $filter = " AND module.title LIKE '%$keyword%'";
+    }
+}
+
 $data = [
-    'module' => getAllModule($subject_id)
+    'module' => getAllModule($subject_id, $filter)
 ];
 
 view($data);

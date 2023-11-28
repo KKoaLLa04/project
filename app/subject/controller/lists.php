@@ -15,8 +15,17 @@ if (!empty($_GET['cate_id'])) {
     $cate_id = '';
 }
 
+if (isGet()) {
+    $body = getBody();
+    $filter = '';
+    if (!empty($body['keyword'])) {
+        $keyword = trim($body['keyword']);
+        $filter = " AND course.title LIKE '%$keyword%'";
+    }
+}
+
 $data = [
-    "data" => getAllCourse($cate_id)
+    "data" => getAllCourse($cate_id, $filter)
 ];
 
 

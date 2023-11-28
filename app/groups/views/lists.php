@@ -1,9 +1,9 @@
 <div class="container-fluid">
     <a href="?module=groups&action=add"><button class="btn btn-success">Thêm nhóm người dùng mới <i class="fa fa-plus"></i></button></a>
     <hr>
-    <h4>Danh sách nhóm người dùng</h4>
-    <table class="table table-bordered">
-        <thead>
+    <h4 class="text-center">Danh sách nhóm người dùng</h4>
+    <table class="table table-bordered border_color">
+        <thead class="border_header">
             <tr>
                 <th width="3%">STT</th>
                 <th>Nhóm</th>

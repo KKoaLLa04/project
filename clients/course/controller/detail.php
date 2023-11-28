@@ -7,6 +7,7 @@ if (!empty($_GET['course_id'])) {
     $course_detail = getCourseDetail($id);
     $module_id['module_id'] = [];
     $informationCourse = getAllInfo($id);
+    $courseInfo = courseInfo($id);
 
     if (isLoginStudent()) {
         $studentDetail = isLoginStudent();
@@ -37,6 +38,7 @@ if (!empty($_GET['course_id'])) {
         'video_url' => $videoUrl,
         'information' => $informationCourse,
         'price' => selectCourse($id),
+        'course_info' => $courseInfo,
     ];
 
     if (isLoginStudent()) {

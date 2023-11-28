@@ -47,15 +47,15 @@ $bill_detail = $data['bill_detail'];
         <tbody>
             <?php if (!empty($data['cart_detail'])) :
                 foreach ($data['cart_detail'] as $key => $item) : ?>
-            <tr>
-                <td><?php echo $key + 1; ?></td>
-                <td><img src="<?php echo _WEB_HOST_ROOT . '/uploads/' . $item['images'] ?>" width="100%"></td>
-                <td><?php echo $item['name'] ?></td>
-                <td><?php echo $item['price'] ?></td>
-                <td><?php echo $item['quantity'] ?></td>
-                <td><?php echo $item['quantity'] * $item['price'] ?></td>
-                <td><button class="btn btn-danger">Đơn hàng mới</button></td>
-            </tr>
+                    <tr>
+                        <td><?php echo $key + 1; ?></td>
+                        <td><img src="<?php echo _WEB_HOST_ROOT . '/uploads/books/' . $item['images'] ?>" width="100%"></td>
+                        <td><?php echo $item['name'] ?></td>
+                        <td><?php echo $item['price'] ?></td>
+                        <td><?php echo $item['quantity'] ?></td>
+                        <td><?php echo $item['quantity'] * $item['price'] ?></td>
+                        <td><button class="btn btn-danger">Đơn hàng mới</button></td>
+                    </tr>
             <?php endforeach;
             endif; ?>
         </tbody>

@@ -74,8 +74,9 @@
     $checkTestDelete = checkPermission($permissionData, 'test', 'Xóa');
 
     // count check
-    // $countLesson = getCheckCount();
-    // $countContact = checkContact();
+    $countLesson = getCheckCount();
+    $countContact = checkContact();
+    $countBill = checkBill();
     ?>
  <!-- Main Sidebar Container -->
  <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -517,6 +518,7 @@
 
                  <?php endif ?>
 
+                 <?php if ($checkTeacherLists) : ?>
                  <!-- 
                     check duyệt - begin 
                 -->
@@ -541,10 +543,10 @@
 
                      </ul>
                  </li>
-
                  <!-- 
                     check duyệt -end 
                 -->
+                 <?php endif ?>
 
                  <?php if ($checkContactLists) : ?>
                  <!-- 
@@ -576,6 +578,7 @@
                 -->
                  <?php endif ?>
 
+                 <?php if ($checkBookLists) : ?>
                  <!-- 
                     bill - begin 
                 -->
@@ -585,12 +588,14 @@
                          <i class="nav-icon fa fa-tachometer-alt"></i>
                          <p>
                              Quản lý hóa đơn
+                             <span class="badge badge-danger"><?php echo !empty($countBill) ? $countBill : 0 ?></span>
                          </p>
                      </a>
                  </li>
                  <!-- 
                     bill -end 
                 -->
+                 <?php endif ?>
 
                  <?php if ($checkExamLists) : ?>
                  <!-- 
@@ -643,10 +648,8 @@
                  <!-- 
                     test - begin 
                 -->
-                 <li
-                     class="nav-item has-treeview <?php echo (activeMenuSidebar('test') || activeMenuSidebar('exam')) ? 'menu-open' : false ?>">
-                     <a href="#"
-                         class="nav-link <?php echo (activeMenuSidebar('test') || activeMenuSidebar('exam')) ? 'active' : false ?>">
+                 <li class="nav-item has-treeview <?php echo (activeMenuSidebar('test')) ? 'menu-open' : false ?>">
+                     <a href="#" class="nav-link <?php echo (activeMenuSidebar('test')) ? 'active' : false ?>">
                          <i class="nav-icon fa fa-file-alt"></i>
                          <p>
                              Quản lý thi online
@@ -690,10 +693,8 @@
                  <!-- 
                     document - begin 
                 -->
-                 <li
-                     class="nav-item has-treeview <?php echo (activeMenuSidebar('document') || activeMenuSidebar('exam')) ? 'menu-open' : false ?>">
-                     <a href="#"
-                         class="nav-link <?php echo (activeMenuSidebar('document') || activeMenuSidebar('exam')) ? 'active' : false ?>">
+                 <li class="nav-item has-treeview <?php echo (activeMenuSidebar('document')) ? 'menu-open' : false ?>">
+                     <a href="#" class="nav-link <?php echo (activeMenuSidebar('document')) ? 'active' : false ?>">
                          <i class="nav-icon fab fa-dochub"></i>
                          <p>
                              Quản lý tài liệu

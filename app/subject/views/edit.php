@@ -11,9 +11,9 @@ if (empty($old) && !empty($data['course_detail'])) {
 <div class="container-fluid">
     <a href="?module=subject&action=lists"><button class="btn btn-warning">Quay lại</button></a>
     <hr>
-    <h4>Thêm khóa học mới</h4>
+    <h4>Cập nhật khóa học</h4>
     <?php getMsg($msg, $msg_type) ?>
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
@@ -65,21 +65,29 @@ if (empty($old) && !empty($data['course_detail'])) {
                 </div>
             </div>
 
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="">Mô tả khóa học</label>
+                    <textarea name="description"
+                        class="form-control editor"><?php echo !empty(oldData('description', $old)) ? oldData('description', $old) : false ?></textarea>
+                    <p></p>
+                </div>
+            </div>
+
             <div class="col-6">
                 <div class="form-group">
-                    <label for="">Ảnh Khóa học</label>
-                    <input type="text" class="form-control" placeholder="Ảnh đại diện khóa học...(update...)" disabled
+                    <label for="">Ảnh Khóa học (không chọn nếu không đổi)</label>
+                    <input type="file" class="form-control" placeholder="Ảnh đại diện khóa học...(update...)"
                         name="thumbnail">
                     <p></p>
                 </div>
             </div>
 
-            <div class="col-12">
+            <div class="col-6">
                 <div class="form-group">
-                    <label for="">Mô tả khóa học</label>
-                    <textarea name="description"
-                        class="form-control editor"><?php echo !empty(oldData('description', $old))?oldData('description', $old):false ?></textarea>
-                    <p></p>
+                    <label for="">Ảnh</label>
+                    <img src="<?php echo _WEB_HOST_ROOT . '/uploads/course/' . $data['course_detail']['thumbnail'] ?>"
+                        width="100%">
                 </div>
             </div>
         </div>
