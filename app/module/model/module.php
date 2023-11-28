@@ -1,10 +1,10 @@
 <?php
 
-function getAllModule($subject_id = '')
+function getAllModule($subject_id = '', $filter = '')
 {
-    $sql = "SELECT module.*, course.title as course_title FROM module INNER JOIN course ON module.course_id = course.id";
+    $sql = "SELECT module.*, course.title as course_title FROM module INNER JOIN course ON module.course_id = course.id WHERE 1";
     if (!empty($subject_id)) {
-        $sql .= " WHERE course_id = $subject_id";
+        $sql .= " AND course_id = $subject_id";
     }
 
     if (isLoginTeacher()) {
@@ -12,11 +12,15 @@ function getAllModule($subject_id = '')
         $group_id = isLoginTeacher()['group_id'];
         if ($group_id !== 1 && $group_id !== 2) {
             if (empty($subject_id)) {
-                $sql .= " WHERE module.teacher_id=$id";
+                $sql .= " AND module.teacher_id=$id";
             } else {
                 $sql .= " AND module.teacher_id=$id";
             }
         }
+    }
+
+    if (!empty($filter)) {
+        $sql .= " $filter";
     }
 
     $data = getRaw($sql);

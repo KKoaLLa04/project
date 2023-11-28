@@ -7,17 +7,36 @@ $permissionData = permissionData();
 $checkAdd = checkPermission($permissionData, 'lesson', 'Thêm');
 $checkEdit = checkPermission($permissionData, 'lesson', 'Sửa');
 $checkDelete = checkPermission($permissionData, 'lesson', 'Xóa');
+
+if (!empty($_GET['keyword'])) {
+    $keyword = $_GET['keyword'];
+}
 ?>
 <div class="container-fluid">
     <?php if ($checkAdd) : ?>
     <a href="?module=lesson&action=add"><button class="btn btn-success">Thêm bài học mới <i
                 class="fa fa-plus"></i></button></a>
     <?php endif ?>
+    <p></p>
+    <h4 class="text-center">Danh sách bài học</h4>
     <hr>
-    <h4>Danh sách bài học</h4>
+    <form action="" method="get">
+        <input type="hidden" name="module" value="lesson">
+        <input type="hidden" name="action" value="lists">
+        <div class="row">
+            <div class="col-10">
+                <input type="text" placeholder="Nhập từ khóa tìm kiếm..." name="keyword" class="form-control"
+                    value="<?= !empty($keyword) ? $keyword : false ?>">
+            </div>
+            <div class="col-2">
+                <button type="submit" class="btn btn-primary w-100">Tìm kiếm</button>
+            </div>
+        </div>
+    </form>
+    <hr>
     <?php getMsg($msg, $msg_type) ?>
-    <table class="table table-bordered">
-        <thead>
+    <table class="table table-bordered border_color">
+        <thead class="border_header">
             <tr>
                 <th width="3%">STT</th>
                 <th>Tiêu đề</th>
@@ -55,6 +74,14 @@ $checkDelete = checkPermission($permissionData, 'lesson', 'Xóa');
                 <?php endif ?>
             </tr>
             <?php endforeach;
+            else :
+                ?>
+            <td colspan="7">
+                <div class="alert alert-warning text-center">
+                    Không có thông tin tìm kiếm
+                </div>
+            </td>
+            <?php
             endif; ?>
         </tbody>
     </table>

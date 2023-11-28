@@ -517,6 +517,7 @@
 
                  <?php endif ?>
 
+                 <?php if ($checkTeacherLists) : ?>
                  <!-- 
                     check duyệt - begin 
                 -->
@@ -541,10 +542,10 @@
 
                      </ul>
                  </li>
-
                  <!-- 
                     check duyệt -end 
                 -->
+                 <?php endif ?>
 
                  <?php if ($checkContactLists) : ?>
                  <!-- 
@@ -576,6 +577,7 @@
                 -->
                  <?php endif ?>
 
+                 <?php if ($checkBookLists) : ?>
                  <!-- 
                     bill - begin 
                 -->
@@ -591,6 +593,7 @@
                  <!-- 
                     bill -end 
                 -->
+                 <?php endif ?>
 
                  <?php if ($checkExamLists) : ?>
                  <!-- 

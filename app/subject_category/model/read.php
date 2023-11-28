@@ -1,15 +1,20 @@
 <?php
 
-function getAllCate()
+function getAllCate($filter = '')
 {
-    $sql = "SELECT * FROM course_category";
+    $sql = "SELECT * FROM course_category WHERE 1";
     if (isLoginTeacher()) {
         $id = isLoginTeacher()['id'];
         $group_id = isLoginTeacher()['group_id'];
         if ($group_id !== 1 && $group_id !== 2) {
-            $sql .= " WHERE teacher_id=$id";
+            $sql .= " AND teacher_id=$id";
         }
     }
+
+    if (!empty($filter)) {
+        $sql .= " $filter";
+    }
+
     $data = getRaw($sql);
     return $data;
 }

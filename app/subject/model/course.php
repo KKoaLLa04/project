@@ -1,10 +1,10 @@
 <?php
 
-function getAllCourse($cate_id = '')
+function getAllCourse($cate_id = '', $filter = '')
 {
-    $sql = "SELECT course.*, fullname, course_category.title as cate_name FROM course INNER JOIN teacher ON teacher.id=course.teacher_id INNER JOIN course_category ON course_category.id=course.cate_id";
+    $sql = "SELECT course.*, fullname, course_category.title as cate_name FROM course INNER JOIN teacher ON teacher.id=course.teacher_id INNER JOIN course_category ON course_category.id=course.cate_id WHERE 1";
     if (!empty($cate_id)) {
-        $sql .= " WHERE cate_id=$cate_id";
+        $sql .= " AND cate_id=$cate_id";
     }
 
     if (isLoginTeacher()) {
@@ -12,11 +12,15 @@ function getAllCourse($cate_id = '')
         $group_id = isLoginTeacher()['group_id'];
         if ($group_id !== 1 && $group_id !== 2) {
             if (empty($cate_id)) {
-                $sql .= " WHERE course.teacher_id=$id";
+                $sql .= " AND course.teacher_id=$id";
             } else {
                 $sql .= " AND course.teacher_id=$id";
             }
         }
+    }
+
+    if (!empty($filter)) {
+        $sql .= " $filter";
     }
 
     $sql .= " ORDER BY course.cate_id DESC";

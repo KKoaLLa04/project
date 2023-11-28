@@ -10,9 +10,17 @@ if (!checkPermission($permissionData, 'subject_category', 'Xem')) {
     redirect(_WEB_HOST_ROOT_ADMIN);
 }
 
+if (isGet()) {
+    $body = getBody();
+    $filter = '';
+    if (!empty($body['keyword'])) {
+        $keyword = trim($body['keyword']);
+        $filter = " AND title LIKE '%$keyword%'";
+    }
+}
 
 $data = [
-    'data' => getAllCate(),
+    'data' => getAllCate($filter),
     'title' => 'Danh sách danh mục các khóa học'
 ];
 
