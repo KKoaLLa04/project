@@ -1,6 +1,7 @@
 html,body{
     width: 100%;
     margin: 0 auto;
+    box-sizing: border-box;
 }
 
 /* --------------------------------------------------GLOBAl---------------------------------------------------- */
@@ -123,6 +124,7 @@ main{
 
 .banner__item img{
     width: 100%;
+    border-radius: 5px;
 }
 
 .banner__ad img{
@@ -216,6 +218,10 @@ main{
     font-size: 14px;
 }
 
+.exam__item p {
+    padding-top: 8px;
+}
+
 .exam__item a{
     text-decoration: none;
     color: black;
@@ -271,6 +277,7 @@ main{
     background-color: white;
     border-radius: 10px;
     text-align: center;
+    width: 25%;
     margin-right: 10px;
     margin-top: 20px;
 }
@@ -282,7 +289,7 @@ main{
 
 .book__item h5{
     padding: 20px 0 30px 0;
-    font-size: 14px;
+    font-size: 16px;
     text-align: left;
 }
 
@@ -317,34 +324,37 @@ main{
 /* ------------------------------------------------------Information------------------------------------------------ */
 .information{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 20px;
 }
 
 .news__content{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: space-between;
     background-color: white;
     border-radius: 10px;
 }
 
 .news__item{
-    display: flex;
+    display: block;
     justify-content: space-between;
     padding: 20px;
     padding-right: 0;
 }
 
 .news__item img{
-    width: 40%;
+    width: 92%;
     border-radius: 10px;
 }
 
 .news__item a{
     text-decoration: none;
     color: black;
-    padding-left: 10px;
+    /* padding-bottom: 10px; */
+    display: block;
+    padding-top: 12px;
 }
+
 
 .share__content{
     background-color: white;
@@ -422,9 +432,51 @@ footer{
     padding-right: 15px;
 }
 
-/* EXTRA */
+/* ------------------------------------------------------EXTRA------------------------------------ */
+.course__price{
+    padding-top: 10px;
+}
+
+.course__description p img{
+    padding-right: 10px;
+}
+
+.lecture__content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .error{
     color: red;
-    font-size: 90%;
     font-style: italic;
+    font-size: 90%;
+    text-align: left;
+}
+
+.background_white{
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+
+.background_aqua{
+    background-color: aquamarine;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+
+.test{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.test_contain{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.test__text{
+    display: flex;
+    justify-content: space-between;
 }

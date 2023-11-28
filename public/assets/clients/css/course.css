@@ -71,6 +71,10 @@
     padding: 10px;
 }
 
+.course__padding a{
+    text-decoration: none;
+}
+
 /* --------------------------------------------TRAINING--------------------------------------------- */
 .training{
     display: grid;
