@@ -1,6 +1,5 @@
 <?php
 
-
 require_once './clients/home/model/home.php';
 
 // $course_detail = getAllCourse();
@@ -24,7 +23,8 @@ $data = [
     'exam' => getAllExam(),
     'news_category' => getAllNewsCate(),
     'news' => getAllnews(),
+    'category' => getAllDocCate(),
+    'document' => getAllDoc(),
 ];
 
 viewClient($data);
-

@@ -16,6 +16,7 @@ if (isLoginStudent()) {
     <link rel="stylesheet" href="<?php echo _WEB_HOST_TEMPLATE ?>/css/login.css?ver=<?php echo rand() ?>">
     <link rel="stylesheet" href="<?php echo _WEB_HOST_TEMPLATE ?>/css/course.css?ver=<?php echo rand() ?>">
     <link rel="stylesheet" href="<?php echo _WEB_HOST_TEMPLATE ?>/css/style.css?ver=<?php echo rand() ?>">
+    <link rel="stylesheet" href="<?php echo _WEB_HOST_TEMPLATE ?>/css/slidershow.css?ver=<?php echo rand() ?>">
 </head>
 
 <body>
