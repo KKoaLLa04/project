@@ -5,6 +5,12 @@ require_once './clients/book/model/book.php';
 if (!empty($_GET['book_id'])) {
     $id = $_GET['book_id'];
 
+    if (!isLoginStudent()) {
+        setFlashData('msg', 'Vui lòng đăng nhập trước khi thêm sản phẩm vào giỏ hàng');
+        setFlashData('msg_type', 'danger');
+        redirect('?module=book&action=detail&id=' . $id);
+    }
+
     $bookDetail = getBookDetail($id);
 
     $quantity = $bookDetail['quantity'];
