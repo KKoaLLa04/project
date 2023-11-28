@@ -76,6 +76,7 @@
     // count check
     $countLesson = getCheckCount();
     $countContact = checkContact();
+    $countBill = checkBill();
     ?>
  <!-- Main Sidebar Container -->
  <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -587,6 +588,7 @@
                          <i class="nav-icon fa fa-tachometer-alt"></i>
                          <p>
                              Quản lý hóa đơn
+                             <span class="badge badge-danger"><?php echo !empty($countBill) ? $countBill : 0 ?></span>
                          </p>
                      </a>
                  </li>

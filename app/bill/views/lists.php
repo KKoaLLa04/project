@@ -15,7 +15,8 @@ if (!empty($_GET['keyword'])) {
         <input type="hidden" name="action" value="lists">
         <div class="row">
             <div class="col-10">
-                <input type="text" placeholder="Nhập từ khóa tìm kiếm..." name="keyword" class="form-control" value="<?= !empty($keyword) ? $keyword : false ?>">
+                <input type="text" placeholder="Nhập từ khóa tìm kiếm..." name="keyword" class="form-control"
+                    value="<?= !empty($keyword) ? $keyword : false ?>">
             </div>
             <div class="col-2">
                 <button type="submit" class="btn btn-primary w-100">Tìm kiếm</button>
@@ -32,6 +33,7 @@ if (!empty($_GET['keyword'])) {
                 <th>Địa chỉ</th>
                 <th>Tổng</th>
                 <th>Hình thức thanh toán</th>
+                <th width="11%">Xem Chi Tiết</th>
                 <th>Tình trạng</th>
                 <th width="5%">Sửa</th>
             </tr>
@@ -40,19 +42,21 @@ if (!empty($_GET['keyword'])) {
         <tbody>
             <?php if (!empty($data['bill'])) :
                 foreach ($data['bill'] as $key => $item) : ?>
-                    <tr>
-                        <td><?= $key + 1 ?></td>
-                        <td>
-                            Tên: <?= $item['name'] ?> <br>
-                            Email: <?= $item['email'] ?> <br />
-                            Số điện thoại: <?= $item['phone'] ?>
-                        </td>
-                        <td><?= $item['code'] ?></td>
-                        <td><?= $item['address'] ?></td>
-                        <td><?= $item['total'] ?></td>
-                        <td><?= $item['pay'] ?></td>
-                        <td class="text-center">
-                            <?php
+            <tr>
+                <td><?= $key + 1 ?></td>
+                <td>
+                    Tên: <?= $item['name'] ?> <br>
+                    Email: <?= $item['email'] ?> <br />
+                    Số điện thoại: <?= $item['phone'] ?>
+                </td>
+                <td><?= $item['code'] ?></td>
+                <td><?= $item['address'] ?></td>
+                <td><?= number_format($item['total']) ?> VNĐ</td>
+                <td><?= $item['pay'] ?></td>
+                <td class="text-center"><a href="?module=bill&action=detail&code=<?= $item['code'] ?>"><button
+                            class="btn btn-primary">Xem Chi Tiết</button></a></td>
+                <td class="text-center">
+                    <?php
                             if ($item['status'] == 0) {
                                 echo '<a href="?module=bill&action=status&status=1&id=' . $item['id'] . '"><button class="btn btn-danger">Đơn hàng mới</button></a>';
                             } else if ($item['status'] == 1) {
@@ -63,15 +67,16 @@ if (!empty($_GET['keyword'])) {
                                 echo '<button class="btn btn-success">Đã giao</button>';
                             }
                             ?>
-                        </td>
-                        <td><a href="?module=bill&action=edit&id=<?= $item['id'] ?>"><button class="btn btn-warning"><i class="fa fa-edit"></i></button></a></td>
-                    </tr>
-                <?php endforeach;
+                </td>
+                <td><a href="?module=bill&action=edit&id=<?= $item['id'] ?>"><button class="btn btn-warning"><i
+                                class="fa fa-edit"></i></button></a></td>
+            </tr>
+            <?php endforeach;
             else :
                 ?>
-                <td colspan="8">
-                    <div class="alert alert-warning text-center">Thông tin bạn tìm kiếm không có dữ liệu</div>
-                </td>
+            <td colspan="9">
+                <div class="alert alert-warning text-center">Thông tin bạn tìm kiếm không có dữ liệu</div>
+            </td>
             <?php
             endif ?>
         </tbody>
