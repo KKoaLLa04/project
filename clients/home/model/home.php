@@ -9,7 +9,7 @@ function getAllCourse()
 
 function getAllCate()
 {
-    $sql = "SELECT * FROM course_category";
+    $sql = "SELECT * FROM course_category ORDER BY id ASC LIMIT 0,6 ";
     $data = getRaw($sql);
     return $data;
 }
@@ -22,13 +22,13 @@ function getAllCourseId($id)
 }
 function getAllBookCate()
 {
-    $sql = "SELECT * FROM book_category ORDER BY id DESC";
+    $sql = "SELECT * FROM book_category ORDER BY id DESC LIMIT 0,4 ";
     $data = getRaw($sql);
     return $data;
 }
 function getAllBook()
 {
-    $sql = "SELECT book.*, book_category.title as title_cate FROM book INNER JOIN book_category ON book_category.id=book.book_id";
+    $sql = "SELECT book.*, book_category.title as title_cate FROM book INNER JOIN book_category ON book_category.id=book.book_id LIMIT 0,4";
     $data = getRaw($sql);
     return $data;
 }
@@ -42,7 +42,7 @@ function getAllCateexam()
 
 function getAllExam()
 {
-    $sql = "SELECT * FROM exam ORDER BY id DESC";
+    $sql = "SELECT * FROM exam ORDER BY id DESC LIMIT 0,3";
     $data = getRaw($sql);
     return $data;
 }
@@ -55,7 +55,7 @@ function getDetailExam($id)
 }
 
 function getAllnews(){
-    $sql = "SELECT * FROM news";
+    $sql = "SELECT * FROM news LIMIT 0,4";
     $data = getRaw($sql);
     return $data;
 }
@@ -64,5 +64,19 @@ function getAllNewsCate(){
     $data = getRaw($sql);
     return $data;
 }
+function getAllDocCate()
+{
+    $sql = "SELECT * FROM document_category";
+    $data = getRaw($sql);
+    return $data;
+}
+
+function getAllDoc()
+{
+    $sql = "SELECT * FROM document ORDER BY id DESC LIMIT 0,3";
+    $data = getRaw($sql);
+    return $data;
+}
+
 
 

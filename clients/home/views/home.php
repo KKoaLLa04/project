@@ -5,7 +5,6 @@ getMsg($msg, $msg_type);
 ?>
 <div class="banner">
     <div class="banner__main">
-
     <div class="mySlides">
         <img src="./uploads/home/banner/banner1.jpg" alt="">
     </div>
@@ -15,12 +14,14 @@ getMsg($msg, $msg_type);
     <div class="mySlides">
         <img src="./uploads/home/banner/banner3.jpg" alt="">
     </div>
-    <div class="mySlides">
+    <!-- <div class="mySlides">
         <img src="./uploads/home/banner/banner4.jpg" alt="">
-    </div>
+    </div> -->
     <div class="mySlides">
         <img src="./uploads/home/banner/banner5.jpg" alt="">
     </div>
+    <button class="custom-button prev" onclick="plusSlides(-1)"><i class="fa-solid fa-chevron-left fa-2xl" style="color: #000000;"></i></button>
+    <button class="custom-button next" onclick="plusSlides(1)"><i class="fa-solid fa-chevron-right fa-2xl" style="color: #000000;"></i></button>
     </div>
 
     <div class="banner__item">
@@ -28,18 +29,10 @@ getMsg($msg, $msg_type);
         <img src="./uploads/home/minibanner/banner2.jpg" alt="">
         <img src="./uploads/home/minibanner/banner3.jpg" alt="">
         <img src="./uploads/home/minibanner/banner4.jpg" alt="">
-
     </div>
 
-    <div class="banner__item">
-        <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/banner_2_1639545385.png" alt="">
-        <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/group-617_1608886311_1639545742.png" alt="">
-        <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/group-618_1608886278_1639545726.png" alt="">
-        <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/group-619_1608886340_1639545734.png" alt="">
-    </div>
-
-   <div class="banner__ad">
-        <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/banner_1639125360.png" alt="">
+    <div class="banner__ad">
+        <img src="./uploads/home/banner/ads.png" alt="">
     </div>
 </div>
 
@@ -81,20 +74,15 @@ getMsg($msg, $msg_type);
 <div class="exam__university">
     <h4>KHÓA HỌC NỔI BẬT</h4>
     <div class="exam__content">
+        <?php if(!empty($data['course_category'])):?>
+            <?php foreach ($data['course_category'] as $item) : ?>
         <div class="exam__item">
-            <a href="#">Khoá học 0 đồng</a>
+            <a href="#"><?php echo $item['title'] ?></a>
         </div>
-        <div class="exam__item">
-            <a href="#">Luyện thi THPTQG 2024</a>
-        </div>
-        <div class="exam__item">
-            <a href="#">Luyện thi THPTQG 2025</a>
-        </div>
-        <div class="exam__item">
-            <a href="#">Gói luyện thi giáo viên tham khảo</a>
-        </div>
+        <?php endforeach; endif; ?>
     </div>
 </div>
+
 <div class="exam__banner">
     <div class="exam__item grid__item">
         <img src="./uploads/home/banner/bigbanner.jpg" alt="">
@@ -116,19 +104,19 @@ getMsg($msg, $msg_type);
 <div class="book">
     <h4>SÁCH NỔI BẬT</h4>
     <div class="book__button">
+        <?php if(!empty($data['book_category'])):?>
+            <?php foreach($data['book_category'] as $item):?>
         <div class="book__button__item">
-            <a href="#">Sách ôn luyện lập trình</a>
+            <a href="#"><?php echo $item['title'] ?></a>
         </div>
-        <div class="book__button__item">
-            <a href="#">Sách giá rẻ</a>
-        </div>
+        <?php endforeach; endif; ?>
     </div>
 </div>
 
 <div class="book__content">
     <?php if (!empty($data['book'])) : ?>
         <?php foreach ($data['book'] as $item) : ?>
-            <div class="book__item">
+            <div class="book__item slider">
             <img src="<?php echo _WEB_HOST_ROOT . '/uploads/books/' . $item['thumbnail'] ?>" alt="" width="100%" height="285px">
                 <h5><b><?php echo $item['name'] ?></b></h5>
                 <div class="book__price">
@@ -142,7 +130,10 @@ getMsg($msg, $msg_type);
             </div>
         <?php endforeach; ?>
     <?php endif; ?>
+    <button class="btn-book prevbook"><i class="fa-solid fa-chevron-left fa-2xl" style="color: #000000;"></i></button>
+    <button class="btn-book nextbook"><i class="fa-solid fa-chevron-right fa-2xl" style="color: #000000;"></i></button>
 </div>
+
 
 <h4 style="text-align: left;">ĐỀ THI NỔI BẬT</h4>
    
@@ -168,6 +159,31 @@ getMsg($msg, $msg_type);
 endif ?>
 </div>
 
+<h4 style="text-align: left;">TÀI LIỆU MIỄN PHÍ</h4>
+<div class="ranking">
+<?php if (!empty($data['category'])) :
+    foreach ($data['category'] as $key => $value) : ?>
+    <?php if (!empty($data['document'])) :
+        foreach ($data['document'] as $item) : 
+            if ($value['id'] === $item['document_id']) : ?>
+            <div class="ranking__item">
+                <div class="alert alert-dark text-center"><?php echo $value['name'] ?></div>
+                <div class="ranking__content">
+                <p><?php echo $item['title'] ?></p>
+                    <div class="ranking__award">
+                    <span>297 lượt tải</span>
+                    <a href="#"><i class="fa fa-file-download"></i></a>
+                    </div>
+                </div>
+            </div>
+            <?php endif;
+                endforeach;
+            endif; ?>
+            <?php endforeach;
+endif ?>
+</div>
+
+
 
 
 
@@ -189,4 +205,6 @@ endif ?>
             endif; ?>
             <?php endforeach;
 endif ?>        
-</div>    
+<button class="btn-news prevnews"><i class="fa-solid fa-chevron-left fa-2xl" style="color: #000000;"></i></button>
+    <button class="btn-news nextnews"><i class="fa-solid fa-chevron-right fa-2xl" style="color: #000000;"></i></button>
+</div>
