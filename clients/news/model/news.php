@@ -14,3 +14,8 @@ function getNewsDetail($id){
     $data =  firstRaw($sql);
     return $data;
 }
+function getNewsM($id){
+    $sql = "SELECT * FROM news INNER JOIN news_category ON news_category.id=news.news_id WHERE news_category.id=$id";
+    $data =  firstRaw($sql);
+    return $data;
+}

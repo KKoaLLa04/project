@@ -7,6 +7,21 @@ if (isPost()) {
 
     $errors = [];
 
+    $thumbnail = $_FILES['thumbnail'];
+
+    if ($thumbnail['error'] === UPLOAD_ERR_OK) { // check điều kiện nè
+        $uploadDir = '../uploads/news/'; // đường dẫn ảnh nè
+        $uploadPath = $uploadDir . basename($thumbnail['name']);
+        if (move_uploaded_file($thumbnail['tmp_name'], $uploadPath)) {
+            $thumbnailFileName = basename($thumbnail['name']); // cái này để lấy tên ảnh nè
+        } else {
+            $errors['thumbnail'] = 'Không thể tải lên ảnh khóa học';
+        }
+    }else{
+        $errors['thumbnail'] = 'Vui lòng không để trống ảnh khóa học';
+    }  
+
+
     if (empty($body['title'])) {
         $errors['title'] = 'Tiêu đề không được để trống';
     }
@@ -23,7 +38,8 @@ if (isPost()) {
         $dataInsert = [
             'title' => trim($body['title']),
             'content' => trim($body['content']),
-            // 'news_id' => trim($body['news_id']),
+            'thumbnail' => $thumbnailFileName,
+            'news_id' => trim($body['news_id']),
             'create_at' => date('Y-m-d H:i:s')
         ];
 

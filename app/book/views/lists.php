@@ -1,3 +1,8 @@
+<?php
+$msg = getFlashData('msg');
+$msg_type = getFlashData('msg_type');
+$limit=35;
+?>
 <div class="container-fluid">
     <a href="?module=book&action=add"><button class="btn btn-success">Thêm sách <i class="fa fa-plus"></i></button></a>
     <hr>

@@ -1,6 +1,7 @@
 <?php
 $msg = getFlashData('msg');
 $msg_type = getFlashData('msg_type');
+$limit=55;
 ?>
 <div class="container-fluid">
     <a href="?module=news&action=add"><button class="btn btn-success">Thêm tin tức tin tức mới <i class="fa fa-plus"></i></button></a>
@@ -19,13 +20,23 @@ $msg_type = getFlashData('msg_type');
             </tr>
         </thead>
         <tbody>
-            <?php if(!empty($data['news'])):
+            <?php
+            $uploadDir = '../uploads/news/'; 
+            if(!empty($data['news'])):
                 foreach($data['news'] as $key => $item): ?>
             <tr>
                 <td><?php echo $key+1 ?></td>
-                <td><?php echo $item['thumbnail'] ?></td>
+                <td>
+                            <?php
+                            if (is_file($uploadDir . $item['thumbnail'])) {
+                                echo "<img src='" . $uploadDir . $item['thumbnail'] . "' height='80' width='80' >";
+                            } else {
+                                echo "Không có ảnh";
+                            }
+                            ?>
+                        </td>
                 <td><?php echo $item['title'] ?></td>
-                <td><?php echo $item['content'] ?></td>
+                <td><?php echo substr($item['content'],0,$limit) ?></td>
                 <td><a href="?module=news&action=edit&id=<?php echo $item['id'] ?>"><button class="btn btn-warning"><i class="fa fa-edit"></i></button></a></td>
                 <td><a href="?module=news&action=delete&id=<?php echo $item['id'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"><button class="btn btn-danger"><i class="fa fa-trash"></i></button></a></td>
                 </tr>

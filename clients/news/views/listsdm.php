@@ -16,8 +16,8 @@
 </div>
 
 <div class="news__text">
-<?php if (!empty($data['news'])) :
-                foreach ($data['news'] as $count => $value) :
+<?php if (!empty($data['newsdm'])) :
+                foreach ($data['newsdm'] as $count => $value) :
             ?>
     <div class="news__block">
     <a href="?module=news&action=detail&id=<?= $value['id'] ?>"><img src="<?php echo _WEB_HOST_ROOT . '/uploads/books/' . $value['thumbnail'] ?>" alt="" width="100%"></a>
