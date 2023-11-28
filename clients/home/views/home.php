@@ -34,11 +34,7 @@ getMsg($msg, $msg_type);
 
     <div class="banner__ad">
         <img src="./uploads/home/banner/ads.png" alt="">
-=======
-   <div class="banner__ad">
-        <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/banner_1639125360.png" alt="">
 
-    </div>
 </div>
 
 <div class="step">
