@@ -17,3 +17,18 @@ function getBillDetail($id)
     $data = firstRaw($sql);
     return $data;
 }
+
+
+function getCartToBill($code)
+{
+    $sql = "SELECT * FROM cart WHERE code_id=$code";
+    $data = getRaw($sql);
+    return $data;
+}
+
+function getBillCode($code)
+{
+    $sql = "SELECT * FROM bill WHERE code=$code";
+    $data = firstRaw($sql);
+    return $data;
+}
