@@ -27,4 +27,5 @@ $data = [
     'document' => getAllDoc(),
 ];
 
+
 viewClient($data);
