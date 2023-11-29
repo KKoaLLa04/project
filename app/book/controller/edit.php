@@ -48,6 +48,7 @@ if (isPost()) {
             'author' => trim($body['author']),
             'description' => trim($body['description']),
             'content' => trim($body['content']),
+            'quantity' => trim($body['quantity']),
             'thumbnail' => trim($body['thumbnail']),
             'price' => trim($body['price']),
             'status' => trim($body['status']),

@@ -70,6 +70,13 @@ $old = getFlashData('old');
                 </div>
 
                 <div class="form-group">
+                    <label for="">Số lượng</label>
+                    <input type="text" class="form-control" placeholder="Số lượng" name="quantity"
+                        value="<?php echo oldData('quantity', $old) ?>">
+                    <p class="error"><?php echo errorData('quantity', $errors) ?></p>
+                </div>
+
+                <div class="form-group">
                     <label for="">Giá</label>
                     <input type="text" class="form-control" name="price" placeholder="Giá sách"
                         value="<?php echo oldData('price', $old) ?>">

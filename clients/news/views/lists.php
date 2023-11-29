@@ -20,8 +20,9 @@
                 foreach ($data['news'] as $count => $value) :
             ?>
     <div class="news__block">
-        <a href="?module=news&action=detail&id=<?=$value['id']?>"><img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/news2.jpg" alt=""></a>
-        <h6><?php echo $value['title']?></h6>
+        <a href="?module=news&action=detail&id=<?=$value['id']?>"><img
+                src="<?php echo _WEB_HOST_ROOT . '/uploads/news/' . $value['thumbnail'] ?>" alt="" width="100%"></a>
+        <a href="?module=news&action=detail&id=<?= $value['id'] ?>"><p><b><?php echo $value['title'] ?></b></p></a>
         <p>29/07/2023</p>
     </div>
     <?php endforeach;

@@ -59,6 +59,12 @@ if (empty($old) && !empty($data['book_detail'])) {
                         value="<?php echo oldData('price', $old) ?>">
                     <p class="error"><?php echo errorData('price', $errors) ?></p>
                 </div>
+                <div class="form-group">
+                    <label for="">Số lượng</label>
+                    <input type="text" class="form-control" placeholder="Tên tác giả..." name="quantity"
+                        value="<?php echo oldData('quantity', $old) ?>">
+                    <p class="error"><?php echo errorData('quantity', $errors) ?></p>
+                </div>
 
                 <div class="form-group">
                     <label for="">Tình trạng</label>

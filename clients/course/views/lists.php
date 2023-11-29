@@ -13,7 +13,8 @@
                 <?php if (!empty($data['course_detail'][$key])) :
                     foreach ($data['course_detail'][$key] as $item) : ?>
                         <div class="course__content">
-                            <a href="?module=course&action=detail&course_id=<?php echo $item['id'] ?>"> <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/course1.jpg" alt=""></a>
+                            <a href="?module=course&action=detail&course_id=<?php echo $item['id'] ?>"><img
+                src="<?php echo _WEB_HOST_ROOT . '/uploads/course/' . $item['thumbnail'] ?>" alt="" width="100%"></a>
                             <div class="course__padding">
                                 <a href="?module=course&action=detail&course_id=<?php echo $item['id'] ?>">
                                     <p><b><?php echo $item['title'] ?></b></p>

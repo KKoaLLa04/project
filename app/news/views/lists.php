@@ -12,7 +12,7 @@ $limit=55;
     <p></p>
     <h4 class="text-center">Danh mục tin tức</h4>
     <hr>
-    <form action="" method="get">
+    <form action="" method="get" >
         <input type="hidden" name="module" value="news">
         <input type="hidden" name="action" value="lists">
         <div class="row">
@@ -38,7 +38,7 @@ $limit=55;
                 <th width="5%">Xóa</th>
             </tr>
         </thead>
-        <tbody>
+ 
         <?php
             $uploadDir = '../uploads/news/'; 
             if(!empty($data['news'])):
