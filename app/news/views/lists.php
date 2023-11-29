@@ -38,38 +38,28 @@ $limit=55;
                 <th width="5%">Xóa</th>
             </tr>
         </thead>
-        <tbody>
-            <?php
-            $uploadDir = '../uploads/news/';
-             if (!empty($data['news'])) :
-                foreach ($data['news'] as $key => $item) : ?>
+ 
+        <?php
+            $uploadDir = '../uploads/news/'; 
+            if(!empty($data['news'])):
+                foreach($data['news'] as $key => $item): ?>
             <tr>
-                <td><?php echo $key + 1 ?></td>
+                <td><?php echo $key+1 ?></td>
                 <td>
-                    <?php
+                            <?php
                             if (is_file($uploadDir . $item['thumbnail'])) {
                                 echo "<img src='" . $uploadDir . $item['thumbnail'] . "' height='80' width='80' >";
                             } else {
                                 echo "Không có ảnh";
                             }
                             ?>
-                </td>
+                        </td>
                 <td><?php echo $item['title'] ?></td>
                 <td><?php echo substr($item['content'],0,$limit) ?></td>
-                <td><a href="?module=news&action=edit&id=<?php echo $item['id'] ?>"><button class="btn btn-warning"><i
-                                class="fa fa-edit"></i></button></a></td>
-                <td><a href="?module=news&action=delete&id=<?php echo $item['id'] ?>"
-                        onclick="return confirm('Bạn có chắc chắn muốn xóa?')"><button class="btn btn-danger"><i
-                                class="fa fa-trash"></i></button></a></td>
-            </tr>
-            <?php endforeach;
-            else:
-                ?>
-            <td colspan="6">
-                <div class="alert alert-warning text-center">Thông tin bạn tìm kiếm không có dữ liệu</div>
-            </td>
-            <?php
-            endif; ?>
+                <td><a href="?module=news&action=edit&id=<?php echo $item['id'] ?>"><button class="btn btn-warning"><i class="fa fa-edit"></i></button></a></td>
+                <td><a href="?module=news&action=delete&id=<?php echo $item['id'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"><button class="btn btn-danger"><i class="fa fa-trash"></i></button></a></td>
+                </tr>
+            <?php endforeach; endif; ?>
         </tbody>
     </table>
 </div>
