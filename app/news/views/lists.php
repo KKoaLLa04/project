@@ -4,6 +4,7 @@ $msg_type = getFlashData('msg_type');
 if (!empty($_GET['keyword'])) {
     $keyword = $_GET['keyword'];
 }
+$limit=55;
 ?>
 <div class="container-fluid">
     <a href="?module=news&action=add"><button class="btn btn-success">Thêm tin tức tin tức mới <i
@@ -11,7 +12,7 @@ if (!empty($_GET['keyword'])) {
     <p></p>
     <h4 class="text-center">Danh mục tin tức</h4>
     <hr>
-    <form action="" method="get">
+    <form action="" method="get" >
         <input type="hidden" name="module" value="news">
         <input type="hidden" name="action" value="lists">
         <div class="row">
@@ -38,13 +39,23 @@ if (!empty($_GET['keyword'])) {
             </tr>
         </thead>
         <tbody>
-            <?php if (!empty($data['news'])) :
+            <?php
+            $uploadDir = '../uploads/news/';
+             if (!empty($data['news'])) :
                 foreach ($data['news'] as $key => $item) : ?>
             <tr>
                 <td><?php echo $key + 1 ?></td>
-                <td><?php echo $item['thumbnail'] ?></td>
+                <td>
+                    <?php
+                            if (is_file($uploadDir . $item['thumbnail'])) {
+                                echo "<img src='" . $uploadDir . $item['thumbnail'] . "' height='80' width='80' >";
+                            } else {
+                                echo "Không có ảnh";
+                            }
+                            ?>
+                </td>
                 <td><?php echo $item['title'] ?></td>
-                <td><?php echo $item['content'] ?></td>
+                <td><?php echo substr($item['content'],0,$limit) ?></td>
                 <td><a href="?module=news&action=edit&id=<?php echo $item['id'] ?>"><button class="btn btn-warning"><i
                                 class="fa fa-edit"></i></button></a></td>
                 <td><a href="?module=news&action=delete&id=<?php echo $item['id'] ?>"

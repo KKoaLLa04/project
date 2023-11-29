@@ -30,6 +30,7 @@ if(!empty($_GET['keyword'])){
                 <th width="7%">Tên sách</th>
                 <th>Giá</th>
                 <th width="7%">Tác giả</th>
+                <th width="7%">Số lượng</th>
                 <th width="8%">Trạng thái</th>
                 <th>Mô tả</th>
                 <th width="5%">Sửa</th>
@@ -56,6 +57,7 @@ if(!empty($_GET['keyword'])){
                 <td><?php echo $item['name'] ?></td>
                 <td><?php echo $item['price'] ?></td>
                 <td><?php echo $item['author'] ?></td>
+                <td><?php echo $item['quantity'] ?></td>
                 <td><?php echo (!empty($item['status']) && $item['status'] == 1) ? '<button class="btn btn-primary btn-sm">Còn hàng</button>' : '<button class="btn btn-warning btn-sm">Hết hàng</button>' ?>
                 </td>
                 <td><?php echo $item['description'] ?></td>

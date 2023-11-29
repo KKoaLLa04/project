@@ -9,7 +9,7 @@ $old = getFlashData('old');
     <hr>
     <h4>Thêm tin tức mới</h4>
     <?php getMsg($msg, $msg_type) ?>
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
