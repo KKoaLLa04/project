@@ -24,7 +24,7 @@ if (isLoginStudent()) {
         <div class="row">
             <div class="col-1">
                 <div class="header__logo">
-                    <h4 style="padding: 0;">SONLINE</h4>
+                    <a href="<?= _WEB_HOST_ROOT ?>" style="color: black; text-decoration: none"><h4 style="padding: 0;">SONLINE</h4></a>
                 </div>
             </div>
 
@@ -37,7 +37,7 @@ if (isLoginStudent()) {
             <div class="col-3">
                 <div class="header__hotline">
                     <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/phone.svg" alt="">
-                    <span class="hotline__span">Hotline: 0985 123 654 - 0123456789</span>
+                    <span class="hotline__span">Hotline: 0985 123 654</span>
                 </div>
             </div>
 
@@ -73,6 +73,7 @@ if (isLoginStudent()) {
                                     khẩu</a></li>
                             <li class="px-3 pt-3"><i class="fa fa-angle-double-right"></i> <a href="?module=cart_history&action=lists" style="text-decoration: none;">Lịch sử mua
                                     hàng</a></li>
+                            <li class="px-3 pt-3"><i class="fa fa-angle-double-right"></i> <a href="#" style="text-decoration: none;">Khóa Học Đã Mua</a></li>
                             <hr>
                             <li class="px-3"><i class="fa fa-angle-double-right"></i> <a href="?module=member&action=logout" style="text-decoration: none;">Đăng xuất</a></li>
                         </ul>

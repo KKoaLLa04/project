@@ -18,6 +18,11 @@ require_once './core/permission.php'; // load permission
 download();
 require_once './public/assets/clients/templates/header.php'; //import header layout
 
+// dang nhap admin => chuyen sang trang admin
+if(isLoginTeacher()){
+    redirect(_WEB_HOST_ROOT_ADMIN);
+}
+
 $module = _MODULE_DEFAULT;
 $action = _ACTION_DEFAULT;
 
