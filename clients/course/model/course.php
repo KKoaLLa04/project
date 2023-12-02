@@ -76,3 +76,27 @@ function courseInfo($id)
     $data = firstRaw($sql);
     return $data;
 }
+
+function checkBuyCourse($course_id)
+{
+    if (isLoginStudent()) {
+        $studentId = isLoginStudent()['id'];
+    }
+    $sql = "SELECT * FROM code_course WHERE course_id=$course_id AND student_id=$studentId";
+    $data = firstRaw($sql);
+    if (!empty($data)) {
+        return true;
+    }
+
+    return false;
+}
+
+function courseInfoStudent()
+{
+    if (isLoginStudent()) {
+        $studentId = isLoginStudent()['id'];
+    }
+    $sql = "SELECT * FROM code_course INNER JOIN course ON course.id=code_course.course_id INNER JOIN teacher ON teacher.id=course.teacher_id WHERE student_id=$studentId";
+    $data = getRaw($sql);
+    return $data;
+}

@@ -466,7 +466,7 @@ function totalWeekCourse()
 
 function totalWeek()
 {
-    return totalWeekBook() + totalWeekCourse();
+    return totalWeekBook() + totalWeekCourse() + totalDay();
 }
 
 function totalMonthBook()

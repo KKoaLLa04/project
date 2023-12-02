@@ -13,18 +13,29 @@
                 <?php if (!empty($data['course_detail'][$key])) :
                     foreach ($data['course_detail'][$key] as $item) : ?>
                         <div class="course__content">
-                            <a href="?module=course&action=detail&course_id=<?php echo $item['id'] ?>"><img
-                src="<?php echo _WEB_HOST_ROOT . '/uploads/course/' . $item['thumbnail'] ?>" alt="" width="100%"></a>
+                            <a href="?module=course&action=detail&course_id=<?php echo $item['id'] ?>"><img src="<?php echo _WEB_HOST_ROOT . '/uploads/course/' . $item['thumbnail'] ?>" alt="" width="100%"></a>
                             <div class="course__padding">
                                 <a href="?module=course&action=detail&course_id=<?php echo $item['id'] ?>">
-                                    <p><b><?php echo $item['title'] ?></b></p>
+                                    <p><b><?php echo $item['title'] ?></b>
+                                    </p>
+                                    <?php if (isLoginStudent()) :
+                                        if (checkBuyCourse($item['id'])) :
+                                    ?>
+                                            <button class="btn btn-success btn-sm">Đã mua</button>
+                                        <?php
+                                        else :
+                                        ?>
+                                            <button class="btn btn-danger btn-sm">Chưa mua</button>
+                                    <?php
+                                        endif;
+                                    endif ?>
                                 </a>
                                 <p><b><?php echo $value['title'] ?></b></p>
                                 <div class="course__item">
                                     <p>Học phí:</p>
                                     <b class="course__price"><?php echo number_format($item['price']) ?> VNĐ</b>
                                 </div>
-                                <h6>Người Đứng Lớp: <b><?php echo $item['fullname'] ?></b></h6>
+                                <h6 class="d-flex justify-content-between">Người Đứng Lớp: <b><?php echo $item['fullname'] ?></b></h6>
                             </div>
                         </div>
                     <?php endforeach;
