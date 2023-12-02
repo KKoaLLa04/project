@@ -6,34 +6,39 @@
         <div class="footer__item footer__column1">
             <h5>VỀ SONLINE</h5>
             <ul>
-                <li><a href="#"><i class="fa fa-angle-double-right"></i>Giới thiệu</a></li>
-                <li><a href="#"><i class="fa fa-angle-double-right"></i>Giảng viên nối tiếng</a></li>
-                <li><a href="#"><i class="fa fa-angle-double-right"></i>Học Viên xuất sắc</a></li>
-                <li><a href="#"><i class="fa fa-angle-double-right"></i>Chính sách khuyến học</a></li>
-                <li><a href="#"><i class="fa fa-angle-double-right"></i>Liên hệ hợp tác</a></li>
+                <li><a href="?module=aboutus&action=introduce"><i
+                            class="fa fa-angle-double-right"></i><?= getOption('footer_1_1') ?></a></li>
+                <li><a href="?module=aboutus&action=teacher"><i
+                            class="fa fa-angle-double-right"></i><?= getOption('footer_2_1') ?></a></li>
+                <li><a href="?module=aboutus&action=student"><i
+                            class="fa fa-angle-double-right"></i><?= getOption('footer_3_1') ?></a></li>
+                <li><a href="?module=aboutus&action=polite_study"><i
+                            class="fa fa-angle-double-right"></i><?= getOption('footer_4_1') ?></a></li>
+                <li><a href="?module=aboutus&action=cooperate"><i
+                            class="fa fa-angle-double-right"></i><?= getOption('footer_5_1') ?></a></li>
             </ul>
         </div>
         <div class="footer__item footer__column2">
             <h5>CHÍNH SÁCH</h5>
             <ul>
-                <li><a href="#"><i class="fa fa-angle-double-right"></i>Chính sách và quy định chung</a></li>
-                <li><a href="#"><i class="fa fa-angle-double-right"></i>Chính sách bảo mật</a></li>
-                <li><a href="#"><i class="fa fa-angle-double-right"></i>Vận chuyển và thanh toán</a></li>
-                <li><a href="#"><i class="fa fa-angle-double-right"></i>Chính sách đổi trả</a></li>
-                <li><a href="#"><i class="fa fa-angle-double-right"></i>Hướng dẫn đặt hàng</a></li>
+                <li><a href="?module=aboutus&action=polite_general"><i
+                            class="fa fa-angle-double-right"></i><?= getOption('footer_1_2') ?></a></li>
+                <li><a href="?module=aboutus&action=polite_security"><i
+                            class="fa fa-angle-double-right"></i><?= getOption('footer_2_2') ?></a></li>
+                <li><a href="?module=aboutus&action=polite_paypal"><i
+                            class="fa fa-angle-double-right"></i><?= getOption('footer_3_2') ?></a></li>
+                <li><a href="?module=aboutus&action=polite_exchange"><i
+                            class="fa fa-angle-double-right"></i><?= getOption('footer_4_2') ?></a></li>
+                <li><a href="?module=aboutus&action=polite_order"><i
+                            class="fa fa-angle-double-right"></i><?= getOption('footer_5_2') ?></a></li>
             </ul>
         </div>
         <div class="footer__item footer__column3">
             <h5>CÔNG TY TNHH MODERN DKSION</h5>
             <ul>
-                <li><a href="#"><i class="fa fa-angle-double-right"></i>Giấy chứng nhận đăng ký doanh nghiệp số
-                        5801482851 do
-                        Sở Kế hoạch và Đầu tư tỉnh Thạch
-                        Thất cấp lần đầu ngày 12/04/2022</a></li>
-                <li><a href="#"><i class="fa fa-angle-double-right"></i>Địa chỉ: Số 89B, Hoàng Diệu, Phường 5, Thành phố
-                        Đà
-                        Lạt, Tỉnh Thạch Thất</a></li>
-                <li><a href="#"><i class="fa fa-angle-double-right"></i>Điện thoại: 036.803.1178</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i><?= getOption('footer_1_3') ?></a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i><?= getOption('footer_2_3') ?></a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i><?= getOption('footer_3_3') ?></a></li>
             </ul>
             <div class="footer__image">
                 <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/fb.svg" alt="">

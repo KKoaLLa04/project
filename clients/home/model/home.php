@@ -35,48 +35,47 @@ function getAllBook()
 
 function getAllCateexam()
 {
-    $sql = "SELECT * FROM exam_category ORDER BY id DESC";
+    $sql = "SELECT * FROM exam_category ORDER BY id DESC LIMIT 0,3";
     $data = getRaw($sql);
     return $data;
 }
 
-function getAllExam()
+function getAllExam($exam_id)
 {
-    $sql = "SELECT * FROM exam ORDER BY id DESC LIMIT 0,3";
+    $sql = "SELECT * FROM exam WHERE exam_id=$exam_id ORDER BY id DESC LIMIT 0,4";
     $data = getRaw($sql);
     return $data;
 }
 
 function getDetailExam($id)
 {
-    $sql = "SELECT * FROM exam INNER JOIN exam_category ON exam_category.id=exam.exam_id WHERE exam.id=$id ";
+    $sql = "SELECT * FROM exam INNER JOIN exam_category ON exam_category.id=exam.exam_id WHERE exam.id=$id";
     $data = firstRaw($sql);
     return $data;
 }
 
-function getAllnews(){
+function getAllnews()
+{
     $sql = "SELECT * FROM news LIMIT 0,4";
     $data = getRaw($sql);
     return $data;
 }
-function getAllNewsCate(){
+function getAllNewsCate()
+{
     $sql = "SELECT * FROM news_category ORDER BY id DESC";
     $data = getRaw($sql);
     return $data;
 }
 function getAllDocCate()
 {
-    $sql = "SELECT * FROM document_category";
+    $sql = "SELECT * FROM document_category LIMIT 0,3";
     $data = getRaw($sql);
     return $data;
 }
 
 function getAllDoc()
 {
-    $sql = "SELECT * FROM document ORDER BY id DESC LIMIT 0,3";
+    $sql = "SELECT * FROM document ORDER BY id DESC LIMIT 0,4";
     $data = getRaw($sql);
     return $data;
 }
-
-
-
