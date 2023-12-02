@@ -123,6 +123,23 @@
                     Tổng quan - end
                  -->
 
+                 <!-- 
+                statistic - begin
+                 -->
+                 <li class="nav-item">
+                     <a href="?module=statistic&action=lists"
+                         class="nav-link <?php echo (activeMenuSidebar('statistic')) ? 'active' : false ?>">
+                         <i class="nav-icon fa fa-chart-pie"></i>
+                         <p>
+                             Thống kê website
+                         </p>
+                     </a>
+                 </li>
+
+                 <!-- 
+                    statistic - end
+                 -->
+
                  <?php if ($checkSubCateLists) : ?>
                  <!-- 
                     subject_category - begin 
