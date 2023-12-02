@@ -13,7 +13,8 @@ require_once '../core/database.php'; // load database
 require_once '../core/helpers.php'; // load all function (helpers)
 require_once '../core/session.php'; // load session
 require_once '../core/permission.php'; // load session
-
+require_once '../core/chart.php'; // load chart
+require_once '../core/chart_helper.php'; // load chart helper
 
 require_once '../public/assets/admin/templates/header.php'; //import header layout
 require_once '../public/assets/admin/templates/sidebar.php'; //import sidebar layout
