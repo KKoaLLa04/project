@@ -2,6 +2,10 @@
 if (isLoginStudent()) {
     $studentDetail = isLoginStudent();
 }
+// lọc dữ liệu (theo khóa học)
+if (!empty($_GET['keyword'])) {
+    $keyword = $_GET['keyword'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +36,11 @@ if (isLoginStudent()) {
 
             <div class="col-4">
                 <div class="header__search">
-                    <input type="search" placeholder="Tìm kiếm..." class="header__input">
+                    <form action="#" method="get">
+                        <input type="search" placeholder="Tìm kiếm..." class="header__input" name="keyword" value="<?= !empty($keyword) ? $keyword : '' ?>">
+                        <input type="hidden" name="module" value="course">
+                        <input type="hidden" name="action" value="filter">
+                    </form>
                 </div>
             </div>
 
@@ -45,7 +53,8 @@ if (isLoginStudent()) {
 
             <div class="col-1">
                 <div class="header__cart">
-                    <a href="?module=cart&action=lists" style="color: black;"><i class="fa fa-shopping-cart"></i></a>
+                    <a href="?module=cart&action=lists" style="color: black;"><i class="fa fa-shopping-cart"></i>
+                    </a>
                 </div>
             </div>
 

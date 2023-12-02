@@ -5,6 +5,7 @@ require_once './clients/course/model/course.php';
 // $course_detail = getAllCourse();
 $course_category = getAllCate();
 $course = [];
+
 if (!empty($course_category)) {
     foreach ($course_category as $key => $item) {
         $course[$key] = getAllCourseId($item['id']);

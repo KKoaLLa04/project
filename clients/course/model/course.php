@@ -7,19 +7,30 @@ function getAllCourse()
     return $data;
 }
 
-function getAllCate()
+function getAllCate($filter = '')
 {
     $sql = "SELECT * FROM course_category";
+    if (!empty($filter)) {
+        $sql .= " $filter";
+    }
     $data = getRaw($sql);
     return $data;
 }
 
 function getAllCourseId($id)
 {
+    $sql = "SELECT course.*, fullname, course_category.title as cate_name FROM course INNER JOIN teacher ON teacher.id=course.teacher_id INNER JOIN course_category ON course_category.id=course.cate_id WHERE course.cate_id = '$id' ORDER BY course.cate_id DESC LIMIT 0,4";
+    $data = getRaw($sql);
+    return $data;
+}
+
+function getAllCourseIdToCate($id)
+{
     $sql = "SELECT course.*, fullname, course_category.title as cate_name FROM course INNER JOIN teacher ON teacher.id=course.teacher_id INNER JOIN course_category ON course_category.id=course.cate_id WHERE course.cate_id = '$id' ORDER BY course.cate_id DESC";
     $data = getRaw($sql);
     return $data;
 }
+
 
 function getAllLesson()
 {
@@ -97,6 +108,20 @@ function courseInfoStudent()
         $studentId = isLoginStudent()['id'];
     }
     $sql = "SELECT * FROM code_course INNER JOIN course ON course.id=code_course.course_id INNER JOIN teacher ON teacher.id=course.teacher_id WHERE student_id=$studentId";
+    $data = getRaw($sql);
+    return $data;
+}
+
+// loc du lieu
+function courseFilter($filter = '')
+{
+    $sql = "SELECT course.*, fullname, course_category.title as cate_name FROM course INNER JOIN teacher ON teacher.id=course.teacher_id INNER JOIN course_category ON course_category.id=course.cate_id";
+    if (!empty($filter)) {
+        $sql .= " $filter";
+    }
+
+    $sql .= " ORDER BY create_at DESC";
+
     $data = getRaw($sql);
     return $data;
 }
