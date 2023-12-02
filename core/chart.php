@@ -863,3 +863,32 @@ function totalDecCourse()
     }
     return $total;
 }
+
+
+function saleBook()
+{
+    $sql = "SELECT * FROM cart WHERE status=1";
+    $data = getRows($sql);
+    return $data;
+}
+
+function saleCourse()
+{
+    $sql = "SELECT * FROM code_course";
+    $data = getRows($sql);
+    return $data;
+}
+
+function countCooperate()
+{
+    $sql = "SELECT * FROM teacher";
+    $data = getRows($sql);
+    return $data;
+}
+
+function countDocument()
+{
+    $sql = "SELECT * FROM document";
+    $data = getRows($sql);
+    return $data;
+}

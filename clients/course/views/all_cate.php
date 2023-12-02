@@ -1,19 +1,16 @@
 <p class="py-3">Trang chủ > Khóa học</p>
+
 <div>
-    <?php
-    if (!empty($data['course_category'])) :
+    <?php if (!empty($data['course_category'])) :
         foreach ($data['course_category'] as $key => $value) :
     ?>
     <div class="title__text">
-        <h4 class="text-left reset"><?php echo $value['title'] ?></h4>
-        <a href="?module=course&action=all_cate&cate_id=<?= $value['id'] ?>"><button class="title__button">Xem tất cả
-                >></button></a>
+        <h2 class="text-center">Tất cả khóa học của <?php echo $value['title'] ?></h2>
     </div>
 
     <div class="course">
-        <?php
-                    if (!empty($data['course_detail'][$key])) :
-                        foreach ($data['course_detail'][$key] as $item) : ?>
+        <?php if (!empty($data['course_detail'][$key])) :
+                    foreach ($data['course_detail'][$key] as $item) : ?>
         <div class="course__content exam__item p-0">
             <a href="?module=course&action=detail&course_id=<?php echo $item['id'] ?>"><img
                     src="<?php echo _WEB_HOST_ROOT . '/uploads/course/' . $item['thumbnail'] ?>" alt=""
@@ -23,16 +20,16 @@
                     <p><b><?php echo $item['title'] ?></b>
                     </p>
                     <?php if (isLoginStudent()) :
-                                            if (checkBuyCourse($item['id'])) :
-                                        ?>
+                                        if (checkBuyCourse($item['id'])) :
+                                    ?>
                     <button class="btn btn-success btn-sm">Đã mua</button>
                     <?php
-                                            else :
-                                            ?>
+                                        else :
+                                        ?>
                     <button class="btn btn-danger btn-sm">Chưa mua</button>
                     <?php
-                                            endif;
-                                        endif ?>
+                                        endif;
+                                    endif ?>
                 </a>
                 <p><b><?php echo $value['title'] ?></b></p>
                 <div class="course__item">
@@ -43,13 +40,14 @@
             </div>
         </div>
         <?php endforeach;
-                    else : ?>
+                else : ?>
         <p>Chưa có khóa học nào của danh mục này</p>
         <?php
-                    endif;
-                ?>
+                endif; ?>
     </div>
     <?php endforeach;
-    endif;
-        ?>
+    endif; ?>
 </div>
+
+<hr>
+<a href="?module=course&action=lists"><button class="btn btn-primary">Quay lại</button></a>
