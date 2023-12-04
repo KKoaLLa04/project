@@ -16,3 +16,10 @@ function getBookCateDetail($id)
     $data =  firstRaw($sql);
     return $data;
 }
+
+function checkForeignKey($book_id)
+{
+    $sql = "SELECT * FROM book WHERE book_id=$book_id";
+    $data = getRows($sql);
+    return $data;
+}

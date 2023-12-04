@@ -16,7 +16,7 @@ function getTestDetail($id)
 
 function getAllTest()
 {
-    $sql = "SELECT * FROM test ORDER BY id DESC";
+    $sql = "SELECT test.*,name FROM test INNER JOIN test_category ON test_category.id=test.test_id ORDER BY id DESC";
     $data = getRaw($sql);
     return $data;
 }

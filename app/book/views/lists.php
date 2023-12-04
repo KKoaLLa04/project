@@ -1,5 +1,5 @@
 <?php
-if(!empty($_GET['keyword'])){
+if (!empty($_GET['keyword'])) {
     $keyword = $_GET['keyword'];
 }
 ?>
@@ -14,7 +14,7 @@ if(!empty($_GET['keyword'])){
         <div class="row">
             <div class="col-10">
                 <input type="text" name="keyword" class="form-control" placeholder="Từ khóa tìm kiếm..."
-                    value="<?= !empty($keyword)?$keyword:false ?>">
+                    value="<?= !empty($keyword) ? $keyword : false ?>">
             </div>
             <div class="col-2">
                 <button class="btn btn-primary w-100" type="submit">Tìm kiếm</button>
@@ -55,7 +55,7 @@ if(!empty($_GET['keyword'])){
                             ?>
                 </td>
                 <td><?php echo $item['name'] ?></td>
-                <td><?php echo $item['price'] ?></td>
+                <td><?php echo number_format($item['price']) ?> VNĐ</td>
                 <td><?php echo $item['author'] ?></td>
                 <td><?php echo $item['quantity'] ?></td>
                 <td><?php echo (!empty($item['status']) && $item['status'] == 1) ? '<button class="btn btn-primary btn-sm">Còn hàng</button>' : '<button class="btn btn-warning btn-sm">Hết hàng</button>' ?>

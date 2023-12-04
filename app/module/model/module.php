@@ -23,6 +23,8 @@ function getAllModule($subject_id = '', $filter = '')
         $sql .= " $filter";
     }
 
+    $sql .= " ORDER BY course_id DESC";
+
     $data = getRaw($sql);
     return $data;
 }
@@ -47,5 +49,12 @@ function getModuleDetail($id)
 {
     $sql = "SELECT * FROM module WHERE id = $id";
     $data = firstRaw($sql);
+    return $data;
+}
+
+function checkForeignKey($module_id)
+{
+    $sql = "SELECT * FROM lesson WHERE module_id=$module_id";
+    $data = getRows($sql);
     return $data;
 }

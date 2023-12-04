@@ -3,9 +3,8 @@
 require_once 'clients/exam_online/model/exam_online.php';
 
 if (!empty($_GET['id'])) {
-    $id = $_GET['id'];
-
-    $resultDetail = getResultDetail($id);
+    $studentId = $_GET['id'];
+    $resultDetail = getResultDetail($studentId);
 
     if (empty($resultDetail)) {
         setFlashData('msg', 'Kết quả không tồn tại hoặc đã bị xóa!');

@@ -59,7 +59,7 @@ if (isPost()) {
             'email' => trim($body['email']),
             'phone' => trim($body['phone']),
             'status' => trim($body['status']),
-            'password' => trim($body['password']),
+            'password' =>  password_hash(trim($body['password']), PASSWORD_DEFAULT),
             'role' => 0,
             'create_at' => date('Y-m-d H:i:s'),
         ];

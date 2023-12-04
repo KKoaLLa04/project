@@ -32,6 +32,10 @@
                     <button class="btn btn-danger btn-sm">Chưa mua</button>
                     <?php
                                             endif;
+                                        else:
+                                            ?>
+                    <button class="btn btn-danger btn-sm">Chưa mua</button>
+                    <?php
                                         endif ?>
                 </a>
                 <p><b><?php echo $value['title'] ?></b></p>

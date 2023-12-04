@@ -43,16 +43,16 @@ $information = getSession('information_cart');
                     foreach ($data['student_cart'] as $key => $item) :
                         $total += $item['quantity'] * $item['price'];
                 ?>
-                        <tr>
-                            <td><?php echo $key + 1 ?></td>
-                            <td><img src="<?= _WEB_HOST_ROOT . '/uploads/' . $item['images'] ?>" alt="" width="100%"></td>
-                            <td><?php echo $item['name'] ?></td>
-                            <td><?php echo $item['price'] ?></td>
-                            <td class="text-center">
-                                <?php echo '<button class="px-3 btn btn-success btn-sm">' . $item['quantity'] . '</button>' ?>
-                            </td>
-                            <td><?php echo $item['quantity'] * $item['price'] ?></td>
-                        </tr>
+                <tr>
+                    <td><?php echo $key + 1 ?></td>
+                    <td><img src="<?= _WEB_HOST_ROOT . '/uploads/' . $item['images'] ?>" alt="" width="100%"></td>
+                    <td><?php echo $item['name'] ?></td>
+                    <td><?php echo $item['price'] ?></td>
+                    <td class="text-center">
+                        <?php echo '<button class="px-3 btn btn-success btn-sm">' . $item['quantity'] . '</button>' ?>
+                    </td>
+                    <td><?php echo $item['quantity'] * $item['price'] ?></td>
+                </tr>
                 <?php endforeach;
                 endif; ?>
             </tbody>
@@ -66,20 +66,30 @@ $information = getSession('information_cart');
         <h4>Hình thức thanh toán</h4>
         <?php getMsg($msg, $msg_type) ?>
         <form action="" method="post" enctype="application/x-www-form-urlencoded">
-            <input type="hidden" name="fullname" value="<?php echo !empty($information['fullname']) ? $information['fullname'] : false ?>">
-            <input type="hidden" name="email" value="<?php echo !empty($information['email']) ? $information['email'] : false ?>">
-            <input type="hidden" name="phone" value="<?php echo !empty($information['phone']) ? $information['phone'] : false ?>">
-            <input type="hidden" name="address" value="<?php echo !empty($information['address']) ? $information['address'] : false ?>">
-            <input type="hidden" name="total" value="<?php echo !empty($information['total']) ? $information['total'] : false ?>">
+            <input type="hidden" name="fullname"
+                value="<?php echo !empty($information['fullname']) ? $information['fullname'] : false ?>">
+            <input type="hidden" name="email"
+                value="<?php echo !empty($information['email']) ? $information['email'] : false ?>">
+            <input type="hidden" name="phone"
+                value="<?php echo !empty($information['phone']) ? $information['phone'] : false ?>">
+            <input type="hidden" name="address"
+                value="<?php echo !empty($information['address']) ? $information['address'] : false ?>">
+            <input type="hidden" name="total"
+                value="<?php echo !empty($information['total']) ? $information['total'] : false ?>">
 
             <!-- check thanh toan -->
             <input type="radio" name="payment" value="cash" id="cash"> <label for="cash">Tiền mặt</label> <br>
-            <input type="radio" name="payment" value="banking" id="banking"> <label for="banking">Chuyển khoản</label>
+            <!-- <input type="radio" name="payment" value="banking" id="banking"> <label for="banking">Chuyển khoản</label> -->
             <br>
-            <input type="radio" name="payment" value="momo_atm" id="momo_atm"> <label for="momo_atm"><img src="<?php echo _WEB_HOST_TEMPLATE . '/images/momo.png' ?>" width="50px"> MOMO ATM</label> <br>
-            <input type="radio" name="payment" value="momo_qr" id="momo_qr"> <label for="momo_qr"><img src="<?php echo _WEB_HOST_TEMPLATE . '/images/momo.png' ?>" width="50px"> Mã QR MOMO</label> <br>
-            <input type="radio" name="payment" value="vnpay" id="vnpay"> <label for="vnpay"><img src="<?php echo _WEB_HOST_TEMPLATE . '/images/vnpay.png' ?>" width="50px"> VNPAY </label><br>
-            <input type="radio" name="payment" value="paypal" id="paypal"> <label for="paypal"><img src="<?php echo _WEB_HOST_TEMPLATE . '/images/paypal.png' ?>" width="50px"> PAYPAL</label> <button class="btn btn-danger btn-sm">Tạm đóng</button> <br>
+            <input type="radio" name="payment" value="momo_atm" id="momo_atm"> <label for="momo_atm"><img
+                    src="<?php echo _WEB_HOST_TEMPLATE . '/images/momo.png' ?>" width="50px"> MOMO ATM</label> <br>
+            <input type="radio" name="payment" value="momo_qr" id="momo_qr"> <label for="momo_qr"><img
+                    src="<?php echo _WEB_HOST_TEMPLATE . '/images/momo.png' ?>" width="50px"> Mã QR MOMO</label> <br>
+            <input type="radio" name="payment" value="vnpay" id="vnpay"> <label for="vnpay"><img
+                    src="<?php echo _WEB_HOST_TEMPLATE . '/images/vnpay.png' ?>" width="50px"> VNPAY </label><br>
+            <input type="radio" name="payment" value="paypal" id="paypal"> <label for="paypal"><img
+                    src="<?php echo _WEB_HOST_TEMPLATE . '/images/paypal.png' ?>" width="50px"> PAYPAL</label> <button
+                class="btn btn-danger btn-sm">Tạm đóng</button> <br>
             <p></p>
             <button class="btn btn-danger w-100 py-2" value="Thanh toán ngay" name="redirect" type="submit">Thanh toán
                 ngay</button>

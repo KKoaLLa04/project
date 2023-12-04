@@ -18,8 +18,8 @@ if (isPost()) {
             $password_hash = $checkAccount['password'];
 
             if (password_verify($password, $password_hash)) {
-                if (!empty($checkAccount['token'])) {
-                    setFlashData('msg', 'Tài khoản của bạn chưa được kích hoạt vui lòng vào email để kích hoạt tài khoản');
+                if (!empty($checkAccount['token']) || $checkAccount['status'] == 0) {
+                    setFlashData('msg', 'Tài khoản của bạn chưa được kích hoạt hoặc đã bị khóa');
                     setFlashData('msg_type', 'danger');
                 } else {
                     setSession('loginStudent', $checkAccount);

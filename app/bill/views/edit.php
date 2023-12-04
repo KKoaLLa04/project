@@ -9,6 +9,14 @@ if (!empty($data['bill_detail'])) {
     <a href="?module=bill&action=lists"><button class="btn btn-warning btn-sm">Quay lại</button></a>
     <hr>
     <h4>Sửa hóa đơn - <?= $item['code'] ?></h4>
+    <ul>
+        <li>Tên khách hàng: <?= $item['name'] ?></li>
+        <li>Email: <?= $item['email'] ?></li>
+        <li>Địa chỉ: <?= $item['address'] ?></li>
+        <li>Số điện thoại: <?= $item['phone'] ?></li>
+        <li>Thanh toán: <?= $item['pay'] ?></li>
+        <li>Tổng hóa đơn: <?= $item['total'] ?></li>
+    </ul>
     <?php getMsg($msg, $msg_type) ?>
     <form action="" method="post">
         <div class="form-group">
