@@ -2,7 +2,7 @@
 
 function getAllLesson($module_id = '', $filter = '')
 {
-    $sql = "SELECT lesson.*, module.title as module_name, course.title as course_name FROM lesson INNER JOIN module ON module.id=lesson.module_id INNER JOIN course ON course.id=module.course_id WHERE status = 1";
+    $sql = "SELECT lesson.*, module.title as module_name, course.title as course_name FROM lesson INNER JOIN module ON module.id=lesson.module_id INNER JOIN course ON course.id=module.course_id";
     if (!empty($module_id)) {
         $sql .= " AND module_id=$module_id";
     }
@@ -34,7 +34,7 @@ function getAllModule()
             $sql .= " WHERE teacher_id=$id";
         }
     }
-    $sql .= " ORDER BY id DESC";
+    $sql .= " ORDER BY course_id DESC";
     $data = getRaw($sql);
     return $data;
 }

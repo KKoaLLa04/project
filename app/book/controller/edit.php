@@ -12,7 +12,7 @@ if (isPost()) {
     $body = getBody();
     $id = $body['id'];
     $errors = [];
-  
+
     if (empty($body['name'])) {
         $errors['name'] = 'Tên đầu sách không được để trống';
     }
@@ -57,14 +57,14 @@ if (isPost()) {
         ];
 
         if (!empty($_FILES['thumbnail']['name'])) {
-         
+
             $uploadDir = '../uploads/books/';
             $thumbnail = $_FILES['thumbnail'];
             $thumbnailName = basename($thumbnail['name']);
             $thumbnailPath = $uploadDir . $thumbnailName;
 
             if (move_uploaded_file($thumbnail['tmp_name'], $thumbnailPath)) {
-                
+
                 $dataUpdate['thumbnail'] = $thumbnailName;
             }
         }

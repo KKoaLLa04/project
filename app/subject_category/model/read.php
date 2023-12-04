@@ -32,3 +32,10 @@ function getDetailCate($id)
     $data = firstRaw($sql);
     return $data;
 }
+
+function checkForeignKey($cate_id)
+{
+    $sql = "SELECT * FROM course WHERE cate_id=$cate_id";
+    $data = getRows($sql);
+    return $data;
+}

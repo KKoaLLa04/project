@@ -86,6 +86,8 @@ if (!empty($_GET['keyword'])) {
                                     hàng</a></li>
                             <li class="px-3 pt-3"><i class="fa fa-angle-double-right"></i> <a href="?module=course&action=history" style="text-decoration: none;">Khóa Học Đã Mua</a>
                             </li>
+                            <li class="px-3 pt-3"><i class="fa fa-angle-double-right"></i> <a href="?module=exam_online&action=history" style="text-decoration: none;">Lịch sử thi</a>
+                            </li>
                             <hr>
                             <li class="px-3"><i class="fa fa-angle-double-right"></i> <a href="?module=member&action=logout" style="text-decoration: none;">Đăng xuất</a></li>
                         </ul>

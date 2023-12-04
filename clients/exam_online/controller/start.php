@@ -25,16 +25,16 @@ if (isPost()) {
     $result = $body['result'];
     $answerArr = json_decode($testDetail['answer'], true);
     $countQuestion = count($answerArr);
-    $avg = 10 / $countQuestion;
+    $avg = (float)(10 / $countQuestion);
     $score = 0;
     foreach ($result as $key => $item) {
         if ($item[0] == $answerArr[$key]) {
-            $score = $score + $avg;
+            $score = (float)($score + $avg);
         }
     }
-
+    $studentId = isLoginStudent()['id'];
     $dataInsert = [
-        'student_id' => 7,
+        'student_id' => $studentId,
         'test_id' => $id,
         'score' => $score,
         'create_at' => date('Y-m-d H:i:s')
@@ -43,7 +43,7 @@ if (isPost()) {
     $insertStatus = insert('result', $dataInsert);
 
     if (!empty($insertStatus)) {
-        redirect('?module=exam_online&action=result&id=7');
+        redirect('?module=exam_online&action=result&id=' . $studentId);
     } else {
         setFlashData('msg', 'Lỗi hệ thống, bài của bạn hiện vẫn chưa được nộp');
         setFlashData('msg_type', 'danger');

@@ -9,6 +9,11 @@ if (!empty($_GET['keyword'])) {
             xử
             lý</button> -> <button class="btn btn-info">Đang giao</button> -> <button class="btn btn-success">Đã
             giao</button> </p>
+    <a href="<?= _WEB_HOST_ROOT_ADMIN . '/bill/controller/export.php' ?>"><button class="btn btn-success" type="button"
+            name="buton"><i class="fa fa-download"></i> Export
+            File</button></a>
+    <a href="?module=bill&action=course_bill"><button class="btn btn-primary"><i class="fa fa-copy"></i> Hóa đơn khóa
+            học</button></a>
     <hr>
     <form method="get">
         <input type="hidden" name="module" value="bill">

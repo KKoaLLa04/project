@@ -175,6 +175,8 @@
 .textbook__content{
     background-color: white;
     border-radius: 10px;
+    position: relative;
+    transition: all 1s;
 }
 
 .textbook__content img{
@@ -186,6 +188,25 @@
 
 .textbook__content p:first-of-type{
     padding-top: 0;
+}
+
+.textbook__content .add-to-cart{
+    padding: 10px;
+    background-color: aqua;
+    border-radius: 6px;
+    margin-top: 20px;
+    width: 100%;
+    display: none;
+    position: absolute;
+    top: -24px;
+}
+
+.textbook__content:hover .add-to-cart{
+    padding: 10px;
+    background-color: aqua;
+    border-radius: 6px;
+    margin-top: 20px;
+    display: block;
 }
 
 .course__item{

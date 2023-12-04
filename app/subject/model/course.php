@@ -62,3 +62,10 @@ function getCourseDetail($id)
     $data = firstRaw($sql);
     return $data;
 }
+
+function checkForeignKey($course_id)
+{
+    $sql = "SELECT * FROM module WHERE course_id=$course_id";
+    $data = getRows($sql);
+    return $data;
+}
