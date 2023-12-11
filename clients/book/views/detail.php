@@ -76,39 +76,25 @@ if (!empty($data['book_detail'])) {
 <?php echo (!empty($item['content'])) ? html_entity_decode($item['content']) : false ?>
 
 <div class="row">
-    <div class="col-3 background_white">
-        <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/book1.png" alt="" width="100%">
-        <h6 class="py-3">Kinh nghiệm luyện thi</h6>
+    <h3 class="mb-3">Bạn có thể quan tâm</h3>
+    <?php if (!empty($data['book'])) :
+        $count = 0;
+        foreach ($data['book'] as $key => $item) :
+            $count++;
+            if ($count > 4) {
+                break;
+            } ?>
+    <div class="col-3">
+        <a href="?module=book&action=detail&id=<?= $item['id'] ?>" style="text-decoration: none; color: black;">
+            <img src="<?php echo _WEB_HOST_ROOT ?>/uploads/books/<?= $item['thumbnail'] ?>" alt="" width="100%"
+                height="350px">
+            <h6 class="py-3"><?= $item['name'] ?></h6>
+        </a>
         <div class="d-flex justify-content-between">
             <p>Giá bán: </p>
-            <p>600.000đ</p>
+            <p><b><?= number_format($item['price']) ?> VNĐ</b></p>
         </div>
     </div>
-
-    <div class="col-3 background_white">
-        <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/book1.png" alt="" width="100%">
-        <h6 class="py-3">Kinh nghiệm luyện thi</h6>
-        <div class="d-flex justify-content-between">
-            <p>Giá bán: </p>
-            <p>600.000đ</p>
-        </div>
-    </div>
-
-    <div class="col-3 background_white">
-        <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/book1.png" alt="" width="100%">
-        <h6 class="py-3">Kinh nghiệm luyện thi</h6>
-        <div class="d-flex justify-content-between">
-            <p>Giá bán: </p>
-            <p>600.000đ</p>
-        </div>
-    </div>
-
-    <div class="col-3 background_white">
-        <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/book1.png" alt="" width="100%">
-        <h6 class="py-3">Kinh nghiệm luyện thi</h6>
-        <div class="d-flex justify-content-between">
-            <p>Giá bán: </p>
-            <p>600.000đ</p>
-        </div>
-    </div>
+    <?php endforeach;
+    endif; ?>
 </div>

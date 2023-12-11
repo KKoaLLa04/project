@@ -45,7 +45,7 @@ $information = getSession('information_cart');
                 ?>
                 <tr>
                     <td><?php echo $key + 1 ?></td>
-                    <td><img src="<?= _WEB_HOST_ROOT . '/uploads/' . $item['images'] ?>" alt="" width="100%"></td>
+                    <td><img src="<?= _WEB_HOST_ROOT . '/uploads/books/' . $item['images'] ?>" alt="" width="100%"></td>
                     <td><?php echo $item['name'] ?></td>
                     <td><?php echo $item['price'] ?></td>
                     <td class="text-center">

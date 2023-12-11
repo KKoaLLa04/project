@@ -13,32 +13,15 @@ if (!empty($data['news_detail'])) {
 <hr>
 <p>CÓ THỂ BẠN QUAN TÂM</p>
 <div class="row">
-    <div class="col-3 background_white">
-        <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/news2.jpg" alt="" width="100%">
-        <h6 class="py-3">Kinh nghiệm luyện thi</h6>
-        <div class="d-flex justify-content-between">
-        </div>
-    </div>
-
-    <div class="col-3 background_white">
-        <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/news2.jpg" alt="" width="100%">
-        <h6 class="py-3">Kinh nghiệm luyện thi</h6>
-        <div class="d-flex justify-content-between">
-        </div>
-    </div>
-
-    <div class="col-3 background_white">
-        <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/news2.jpg" alt="" width="100%">
-        <h6 class="py-3">Kinh nghiệm luyện thi</h6>
-        <div class="d-flex justify-content-between">
-        </div>
-    </div>
-
-    <div class="col-3 background_white">
-        <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/news2.jpg" alt="" width="100%">
-        <h6 class="py-3">Kinh nghiệm luyện thi</h6>
-        <div class="d-flex justify-content-between">
-        </div>
-    </div>
+    <?php if (!empty($data['news'])) :
+        foreach ($data['news'] as $key => $item) : ?>
+            <div class="col-3">
+                <a href="?module=news&action=detail&id=<?= $item['id'] ?>" style="color: black; text-decoration: none;">
+                    <img src="<?php echo _WEB_HOST_ROOT ?>/uploads/news/<?= $item['thumbnail'] ?>" width="100%" height="200px">
+                    <h6 class="py-3"><?= $item['title'] ?></h6>
+                </a>
+            </div>
+    <?php endforeach;
+    endif ?>
 </div>
 </div>

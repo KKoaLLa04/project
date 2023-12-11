@@ -9,7 +9,7 @@ if (!empty($_GET['id'])) {
 }
 
 if (isPost()) {
-    $body = getBody();
+    $body = getBody(); // $_POST $body = $_POST
     $id = $body['id'];
     $errors = [];
 
@@ -49,7 +49,6 @@ if (isPost()) {
             'description' => trim($body['description']),
             'content' => trim($body['content']),
             'quantity' => trim($body['quantity']),
-            'thumbnail' => trim($body['thumbnail']),
             'price' => trim($body['price']),
             'status' => trim($body['status']),
             'book_id' => trim($body['book_id']),

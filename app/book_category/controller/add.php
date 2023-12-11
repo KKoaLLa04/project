@@ -1,7 +1,7 @@
 <?php
 
 if (isPost()) {
-    $body = getBody();
+    $body = getBody(); // $_POST
 
     $errors = [];
 
@@ -34,7 +34,7 @@ if (isPost()) {
         setFlashData('errors', $errors);
         setFlashData('old', $body);
     }
-    // redirect('?module=book_category&action=add');
+    redirect('?module=book_category&action=add');
 }
 
 view();

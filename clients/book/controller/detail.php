@@ -12,5 +12,6 @@ if (!empty($_GET['id'])) {
 
 $data = [
     'book_detail' => getBookDetail($id),
+    'book' => getAllBook(),
 ];
 viewClient($data);

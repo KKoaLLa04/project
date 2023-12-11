@@ -5,14 +5,14 @@ require_once './news/model/news.php';
 if (!empty($_GET['id'])) {
     $id = $_GET['id'];
 
-    $newsDetail=getNewsDetail($id);
+    $newsDetail = getNewsDetail($id);
 }
 
 if (isPost()) {
     $body = getBody();
     $id = $body['id'];
     $errors = [];
-  
+
     if (empty($body['title'])) {
         $errors['title'] = 'Tiêu đề tin tức không được để trống';
     }
@@ -28,19 +28,18 @@ if (isPost()) {
         $dataUpdate = [
             'title' => trim($body['title']),
             'content' => trim($body['content']),
-            'thumbnail' => trim($body['thumbnail']),
             'update_at' => date('Y-m-d H:i:s')
         ];
-        
+
         if (!empty($_FILES['thumbnail']['name'])) {
-         
+
             $uploadDir = '../uploads/news/';
             $thumbnail = $_FILES['thumbnail'];
             $thumbnailName = basename($thumbnail['name']);
             $thumbnailPath = $uploadDir . $thumbnailName;
 
             if (move_uploaded_file($thumbnail['tmp_name'], $thumbnailPath)) {
-                
+
                 $dataUpdate['thumbnail'] = $thumbnailName;
             }
         }
