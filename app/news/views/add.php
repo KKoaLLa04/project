@@ -21,7 +21,7 @@ $old = getFlashData('old');
             </div>
 
             <div class="col-6">
-            <div class="form-group">
+                <div class="form-group">
                     <label for="">Ảnh Minh Họa</label>
                     <input type="file" class="form-control" name="thumbnail">
                     <p class="error"><?php echo errorData('thumbnail', $errors) ?></p>
@@ -30,23 +30,23 @@ $old = getFlashData('old');
         </div>
 
         <div class="form-group">
-                    <label for="">Nội dung</label>
-                    <textarea class="form-control editor" rows="5" placeholder="Nội dung"
-                        name="content"><?php echo oldData('content', $old) ?></textarea>
-                    <p class="error"><?php echo errorData('content', $errors) ?></p>
-                </div>
-                
-                <div class="form-group">
-                    <label for="">Danh mục tin tức</label>
-                    <select class="form-control" name="book_id">
-                        <option value="0">Chọn danh mục tin tức </option>
-                        <?php if(!empty($data['news_category'])):
+            <label for="">Nội dung</label>
+            <textarea class="form-control editor" rows="5" placeholder="Nội dung"
+                name="content"><?php echo oldData('content', $old) ?></textarea>
+            <p class="error"><?php echo errorData('content', $errors) ?></p>
+        </div>
+
+        <div class="form-group">
+            <label for="">Danh mục tin tức</label>
+            <select class="form-control" name="news_id">
+                <option value="0">Chọn danh mục tin tức </option>
+                <?php if(!empty($data['news_category'])):
                             foreach($data['news_category'] as $item): ?>
-                        <option value="<?php echo $item['id'] ?>"><?php echo $item['title'] ?></option>
-                        <?php endforeach; endif; ?>
-                    </select>
-                    <p class="error"><?php echo errorData('news_id', $errors) ?></p>
-                </div>
+                <option value="<?php echo $item['id'] ?>"><?php echo $item['title'] ?></option>
+                <?php endforeach; endif; ?>
+            </select>
+            <p class="error"><?php echo errorData('news_id', $errors) ?></p>
+        </div>
         <button type="submit" class="btn btn-primary">Thêm mới</button>
     </form>
 </div>

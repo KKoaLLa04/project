@@ -12,9 +12,10 @@ $old = getFlashData('old');
     <form action="" method="POST">
         <div class="form-group">
             <label for="">Tiêu đề</label>
-            <input type="text" class="form-control" placeholder="Tiêu đề danh mục sách..." name="title">
+            <input type="text" class="form-control" placeholder="Tiêu đề danh mục sách..." name="title"
+                value="<?= oldData('title', $old) ?>">
             <p class="error"><?php echo errorData('title', $errors) ?></p>
         </div>
-       <button type="submit" class="btn btn-primary">Thêm mới</button>
+        <button type="submit" class="btn btn-primary">Thêm mới</button>
     </form>
 </div>

@@ -9,7 +9,8 @@ $courseInfo = $data['courseInfo'];
             <h3>Thông tin khóa học bạn mua:</h3>
             <div class="row">
                 <div class="col-7">
-                    <img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/course1.jpg" alt="" width="100%">
+                    <img src="<?php echo _WEB_HOST_ROOT ?>/uploads/course/<?= $courseInfo['thumbnail'] ?>" alt=""
+                        width="100%">
                 </div>
                 <div class="col-5">
                     <ul>
@@ -20,6 +21,7 @@ $courseInfo = $data['courseInfo'];
                     </ul>
                 </div>
             </div>
+            <hr>
             <?php
 
             $course = firstRaw("SELECT * FROM course WHERE id=21");
@@ -32,15 +34,19 @@ $courseInfo = $data['courseInfo'];
             <h3>Hình thức thanh toán</h3>
             <?php getMsg($msg, $msg_type) ?>
             <form action="" method="post">
-                <input type="hidden" name="total" value="<?= !empty($courseInfo['price']) ? $courseInfo['price'] : false ?>">
+                <input type="hidden" name="total"
+                    value="<?= !empty($courseInfo['price']) ? $courseInfo['price'] : false ?>">
                 <input type="hidden" name="id" value="<?= $courseInfo['id'] ?>">
-                <input type="radio" name="pay" value="momo_atm" id="momo_atm"> <label for="momo_atm"><img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/momo.png" width="50px"> Thanh toán bằng
+                <input type="radio" name="pay" value="momo_atm" id="momo_atm"> <label for="momo_atm"><img
+                        src="<?php echo _WEB_HOST_TEMPLATE ?>/images/momo.png" width="50px"> Thanh toán bằng
                     momo atm</label>
                 <br>
-                <input type="radio" name="pay" value="vnpay" id="vnpay"> <label for="vnpay"><img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/vnpay.png" width="50px"> Thanh toán bằng
+                <input type="radio" name="pay" value="vnpay" id="vnpay"> <label for="vnpay"><img
+                        src="<?php echo _WEB_HOST_TEMPLATE ?>/images/vnpay.png" width="50px"> Thanh toán bằng
                     vnpay</label>
                 <br>
-                <input type="radio" name="pay" value="momo_qr" id="momo_qr"> <label for="momo_qr"><img src="<?php echo _WEB_HOST_TEMPLATE ?>/images/momo.png" width="50px"> Thanh toán bằng
+                <input type="radio" name="pay" value="momo_qr" id="momo_qr"> <label for="momo_qr"><img
+                        src="<?php echo _WEB_HOST_TEMPLATE ?>/images/momo.png" width="50px"> Thanh toán bằng
                     mã qr momo</label>
 
                 <hr>

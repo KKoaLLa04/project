@@ -21,6 +21,7 @@ if (isPost()) {
     }
 
     if (empty($errors)) {
+        // không có lỗi xảy ra
         if (isLoginTeacher()) {
             $teacher_id = isLoginTeacher()['id'];
         }

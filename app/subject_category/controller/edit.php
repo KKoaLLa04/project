@@ -65,4 +65,4 @@ $data = [
     'title' => 'Cập nhật danh mục khóa học',
 ];
 
-view($data, 'edit');
+view($data);

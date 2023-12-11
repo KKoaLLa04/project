@@ -17,5 +17,8 @@ define('_WEB_HOST_ROOT_ADMIN', _WEB_HOST_ROOT . '/app');
 define('_WEB_HOST_ADMIN_TEMPLATE', _WEB_HOST_ROOT . '/public/assets/admin');
 
 //Thiết lập path
-define('_WEB_PATH_ROOT', 'C:\xampp\htdocs\project_one_SONLINE'); // fix cung tam thoi
+$dirStr = __DIR__;
+$dirIndex = str_replace('\configs', '', $dirStr);
+
+define('_WEB_PATH_ROOT', $dirIndex); // fix cung tam thoi
 define('_WEB_PATH_TEMPLATE', _WEB_PATH_ROOT . '/public/assets');

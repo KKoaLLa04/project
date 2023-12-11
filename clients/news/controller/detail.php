@@ -12,5 +12,6 @@ if (!empty($_GET['id'])) {
 
 $data = [
     'news_detail' => getNewsDetail($id),
+    'news' => getAllnews(),
 ];
 viewClient($data);

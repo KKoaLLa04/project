@@ -11,7 +11,7 @@ function loadLayout($path, $data = [])
     }
 }
 
-function view($data = [], $act = '')
+function view($data = [])
 {
     $module = 'dashboard';
     $action = 'home';
@@ -21,10 +21,6 @@ function view($data = [], $act = '')
 
     if (!empty($_GET['action'])) {
         $action = $_GET['action'];
-    }
-
-    if (!empty($act)) {
-        $action = $act;
     }
 
     require_once './' . $module . '/views/' . $action . '.php';

@@ -7,7 +7,7 @@ if (isPost()) {
 
     $errors = [];
 
-    
+
 
     if (empty($body['title'])) {
         $errors['title'] = 'Tiêu đề không được để trống';
@@ -16,17 +16,23 @@ if (isPost()) {
     if (empty($body['content'])) {
         $errors['content'] = 'Nội dung không được để trống';
     }
-    // if (empty($body['news_id'])) {
-    //     $errors['news_id'] = 'Danh mục sách bắt buộc phải chọn';
-    // }
+    if (empty($body['news_id'])) {
+        $errors['news_id'] = 'Danh mục sách bắt buộc phải chọn';
+    }
 
     if (empty($errors)) {
 
+        $uploadDir = '../uploads/news/';
+        $thumbnail = $_FILES['thumbnail'];
+        $thumbnailName = basename($thumbnail['name']);
+        $thumbnailPath = $uploadDir . $thumbnailName;
+
+        move_uploaded_file($thumbnail['tmp_name'], $thumbnailPath);
         $dataInsert = [
             'title' => trim($body['title']),
             'content' => trim($body['content']),
-            'thumbnail' => trim($body['thumbnail']),
-            // 'news_id' => trim($body['news_id']),
+            'thumbnail' => $thumbnailName,
+            'news_id' => trim($body['news_id']),
             'create_at' => date('Y-m-d H:i:s')
         ];
 
